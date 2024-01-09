@@ -26,6 +26,8 @@ The tools used to create this page were:
 - [React-Bootstrap](https://react-bootstrap.netlify.app/docs/getting-started/introduction)
 - [React-Router-dom](https://reactrouter.com/en/main)
 - [React-Hook-Form](https://react-hook-form.com/)
+- [jsonwebtoken](https://jwt.io/)
+- [bcrypt]()
 
 >[!TIP]
 >If you click on the name of the tools it will take you to its documentation, as always we recommend reading it.
@@ -66,14 +68,14 @@ npm i express mongoose cors dotenv nodemon jsonwebtoken bcrypt express-validator
 
 ### Documents
 Here I leave the different links to the different documentation of the tools used:
-- [express]()
-- [mongoose]()
-- [cors]()
-- [dotenv]()
-- [nodemon]()
-- [jsonwebtoken]()
-- [bcrypt]()
-- [expess-validator]()
+- [express](https://expressjs.com/)
+- [mongoose](https://mongoosejs.com/)
+- [cors](https://mongoosejs.com/)
+- [dotenv](https://mongoosejs.com/)
+- [nodemon](https://nodemon.io/)
+- [jsonwebtoken](https://jwt.io/)
+- [bcrypt](https://github.com/kelektiv/node.bcrypt.js#readme)
+- [expess-validator](https://express-validator.github.io/docs)
 
 >[!TIP]
 >If you click on the name of the tools it will take you to its documentation, as always we recommend reading it.
