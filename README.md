@@ -13,13 +13,6 @@ npm run dev
 npm i react-bootstrap bootstrap react-router-dom react-hook-form
 ```
 
-## Citation
-
-```bash
-# Src/components/styles/style.login
-
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
-```
 ## Tools used
 The tools used to create this page were:
 
