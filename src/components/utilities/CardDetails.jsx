@@ -1,0 +1,1 @@
+// show the info about the product
