@@ -30,22 +30,8 @@ body{
   min-height: 480px;
 }
 
-.container p{
-  font-size: 14px;
-  line-height: 20px;
-  letter-spacing: 0.3px;
-  margin: 20px 0;
-}
-
 .container span{
   font-size: 12px;
-}
-
-.container a{
-  color: #333;
-  font-size: 13px;
-  text-decoration: none;
-  margin: 15px 0 10px;
 }
 
 .container button{
@@ -101,10 +87,6 @@ body{
   z-index: 2;
 }
 
-.container.active .sign-in{
-  transform: translateX(100%);
-}
-
 .sign-up{
   left: 0;
   width: 50%;
@@ -117,32 +99,6 @@ body{
   opacity: 1;
   z-index: 5;
   animation: move 0.6s;
-}
-
-@keyframes move{
-  0%, 49.99%{
-      opacity: 0;
-      z-index: 1;
-  }
-  50%, 100%{
-      opacity: 1;
-      z-index: 5;
-  }
-}
-
-.social-icons{
-  margin: 20px 0;
-}
-
-.social-icons a{
-  border: 1px solid #ccc;
-  border-radius: 20%;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 3px;
-  width: 40px;
-  height: 40px;
 }
 
 .toggle-container{
@@ -175,10 +131,6 @@ body{
   transition: all 0.6s ease-in-out;
 }
 
-.container.active .toggle{
-  transform: translateX(50%);
-}
-
 .toggle-panel{
   position: absolute;
   width: 50%;
@@ -194,123 +146,7 @@ body{
   transition: all 0.6s ease-in-out;
 }
 
-.toggle-left{
-  transform: translateX(-200%);
-}
-
-.container.active .toggle-left{
-  transform: translateX(0);
-}
-
 .toggle-right{
   right: 0;
   transform: translateX(0);
-}
-
-.container.active .toggle-right{
-  transform: translateX(200%);
-}
-
-/* Detail words BTN */
-.ingresarBtn {
-  font-weight: bold;
-  color: white;
-  border-radius: 2rem;
-  width: 95.02px;
-  height: 42.66px;
-  border: none;
-  background-color: #606060;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.span-mother {
-  display: flex;
-  overflow: hidden;
-}
-
-button:hover .span-mother {
-  position: absolute;
-}
-
-button:hover .span-mother span {
-  transform: translateY(1.2em);
-}
-
-.span-mother span:nth-child(1) {
-  transition: .2s;
-}
-
-.span-mother span:nth-child(2) {
-  transition: .3s;
-}
-
-.span-mother span:nth-child(3) {
-  transition: .4s;
-}
-
-.span-mother span:nth-child(4) {
-  transition: .5s;
-}
-
-.span-mother span:nth-child(5) {
-  transition: .6s;
-}
-
-.span-mother span:nth-child(6) {
-  transition: .7s;
-}
-
-.span-mother span:nth-child(7) {
-  transition: .8s;
-}
-
-.span-mother span:nth-child(8) {
-  transition: .9s;
-}
-
-.span-mother2 {
-  display: flex;
-  position: absolute;
-  overflow: hidden;
-}
-
-.span-mother2 span {
-  transform: translateY(-1.4em);
-}
-
-button:hover .span-mother2 span {
-  transform: translateY(0);
-}
-
-.span-mother2 span {
-  transition: .2s;
-}
-
-.span-mother2 span:nth-child(2) {
-  transition: .3s;
-}
-
-.span-mother2 span:nth-child(3) {
-  transition: .4s;
-}
-
-.span-mother2 span:nth-child(4) {
-  transition: .5s;
-}
-
-.span-mother2 span:nth-child(5) {
-  transition: .6s;
-}
-
-.span-mother2 span:nth-child(6) {
-  transition: .7s;
-}
-
-.span-mother2 span:nth-child(7) {
-  transition: .8s;
-}
-.span-mother2 span:nth-child(8) {
-  transition: .9s;
 }
