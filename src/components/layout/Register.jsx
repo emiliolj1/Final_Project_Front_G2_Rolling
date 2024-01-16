@@ -73,32 +73,7 @@ const RegisterComponent = () => {
             {/* className was used for css styles, check it in the ther folder styles/stylesLogin.css */}
             {/* there is a bug in the button, we need to fix it. */}
             <Button className='IngresarBtn'>
-              <span className='span-mother'>
-                <span>R</span>
-                <span>e</span>
-                <span>g</span>
-                <span>i</span>
-                <span>s</span>
-                <span>t</span>
-                <span>r</span>
-                <span>a</span>
-                <span>r</span>
-                <span>s</span>
-                <span>e</span>
-              </span>
-              <span className='span-mother2'>
-                <span>R</span>
-                <span>e</span>
-                <span>g</span>
-                <span>i</span>
-                <span>s</span>
-                <span>t</span>
-                <span>r</span>
-                <span>a</span>
-                <span>r</span>
-                <span>s</span>
-                <span>e</span>
-              </span>
+              Registrarse
             </Button>
           </Form>
         </Col>
@@ -110,26 +85,7 @@ const RegisterComponent = () => {
               <p>Ya tienes una cuenta creada?, si la tienes por favor presiona el siguiente boton.</p>
               {/* there is a bug in the button, we need to fix it. */}
               <Button>
-              <span class="span-mother">
-                <span>I</span>
-                <span>n</span>
-                <span>g</span>
-                <span>r</span>
-                <span>e</span>
-                <span>s</span>
-                <span>a</span>
-                <span>r</span>
-              </span>
-                <span class="span-mother2">
-                  <span>I</span>
-                  <span>n</span>
-                  <span>g</span>
-                  <span>r</span>
-                  <span>e</span>
-                  <span>s</span>
-                  <span>a</span>
-                  <span>r</span>
-                </span>
+              Ingresar
               </Button>
             </div>
           </div>
