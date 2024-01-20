@@ -1,12 +1,12 @@
 // It has to be a simple navbar. It has to return to the beginning with its name or also include a HOME button.
 // it must have two buttons, one to create the Sing in account, and one to change password. (Note this may change throughout the project)
 // Must follow the trello color palette. 
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { Link } from 'react-router-dom';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import Button from 'react-bootstrap/Button';
+
 
 const Header = ({user, setUser}) => {
 
@@ -14,21 +14,33 @@ const Header = ({user, setUser}) => {
 
   return (
     <>
-    <Navbar bg="dark" data-bs-theme="dark">
-      <Container>
-        <Navbar.Brand href="home">Sale Fulbo?</Navbar.Brand>
-        <Nav className="me-auto">
-          <Link to='home'>Home</Link>
-          <Link to='admin'>Admin</Link>
-          </Nav>
-            {
-              user ? (
-              <Button variant='warning' onClick={() => {}}>Logout</Button>
-              ) : (
-              <Button variant='warning' onClick={() => {}}>Register</Button>)
-            }
-      </Container>
-    </Navbar>
+      <Navbar expand="lg" className="navColor" data-bs-theme="dark" fixed='top'>
+        <Container className=''>
+          <Navbar.Brand href="#home" className='fw-bold'>Sale Fulbo'?</Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="me-auto">
+              <Nav.Link href="#">Home</Nav.Link>
+              <Nav.Link href="#">Alquila tu Cancha!</Nav.Link>
+              <NavDropdown title="+Más" id="basic-nav-dropdown">
+                <NavDropdown.Item href="#action/3.1">
+                  Nosotros
+                </NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.2">
+                  Contacto
+                </NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item href="#action/3.4">
+                  Galeria de Imagenes
+                </NavDropdown.Item>
+              </NavDropdown>
+            </Nav>
+            <Button href='#' className='btn-login'>
+              Login
+            </Button>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
     </>
   )
 }
