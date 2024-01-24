@@ -1,14 +1,25 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom"
-
+import { Navigate, Routes, Route } from "react-router-dom"
+import Login from '../layout/Login'
+import Register from '../layout/Register'
 
 const PrivateRoutes = () => {
   return (
     <>
-      <BrowserRouter>
-        <Routes>
-          <Route/>
-        </Routes>
-      </BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Navigate to={'/home'}/>}/>
+        <Route exact path='/login' element={<Navigate to={<Login/>}/>}/>
+        <Route exact path='/register' element={<Navigate to={<Register/>}/>}/>
+        <Route exact path='/contacto' element={<Navigate to={<Contacto/>}/>}/>
+        <Route exact path='/nosotros' element={<Navigate to={<Nosotros/>}/>}/>
+        <Route exact path='/galeria' element={<Navigate to={<Galeria/>}/>}/>
+        <Route exact path='/alquiler' element={<Navigate to={<Alquiler/>}/>}/>
+        <Route exact path='/miCuenta' element={<Navigate to={<MiCuenta/>}/>}/>
+
+        <Route exact path='/admin' element={<Navigate to={<Admin/>}/>}/> {/* la pongo separada ya que seguro contemplara una autenticacion extra*/}
+
+          
+        <Route path='*' element={<Navigate to='/'/>}/>
+      </Routes>
     </>
   )
 }
