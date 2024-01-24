@@ -15,6 +15,11 @@ const NavBar = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  let user = {
+    logged: true,
+    admin: true
+  }
+
   return (
     <>
       <Navbar expand="lg" className="navColor" data-bs-theme="dark" fixed='top'>
@@ -61,7 +66,7 @@ const NavBar = () => {
                                 <Nav.Link >Cerrar Sesion</Nav.Link>
                               </>
                             : <>
-                                <Nav.Link >Administracion (Seria condicional)</Nav.Link>
+                                <Nav.Link >Administracion</Nav.Link>
                                 <hr/>
                                 <Nav.Link >Cerrar Sesion</Nav.Link>
                               </>
