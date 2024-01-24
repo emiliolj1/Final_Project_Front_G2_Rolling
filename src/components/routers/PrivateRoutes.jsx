@@ -17,7 +17,6 @@ const PrivateRoutes = () => {
 
         <Route exact path='/admin' element={<Navigate to={<Admin/>}/>}/> {/* la pongo separada ya que seguro contemplara una autenticacion extra*/}
 
-          
         <Route path='*' element={<Navigate to='/'/>}/>
       </Routes>
     </>
