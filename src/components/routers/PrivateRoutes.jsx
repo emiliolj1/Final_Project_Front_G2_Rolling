@@ -12,6 +12,7 @@ const PrivateRoutes = () => {
         <Route exact path='/contacto' element={<Navigate to={<Contacto/>}/>}/>
         <Route exact path='/nosotros' element={<Navigate to={<Nosotros/>}/>}/>
         <Route exact path='/galeria' element={<Navigate to={<Galeria/>}/>}/>
+        <Route exact path='/productos' element={<Navigate to={<Prodcutos/>}/>}/>
         <Route exact path='/alquiler' element={<Navigate to={<Alquiler/>}/>}/>
         <Route exact path='/miCuenta' element={<Navigate to={<MiCuenta/>}/>}/>
         <Route exact path='/admin' element={<Navigate to={<Admin/>}/>}/>

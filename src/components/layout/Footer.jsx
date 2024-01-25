@@ -38,6 +38,7 @@ const Footer = () => {
                       <Nav className='flex-column text-center'>
                         <Nav.Link className='py-auto fw-bold'>Alquila tu cancha!</Nav.Link>
                         <Nav.Link className='py-auto'>Galeria de Imagenes</Nav.Link>
+                        <Nav.Link className='py-auto'>Productos</Nav.Link>
                         <Nav.Link className='py-auto'>Contacto</Nav.Link>
                         <Nav.Link className='py-auto'>Sobre Nosotros</Nav.Link>
                       </Nav>
