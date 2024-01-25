@@ -42,6 +42,7 @@ const NavBar = () => {
                   Galeria de Imagenes
                 </NavDropdown.Item>
               </NavDropdown>
+              <Nav.Link href="#">Productos</Nav.Link>
             </Nav>
             {
               !user.logged
