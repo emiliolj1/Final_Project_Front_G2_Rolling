@@ -13,7 +13,7 @@ function Login({ setUser }) {
     const fulldata = {...data, role:'Client'}
     // we call https post to the fetch's url
     const response = await fetch('https://localhost:4000/users',{
-      method:'POST',
+      method:'GET',
       headers:{'Content-type':'application/json'},
       credentials:'include',
       body: JSON.stringify(fulldata)
