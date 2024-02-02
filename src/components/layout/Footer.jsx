@@ -14,7 +14,7 @@ import Button from 'react-bootstrap/Button'
 const Footer = () => {
   return (
     <>
-      <Navbar expand="lg" className="navColor" fixed='bottom' data-bs-theme='dark'>
+      <Navbar expand="lg" className="navColor" data-bs-theme='dark'>
         <Container fluid className='justify-content-around'>
           <Row className='container-fluid justify-content-center'>
             <Col xxl={8} xl={8} lg={8}> 

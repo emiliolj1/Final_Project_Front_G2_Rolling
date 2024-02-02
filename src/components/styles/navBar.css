@@ -22,3 +22,15 @@
 .copyRight{
   font-size: smaller;
 }
+
+.faceHome{
+  background: #ABEFC9;
+  border-radius: 20px;
+  border: 5px solid #0B7149;
+}
+
+.cont-carrousel{
+  background: #EDFCF3;
+  border-radius: 20px;
+  border: 5px solid #0B7149
+}
