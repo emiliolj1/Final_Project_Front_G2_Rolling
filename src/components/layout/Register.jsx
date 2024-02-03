@@ -28,45 +28,45 @@ const RegisterComponent = () => {
         <Col>
         <Form className='p-0' onSubmit={handleSubmit((data) => onSubmit(data))}>
           {/* set the handleSubmit for the control.*/}
-          <h2 className='mt-5'>Create Account</h2>
+          <h2 className='mt-5'>Crea tu cuenta</h2>
           <Form.Group className='m-2'>
-            <Form.Label>Name</Form.Label>
+            <Form.Label>Nombre</Form.Label>
             <Form.Control
               className='ms-0 me-5 pe-5' 
               type='text'
-              placeholder='Enter your name...'
+              placeholder='Ingrese su nombre...'
               isInvalid={!!errors.email}
               // the method register allows you to register an input or select element and apply validations rules
               // operator (...) allows an iterable to expand in places where 0+ arguments are expected. It is mostly used in the variable array where there is more than 1 value is expected. 
-              {...register('name', {required:'this field is required'})}
+              {...register('name', {required:'este campo es requerido'}, {maxLength: 20}, {minLength: 4})}
               />
               <Form.Control.Feedback type='invalid'>{errors.name?.message}</Form.Control.Feedback>
           </Form.Group>
 
           <Form.Group className='m-2'>
-            <Form.Label>Email Address</Form.Label>
+            <Form.Label>Email</Form.Label>
             <Form.Control
               className='ms-0 me-5 pe-5' 
               type='email'
-              placeholder='Enter your email...'
+              placeholder='Ingrese su email...'
               isInvalid={!!errors.email}
               // the method register allows you to register an input or select element and apply validations rules
               // operator (...) allows an iterable to expand in places where 0+ arguments are expected. It is mostly used in the variable array where there is more than 1 value is expected. 
-              {...register('email', {required:'this field is required'})}
+              {...register('email', {required:'este campo es requerido'}, {maxLength: 25}, {minLength: 5})}
               />
             <Form.Control.Feedback type='invalid'>{errors.email?.message}</Form.Control.Feedback>
           </Form.Group>
 
           <Form.Group className='m-2'>
-            <Form.Label>Password</Form.Label>
+            <Form.Label>Contraseña</Form.Label>
             <Form.Control
               className='ms-0 me-5 pe-5' 
               type='text'
-              placeholder='Enter a Password...'
+              placeholder='Ingrese una contrasena...'
               isInvalid={!!errors.password}
               // the method register allows you to register an input or select element and apply validations rules
               // operator (...) allows an iterable to expand in places where 0+ arguments are expected. It is mostly used in the variable array where there is more than 1 value is expected. 
-              {...register('password', {required:'this field is required'})}
+              {...register('password', {required:'este campo es requerido'}, {maxLength: 25}, {minLength: 5})}
               />
             <Form.Control.Feedback type='invalid'>{errors.password?.message}</Form.Control.Feedback>
           </Form.Group>

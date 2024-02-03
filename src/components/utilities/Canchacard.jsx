@@ -1,7 +1,7 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-function ProductCard({id, name, image, description}) {
+const Canchacard = ({id, name, image, description}) => {
 
   const navigate = useNavigate
 
@@ -23,4 +23,4 @@ function ProductCard({id, name, image, description}) {
   );
 }
 
-export default ProductCard;
+export default Canchacard;
