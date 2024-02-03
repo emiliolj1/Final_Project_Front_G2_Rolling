@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 
 const CardDetails = () => {
 
-  const [cancha, setCancha] = useState({})
+  
   const [BookinShow, setBShow] = useState(false)
 
   const handleClose = () => {
@@ -52,46 +52,46 @@ const CardDetails = () => {
             <Modal.Title>Crear producto</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <Form onSubmit={handleSubmit((data) => (data))}>
+                <Form onSubmit={handleSubmit((data) => makeBookin(data))}>
                 <Form.Group className='m-2'>
-                    <Form.Label>Nombre del producto</Form.Label>
+                    <Form.Label>Dia</Form.Label>
                     <Form.Control
-                    type='text'
-                    placeholder='ingrese un titulo...'
-                    isInvalid={!!errors.email}
+                    type='date'
+                    placeholder='ingrese un dia...'
+                    isInvalid={!!errors.date}
                     // the method register allows you to register an input or select element and apply validations rules
                     // operator (...) allows an iterable to expand in places where 0+ arguments are expected. It is mostly used in the variable array where there is more than 1 value is expected. 
-                    {...register('title', {required:'this field is required'})}
+                    {...register('date', {required:'este campo es obligatorio'})}
                     />
-                <Form.Control.Feedback type='invalid'>{errors.name?.message}</Form.Control.Feedback>
+                <Form.Control.Feedback type='invalid'>{errors.date?.message}</Form.Control.Feedback>
                 </Form.Group>
 
                 <Form.Group className='m-2'>
-                    <Form.Label>Description</Form.Label>
+                    <Form.Label>Hora</Form.Label>
                     <Form.Control
                     as="textarea" 
-                    type='text'
-                    placeholder='ingrese una descricion'
-                    isInvalid={!!errors.email}
+                    type='time'
+                    placeholder='ingrese una hora...'
+                    isInvalid={!!errors.time}
                     // the method register allows you to register an input or select element and apply validations rules
                     // operator (...) allows an iterable to expand in places where 0+ arguments are expected. It is mostly used in the variable array where there is more than 1 value is expected. 
-                    {...register('description', {required:'this field is required'})}
+                    {...register('time', {required:'este campo es obligatorio'})}
                     />
-                <Form.Control.Feedback type='invalid'>{errors.name?.message}</Form.Control.Feedback>
+                <Form.Control.Feedback type='invalid'>{errors.time?.message}</Form.Control.Feedback>
                 </Form.Group>
 
                 <Form.Group className='m-2'>
-                    <Form.Label>Precio</Form.Label>
+                    <Form.Label>Email</Form.Label>
                     <Form.Control
                     className='ms-0 me-5 pe-5' 
-                    type='number'
-                    placeholder='Enter your name...'
+                    type='email'
+                    placeholder='ingrese su email...'
                     isInvalid={!!errors.email}
                     // the method register allows you to register an input or select element and apply validations rules
                     // operator (...) allows an iterable to expand in places where 0+ arguments are expected. It is mostly used in the variable array where there is more than 1 value is expected. 
-                    {...register('number', {required:'this field is required'})}
+                    {...register('', {required:'este campo es obligatorio'})}
                     />
-                <Form.Control.Feedback type='invalid'>{errors.name?.message}</Form.Control.Feedback>
+                <Form.Control.Feedback type='invalid'>{errors.email?.message}</Form.Control.Feedback>
                 </Form.Group>
                 </Form>
             </Modal.Body>

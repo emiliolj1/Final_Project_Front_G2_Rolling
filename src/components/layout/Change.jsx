@@ -27,6 +27,7 @@ const Change = () => {
                 <Form.Control 
                  {...register('name', {required:'este campo es requerido'}, {maxLength: 20}, {minLength: 4})}
                 />
+                <Form.Control.Feedback type='invalid'>{errors.name?.message}</Form.Control.Feedback>
             </Form.Group>
         
 
@@ -41,18 +42,24 @@ const Change = () => {
                 // operator (...) allows an iterable to expand in places where 0+ arguments are expected. It is mostly used in the variable array where there is more than 1 value is expected. 
                 {...register('email', {required:'este campo es requerido'}, {maxLength: 25}, {minLength: 5})}
                 />
-                <Form.Control.Feedback type='invalid'>{errors.password?.message}</Form.Control.Feedback>
+                <Form.Control.Feedback type='invalid'>{errors.email?.message}</Form.Control.Feedback>
             </Form.Group>
             
             <Form.Group className='m-2'>
                 <Form.Label>Nueva Contraseña</Form.Label>
-          
+                <Form.Control
+                
+                />
+                <Form.Control.Feedback type='invalid'>{errors.password?.message}</Form.Control.Feedback>          
             </Form.Group>
+
+
             <Form.Group className='m-2'>
                 <Form.Label>Confirmar Contraseña</Form.Label>
                 <Form.Control 
                 {...register('password', {required:'este campo es requerido'}, {maxLength: 25}, {minLength: 5})}
                 />
+                <Form.Control.Feedback type='invalid'>{errors.password?.message}</Form.Control.Feedback>
             </Form.Group>
           <Button className='m-3'>
           Cambiar

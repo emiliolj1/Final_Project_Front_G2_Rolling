@@ -1,7 +1,7 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-function ProductCard({id, name, image, description}) {
+const ProductCard = ({id, name, image, description}) => {
 
   const navigate = useNavigate
 
