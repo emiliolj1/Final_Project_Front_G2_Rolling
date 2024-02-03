@@ -34,6 +34,7 @@ const Header = ({user, setUser}) => {
                   Galeria de Imagenes
                 </NavDropdown.Item>
               </NavDropdown>
+              <Nav.Link href="#">Productos</Nav.Link>
             </Nav>
             <Button href='#' className='btn-login'>
               Login
