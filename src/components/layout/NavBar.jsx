@@ -8,14 +8,21 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import Button from 'react-bootstrap/Button';
 
 
-const Header = ({user, setUser}) => {
+const Header = ({setUser}) => {
 
-  // if the user is register or login, we show the button logout, if the user isnt register or logged, we show the button Register or login
+  const { isLogged }  = setUser()
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   return (
     <>
       <Navbar expand="lg" className="navColor" data-bs-theme="dark" fixed='top'>
         <Container className=''>
+          <Nav.Item>
+            
+          </Nav.Item>
           <Navbar.Brand href="#home" className='fw-bold'>Sale Fulbo'?</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
@@ -36,9 +43,39 @@ const Header = ({user, setUser}) => {
               </NavDropdown>
               <Nav.Link href="#">Productos</Nav.Link>
             </Nav>
-            <Button href='#' className='btn-login'>
-              Login
-            </Button>
+            {
+              !user.logged
+                ? <Button href='#' className='btn-login1'>
+                    Login
+                  </Button>
+                : <>
+                    <Button className='btn-login1' onClick={handleShow}>
+                      <PersonCircle className='m-0 p-0 me-2'/> Bienvenido
+                    </Button> 
+                    <Offcanvas show={show} onHide={handleClose} placement='end' className='navColor'>
+                      <Offcanvas.Header closeButton>
+                        <Offcanvas.Title>Hola Emilio!</Offcanvas.Title>
+                      </Offcanvas.Header>
+                      <Offcanvas.Body>
+                        <Nav defaultActiveKey="/home" className="flex-column fs-6 fw-bold">
+                          <Nav.Link href="/home">Mi cuenta</Nav.Link>
+                          {
+                            !user.admin
+                            ? <>
+                                <hr/>
+                                <Nav.Link >Cerrar Sesion</Nav.Link>
+                              </>
+                            : <>
+                                <Nav.Link >Administracion</Nav.Link>
+                                <hr/>
+                                <Nav.Link >Cerrar Sesion</Nav.Link>
+                              </>
+                          }
+                        </Nav>
+                      </Offcanvas.Body>
+                    </Offcanvas>
+                  </>
+            }
           </Navbar.Collapse>
         </Container>
       </Navbar>

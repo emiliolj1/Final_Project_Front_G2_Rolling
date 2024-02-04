@@ -13,7 +13,6 @@ const CardDetails = () => {
   const getProduct = async () => {
     const response = await fetch(`https://localHost:3000/product/${id}`)
     const data = await response.json()
-
     console.log(data);
     setProduct(data)
   }

@@ -1,100 +1,83 @@
 import { useForm } from 'react-hook-form';
+import { Container, Form, Button, FormGroup} from 'react-bootstrap'
 import '../styles/Register.css'
-import { Container, Row, Col, Form, Button } from 'react-bootstrap'
 
-const RegisterComponent = () => {
-  const { register, handleSubmit, formState:{errors}} = useForm()
+const Register = () => {
+  const {register, handleSubmit, formState:{ errors }, reset} = useForm()
   
-  // create the function handleSubmit for the fetch of the backend and show the "your account has been created"
-  const onSubmit = async() => {
-    // with full data we can copy all the properties of the data with the operator spray (...)
-    const fulldata = {...data, role:'Client'}
-    // we call https post to the fetch's url
-    const response = await fetch('https://localhost:4000/users',{
-      method:'POST',
-      headers:{'Content-type':'application/json'},
-      credentials:'include',
-      body: JSON.stringify(fulldata)
+  const onSubmit = async (data) => {
+    const fullData = {...data, role: 'client'}
+    console.log(fullData);
+    const response = await fetch('http://localhost:4000/users', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      credentials: 'include',
+      body: JSON.stringify(fullData)
     })
-    const responseData =  await response.json()
-
+    const responseData = await response.json();
     console.log(responseData);
+
+    reset();
   }
 
   return(
     <>
-    <Container>
-      <Row>
-        <Col>
-        <Form className='p-0' onSubmit={handleSubmit((data) => onSubmit(data))}>
-          {/* set the handleSubmit for the control.*/}
-          <h2 className='mt-5'>Create Account</h2>
-          <Form.Group className='m-2'>
-            <Form.Label>Name</Form.Label>
+      <Container className='login-box'>
+        <Form onSubmit={handleSubmit((data) => onSubmit(data))}>
+          <h1 className='text-light text-center'>Registrate!</h1>
+          <FormGroup className='user-box mt-5 mb-3'>
+            <Form.Label className='m-0'>Nombre</Form.Label>
             <Form.Control
-              className='ms-0 me-5 pe-5' 
               type='text'
-              placeholder='Enter your name...'
-              isInvalid={!!errors.email}
-              // the method register allows you to register an input or select element and apply validations rules
-              // operator (...) allows an iterable to expand in places where 0+ arguments are expected. It is mostly used in the variable array where there is more than 1 value is expected. 
-              {...register('name', {required:'this field is required'})}
-              />
-              <Form.Control.Feedback type='invalid'>{errors.name?.message}</Form.Control.Feedback>
-          </Form.Group>
-
-          <Form.Group className='m-2'>
-            <Form.Label>Email Address</Form.Label>
+              placeholder='Ingresa tu nombre...'
+              {...register('Name', {
+                required: 'Este campo es Obligatorio',
+                minLength: {value: 5, message: 'Este campo no puede contener menos de 5 caracteres'},
+                maxLength: {value: 35, message: 'Este campo no puede contener mas de 35 caracteres'}
+              })}
+              isInvalid={!!errors.Name}
+            />
+            <Form.Control.Feedback type='invalid'>{errors.Name?.message}</Form.Control.Feedback>
+          </FormGroup>
+          <FormGroup className='user-box mt-5 mb-3'>
+            <Form.Label className='m-0'>Email</Form.Label>
             <Form.Control
-              className='ms-0 me-5 pe-5' 
               type='email'
-              placeholder='Enter your email...'
+              placeholder='Ingresa tu email...'
+              {...register('email', {
+                required: 'Este campo es Obligatorio',
+                minLength: {value: 5, message: 'Este campo no puede contener menos de 5 caracteres'},
+                maxLength: {value: 25, message: 'Este campo no puede contener mas de 25 caracteres'}
+              })}
               isInvalid={!!errors.email}
-              // the method register allows you to register an input or select element and apply validations rules
-              // operator (...) allows an iterable to expand in places where 0+ arguments are expected. It is mostly used in the variable array where there is more than 1 value is expected. 
-              {...register('email', {required:'this field is required'})}
-              />
+            />
             <Form.Control.Feedback type='invalid'>{errors.email?.message}</Form.Control.Feedback>
-          </Form.Group>
-
-          <Form.Group className='m-2'>
-            <Form.Label>Password</Form.Label>
+          </FormGroup>
+          <FormGroup className='user-box mb-5'>
+            <Form.Label>
+              Password
+            </Form.Label>
             <Form.Control
-              className='ms-0 me-5 pe-5' 
-              type='text'
-              placeholder='Enter a Password...'
+              type='password'
+              placeholder="Ingresa tu contraseña..."
+              {...register('password', {
+                required: 'Este campo es Obligatorio',
+                minLength: {value: 5, message: 'Este campo no puede contener menos de 5 caracteres'},
+                maxLength: {value: 25, message: 'Este campo no puede contener mas de 25 caracteres'}
+              })
+              }
               isInvalid={!!errors.password}
-              // the method register allows you to register an input or select element and apply validations rules
-              // operator (...) allows an iterable to expand in places where 0+ arguments are expected. It is mostly used in the variable array where there is more than 1 value is expected. 
-              {...register('password', {required:'this field is required'})}
-              />
-            <Form.Control.Feedback type='invalid'>{errors.password?.message}</Form.Control.Feedback>
-          </Form.Group>
-            {/* className was used for css styles, check it in the ther folder styles/stylesLogin.css */}
-            {/* there is a bug in the button, we need to fix it. */}
-            <Button className='IngresarBtn'>
-              Registrarse
-            </Button>
-          </Form>
-        </Col>
-        <Col>
-        <div className = 'toggle-container'>
-          <div className = 'toggle'>
-            <div className='toggle-panel toggle-right'>
-              <h1>Bienvenido.</h1>
-              <p>Ya tienes una cuenta creada?, si la tienes por favor presiona el siguiente boton.</p>
-              {/* there is a bug in the button, we need to fix it. */}
-              <Button>
-              Ingresar
-              </Button>
-            </div>
-          </div>
-        </div>
-        </Col>
-      </Row>
-    </Container>
+            />
+            <Form.Control.Feedback type="invalid">{errors.password?.message}</Form.Control.Feedback>
+          </FormGroup>
+          <Button type='submit' className='mx-auto btn-login'>
+            Login
+          </Button>
+          <p className='text-center text-light my-2'>Ya tienes una cuenta? <a>Ingresa aqui!</a></p>
+        </Form>
+      </Container>
     </>
   )
 }
 
-export default RegisterComponent
+export default Register
