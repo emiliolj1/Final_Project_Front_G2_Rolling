@@ -1,18 +1,15 @@
+.loginContainer{
+  min-height: 100vh;
+}
 .login-box {
   position: absolute;
   top: 50%;
   left: 50%;
   width: 400px;
   padding: 40px;
-  transform: translate(-50%, -50%);
   background: rgba(24, 20, 20, 0.987);
-  box-sizing: border-box;
   box-shadow: 0 15px 25px rgba(0,0,0,.6);
   border-radius: 10px;
-}
-
-.login-box .user-box {
-  position: relative;
 }
 
 .login-box .user-box input {
@@ -49,6 +46,7 @@
 
 .btn-login{
   background: #0a580e;
+  border: #0a580e;
   position: relative;
   display: flex;
   justify-content: center;

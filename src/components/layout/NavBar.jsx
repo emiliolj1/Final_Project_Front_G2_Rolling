@@ -8,7 +8,8 @@ import { PersonCircle } from 'react-bootstrap-icons';
 
 import { useState } from 'react';
 
-const Header = ({user}) => {
+
+const Header = ({user, setUser}) => {
 
   const userResult = user;
   console.log(userResult);
@@ -17,6 +18,25 @@ const Header = ({user}) => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const handleLogout = async () => {
+    const response = await fetch('http://localhost:4000/logout')
+    if(response.status === 400){
+      console.log('esta mal la funcion loco');
+    }
+    if(response.status === 200){
+      const data = await response.json();
+      console.log(data);
+      console.log('crack de las tinieblas');
+      localStorage.clear();
+      setUser({
+        token: null, 
+        userInfo: null, 
+        isLogged: false 
+      });
+      return
+    }
+  }
 
   return (
     <>
@@ -53,7 +73,7 @@ const Header = ({user}) => {
                     </Button> 
                     <Offcanvas show={show} onHide={handleClose} placement='end' className='navColor'>
                       <Offcanvas.Header closeButton>
-                        <Offcanvas.Title>Hola Emilio!</Offcanvas.Title>
+                        <Offcanvas.Title>Hola!</Offcanvas.Title>
                       </Offcanvas.Header>
                       <Offcanvas.Body>
                         <Nav defaultActiveKey="/home" className="flex-column fs-6 fw-bold">
@@ -70,7 +90,7 @@ const Header = ({user}) => {
                             : 
                               <>
                                 <hr/>
-                                <Nav.Link >Cerrar Sesion</Nav.Link>
+                                <Button onClick={() => handleLogout}>Cerrar Sesion</Button>
                               </>
                           }
                         </Nav>
@@ -78,41 +98,10 @@ const Header = ({user}) => {
                     </Offcanvas>
                   </>
               :
-              ''
-            }
-            {/* {
-              user.isLogged
-                ? <Button href='#' className='btn-login1'>
+              <Button href='/login' className='btn-login1'>
                     Login
-                  </Button>
-                : <>
-                    <Button className='btn-login1' onClick={handleShow}>
-                      <PersonCircle className='m-0 p-0 me-2'/> Bienvenido
-                    </Button> 
-                    <Offcanvas show={show} onHide={handleClose} placement='end' className='navColor'>
-                      <Offcanvas.Header closeButton>
-                        <Offcanvas.Title>Hola Emilio!</Offcanvas.Title>
-                      </Offcanvas.Header>
-                      <Offcanvas.Body>
-                        <Nav defaultActiveKey="/home" className="flex-column fs-6 fw-bold">
-                          <Nav.Link href="/home">Mi cuenta</Nav.Link>
-                          {
-                            !user.userInfo.role
-                            ? <>
-                                <hr/>
-                                <Nav.Link >Cerrar Sesion</Nav.Link>
-                              </>
-                            : <>
-                                <Nav.Link >Administracion</Nav.Link>
-                                <hr/>
-                                <Nav.Link >Cerrar Sesion</Nav.Link>
-                              </>
-                          }
-                        </Nav>
-                      </Offcanvas.Body>
-                    </Offcanvas>
-                  </>
-            } */}
+              </Button>
+            }
           </Navbar.Collapse>
         </Container>
       </Navbar>
