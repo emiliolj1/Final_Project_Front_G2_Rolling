@@ -1,4 +1,10 @@
+.loginContainer{
+  min-height: 120vh;
+  padding-top: 100px;
+}
+
 .login-box {
+  margin-top: 4rem;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -92,4 +98,8 @@
   height: 2px;
   background: linear-gradient(90deg, transparent, #03f40f);
   animation: btn-anim1 2s linear infinite;
+}
+
+.green-text{
+  color: #03f40f;
 }

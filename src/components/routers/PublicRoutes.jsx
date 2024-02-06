@@ -1,14 +1,16 @@
 import { Navigate, Routes, Route } from "react-router-dom"
 import Login from '../layout/Login'
 import Register from '../layout/Register'
+import Home from "../pages/Home"
 
-const PublicRoutes = () => {
+const PublicRoutes = ({setUser}) => {
   return (
     <>
         <Routes>
           <Route path='/' element={<Navigate to={'/home'}/>}/>
-          <Route exact path='/login' element={<Navigate to={<Login/>}/>}/>
-          <Route exact path='/register' element={<Navigate to={<Register/>}/>}/>
+          <Route path="/home" element={<Home/>}/>
+          <Route exact path='/login' element={<Login setUser={setUser}/>}/>
+          <Route exact path='/register' element={<Register/>}/>
           {/* <Route exact path='/contacto' element={<Navigate to={<Contacto/>}/>}/>
           <Route exact path='/nosotros' element={<Navigate to={<Nosotros/>}/>}/>
           <Route exact path='/galeria' element={<Navigate to={<Galeria/>}/>}/>
