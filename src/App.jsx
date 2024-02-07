@@ -8,10 +8,6 @@ import PrivateRoutes from './components/routers/PrivateRoutes'
 import PublicRoutes from "./components/routers/PublicRoutes";
 import NavBar from './components/layout/NavBar'
 import Footer from './components/layout/Footer'
-import Sobrenosotros from "./components/pages/Sobrenosotros";
-
-
-
 
 
 function App() {

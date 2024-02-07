@@ -10,10 +10,11 @@ const Contacto = () => {
   
   return (
     <>
-      <Container className='py-5'>
+      <Container className='mt-4 py-5'>
+        <h1 className='text-light text-center'>Envianos tu consulta!</h1>
         <Form onSubmit={handleSubmit((data) => onSubmit(data))}>
-          <FormGroup className='mt-5 mb-3'>
-            <Form.Label className='m-0'>Nombre</Form.Label>
+          <FormGroup className='mt-2 mb-3'>
+            <Form.Label className='m-0 text-light'>Nombre</Form.Label>
             <Form.Control
               type='text'
               placeholder='Ingresa tu nombre...'
@@ -26,8 +27,8 @@ const Contacto = () => {
             />
             <Form.Control.Feedback type='invalid'>{errors.name?.message}</Form.Control.Feedback>
           </FormGroup>
-          <FormGroup className='mt-5 mb-3'>
-            <Form.Label className='m-0'>Email</Form.Label>
+          <FormGroup className='mb-3'>
+            <Form.Label className='m-0 text-light'>Email</Form.Label>
             <Form.Control
               type='email'
               placeholder='Ingresa tu email...'
@@ -40,9 +41,11 @@ const Contacto = () => {
             />
             <Form.Control.Feedback type='invalid'>{errors.email?.message}</Form.Control.Feedback>
           </FormGroup>
-          <FormGroup className='mt-5 mb-3'>
-            <Form.Label className='m-0'>Mensaje</Form.Label>
+          <FormGroup className='mb-3'>
+            <Form.Label className='m-0 text-light'>Mensaje</Form.Label>
             <Form.Control
+              as="textarea"
+              rows={4}
               type='text'
               placeholder='Ingresa tu mensaje...'
               {...register('message', {
