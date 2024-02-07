@@ -3,10 +3,9 @@ import Login from '../layout/Login'
 import Register from '../layout/Register'
 import Home from "../pages/Home"
 import ChangePassword from "../layout/ChangePassword"
-import Galeria from "../layout/Galeria"
+import Galeria from "../pages/Galeria"
 import Nosotros from "../pages/Sobrenosotros"
-
-
+import Contacto from "../pages/Contacto"
 
 
 const PublicRoutes = ({setUser}) => {
@@ -19,7 +18,7 @@ const PublicRoutes = ({setUser}) => {
           <Route exact path='/login' element={<Login setUser={setUser}/>}/>
           <Route exact path='/register' element={<Register/>}/>
           <Route path="/change" element={<ChangePassword/>}/>
-          {/* <Route exact path='/contacto' element={<Contacto/>}/> */}
+          <Route exact path='/contacto' element={<Contacto/>}/>
           <Route exact path='/galeria' element={<Galeria/>}/>
           {/* <Route exact path='/productos' element={<Productos/>}/> */}
           <Route exact path='/alquiler' element={<Navigate to='/login'/>}/>

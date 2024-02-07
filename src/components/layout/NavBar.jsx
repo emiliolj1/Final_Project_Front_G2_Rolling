@@ -52,8 +52,8 @@ const Header = ({user, setUser}) => {
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="/alquiler">Alquila tu Cancha!</Nav.Link>
               <NavDropdown title="+Más" id="basic-nav-dropdown">
-                <NavDropdown.Item>
-                  <a href='/aboutUs'>Nosotros</a>
+                <NavDropdown.Item href='/aboutUs'>
+                  Nosotros
                 </NavDropdown.Item>
                 <NavDropdown.Item href='/contacto'>
                   Contacto
