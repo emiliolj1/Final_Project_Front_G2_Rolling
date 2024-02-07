@@ -23,9 +23,7 @@ function Login({setUser}) {
 
     if(response.status === 200){
       const responseData = await response.json();
-
       const decoded = jwtDecode(responseData.accessToken);
-
       localStorage.setItem('token', responseData.accessToken);
       localStorage.setItem('isUserLogged', true);
       setUser({
@@ -58,6 +56,7 @@ function Login({setUser}) {
             />
             <Form.Control.Feedback type='invalid'>{errors.email?.message}</Form.Control.Feedback>
           </FormGroup>
+          <p className='text-light my-2'>Olvidaste tu contraseña? <Link to='/change' className='green-text'>Cambiala!</Link></p>
           <FormGroup className='user-box mb-5'>
             <Form.Label>
               Contraseña
