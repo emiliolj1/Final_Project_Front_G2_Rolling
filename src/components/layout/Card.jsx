@@ -9,7 +9,7 @@ const CardProductos = ({title, url}) => {
         <Card.Body className='bg'>
           <Card.Img variant="top" src= {url} />
           <Card.Title>{title}</Card.Title>
-          <Button className='btn-login'>Ver mas!</Button>
+          <Button className='btn-login1'>Ver mas!</Button>
         </Card.Body>
         <div className='blob'/>
       </Card>

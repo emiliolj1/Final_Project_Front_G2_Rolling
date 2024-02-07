@@ -5,7 +5,7 @@ import Home from "../pages/Home"
 import ChangePassword from "../layout/ChangePassword"
 import Galeria from "../layout/Galeria"
 import Sobrenosotros from "../pages/Sobrenosotros"
-//hola123
+
 
 
 

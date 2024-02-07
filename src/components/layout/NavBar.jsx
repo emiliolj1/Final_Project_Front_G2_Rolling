@@ -49,17 +49,17 @@ const Header = ({user, setUser}) => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="#">Home</Nav.Link>
-              <Nav.Link href="#">Alquila tu Cancha!</Nav.Link>
+              <Nav.Link href="/">Home</Nav.Link>
+              <Nav.Link href="/alquiler">Alquila tu Cancha!</Nav.Link>
               <NavDropdown title="+Más" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">
+                <NavDropdown.Item href="/nosotros">
                   Nosotros
                 </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
+                <NavDropdown.Item href="/contacto">
                   Contacto
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">
+                <NavDropdown.Item href="/galeria">
                   Galeria de Imagenes
                 </NavDropdown.Item>
               </NavDropdown>
@@ -83,7 +83,7 @@ const Header = ({user, setUser}) => {
                             user && userResult.userInfo.role === 'admin'
                             ? 
                             <>
-                                <Nav.Link >Administracion</Nav.Link>
+                                <Nav.Link href='/admin'>Administracion</Nav.Link>
                                 <hr/>
                                 <Nav.Link >Cerrar Sesion</Nav.Link>
                               </>

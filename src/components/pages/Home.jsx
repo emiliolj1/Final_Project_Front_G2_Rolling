@@ -37,7 +37,7 @@ const Home = () => {
           </Col>
           <Col xs={12} md={4} className="text-center my-auto">
             <h2>¿Queres alquilar una cancha como estas?</h2>
-            <Button className='btn-login my-3'>
+            <Button className='btn-login1  my-3'>
               <h4>Alquila tu Cancha!</h4>
             </Button>
           </Col>
