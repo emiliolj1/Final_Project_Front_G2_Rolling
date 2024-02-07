@@ -6,7 +6,7 @@ import Image from 'react-bootstrap/Image';
 const Sobrenosotros = () => {
   return (
     <>
-      <Container fluid className="py-5">
+      <Container fluid className="mt-4 py-5">
         <Row className="text-light mb-5">
           <div className="fw-bolder text-center mb-3 "><h1>Sale fulbo'?</h1></div>
           <p className="px-5 fst-italic text-center">
@@ -30,7 +30,7 @@ const Sobrenosotros = () => {
         <Row className="text-light mx-4 mt-5"> 
         <Col className="pe-2" xs={12} md={6}>
           <h2 className="text-center mb-4">Valores de nuestra empresa</h2>
-          <p className="text-center">Los valores de "sale fulbo'?" se centran en la pasión por el fútbol, la calidad del servicio y el compromiso con la comunidad.</p>
+          <p className="text-center">Los valores de "Sale fulbo'?" se centran en la pasión por el fútbol, la calidad del servicio y el compromiso con la comunidad.</p>
           <ul className="fw-bold text-center list-unstyled">
             <li>Pasion por el futbol</li>
             <li>Calidad del servicio</li>

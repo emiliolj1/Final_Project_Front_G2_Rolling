@@ -15,13 +15,13 @@ const PublicRoutes = ({setUser}) => {
         <Routes>
           <Route path='/' element={<Navigate to={'/home'}/>}/>
           <Route path="/home" element={<Home/>}/>
+          <Route exact path='/aboutUs' element={<Nosotros/>}/>
           <Route exact path='/login' element={<Login setUser={setUser}/>}/>
           <Route exact path='/register' element={<Register/>}/>
           <Route path="/change" element={<ChangePassword/>}/>
-          {/* <Route exact path='/contacto' element={<Navigate to={<Contacto/>}/>}/> */}
-          <Route exact path='/aboutUs' element={<Navigate to={<Nosotros/>}/>}/>
-          <Route exact path='/galeria' element={<Navigate to={<Galeria/>}/>}/>
-          {/* <Route exact path='/productos' element={<Navigate to={<Productos/>}/>}/> */}
+          {/* <Route exact path='/contacto' element={<Contacto/>}/> */}
+          <Route exact path='/galeria' element={<Galeria/>}/>
+          {/* <Route exact path='/productos' element={<Productos/>}/> */}
           <Route exact path='/alquiler' element={<Navigate to='/login'/>}/>
 
           <Route path='*' element={<Navigate to='/'/>}/>
