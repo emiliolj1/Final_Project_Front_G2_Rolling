@@ -1,25 +1,34 @@
-import React from 'react'
+import { useForm } from 'react-hook-form';
+import { Container, Form, Button, FormGroup} from 'react-bootstrap'
+import Modal from 'react-bootstrap/Modal';
+import { useState } from 'react';
+import '../styles/Register.css'
+import { Link } from 'react-router-dom';
 
 const ChangePassword = () => {
   const {register, handleSubmit, formState:{ errors }, reset} = useForm()
 
-  const [show, setShow] = useState(false);
-  const handleClose = () => {setShow(false)};
+  const [showLogged, setShowLogged] = useState(false);
+  const [showError, setShowError] = useState(false);
+
+  const handleCloseLogged = () => {setShowLogged(false)};
+  const handleCloseError = () => {setShowError(false)}
 
   const onSubmit = async (data) => {
-    const fullData = {...data, role: 'client'}
-    console.log(fullData);
     const response = await fetch('http://localhost:4000/change', {
-      method: 'POST',
+      method: 'PATCH',
       headers: {'Content-Type':'application/json'},
-      credentials: 'include',
-      body: JSON.stringify(fullData)
+      body: JSON.stringify(data)
     })
     const responseData = await response.json();
     if(response.status === 200){
-      setShow(true)
+      setShowLogged(true)
+      console.log(responseData);
     }
-    console.log(responseData);
+    if(response.status === 400){
+      setShowError(true)
+      console.log(responseData);
+    }
   }
 
   return (
@@ -63,7 +72,7 @@ const ChangePassword = () => {
               <Form.Control
                 type='password'
                 placeholder="Ingresa tu contraseña..."
-                {...register('password', {
+                {...register('newPassword', {
                   required: 'Este campo es Obligatorio',
                   minLength: {value: 5, message: 'Este campo no puede contener menos de 5 caracteres'},
                   maxLength: {value: 25, message: 'Este campo no puede contener mas de 25 caracteres'}
@@ -74,27 +83,51 @@ const ChangePassword = () => {
               <Form.Control.Feedback type="invalid">{errors.password?.message}</Form.Control.Feedback>
             </FormGroup>
             <Button type='submit' className='mx-auto btn-login'>
-              Registrarse
+              Cambiar
             </Button>
             <p className='text-center text-light my-2'>Ya tienes una cuenta? <Link to='/login' className='green-text'>Ingresa aqui!</Link></p>
           </Form>
         </Container>
       </Container>
       <Modal
-        show={show}
-        onHide={handleClose}
+        show={showLogged}
+        onHide={handleCloseLogged}
         backdrop="static"
         keyboard={false}
+        aria-labelledby="registrado"
       >
         <Modal.Header closeButton>
-          <Modal.Title>Cambiaste la contraseña correctamente!</Modal.Title>
+          <Modal.Title id="registrado">
+            Cambiaste la contraseña correctamente!
+            </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          A continuacion logueate nuevamente!
+          A continuacion logueate!
         </Modal.Body>
         <Modal.Footer>
           <Button className='btn-login1' onClick={() => {window.location.href='/login'}}>
             Login
+          </Button>
+        </Modal.Footer>
+      </Modal>
+      <Modal
+        show={showError}
+        onHide={handleCloseError}
+        backdrop="static"
+        keyboard={false}
+        aria-labelledby="Error"
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="Error">
+            El usuario no existe!
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          Comunicate con Soporte!
+        </Modal.Body>
+        <Modal.Footer>
+          <Button className='btn-login1' onClick={() => {window.location.href='/contacto'}}>
+            Contactanos
           </Button>
         </Modal.Footer>
       </Modal>

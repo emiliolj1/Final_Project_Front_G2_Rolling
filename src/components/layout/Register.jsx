@@ -129,7 +129,7 @@ const Register = () => {
           Comunicate con Soporte!
         </Modal.Body>
         <Modal.Footer>
-          <Button className='btn-login1' onClick={() => {window.location.href='/login'}}>
+          <Button className='btn-login1' onClick={() => {window.location.href='/contacto'}}>
             Contactanos
           </Button>
         </Modal.Footer>

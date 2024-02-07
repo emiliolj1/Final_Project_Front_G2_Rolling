@@ -2,6 +2,12 @@ import { Navigate, Routes, Route } from "react-router-dom"
 import Login from '../layout/Login'
 import Register from '../layout/Register'
 import Home from "../pages/Home"
+import ChangePassword from "../layout/ChangePassword"
+import Galeria from "../layout/Galeria"
+import Sobrenosotros from "../pages/Sobrenosotros"
+//hola123
+
+
 
 const PublicRoutes = ({setUser}) => {
   return (
@@ -11,10 +17,11 @@ const PublicRoutes = ({setUser}) => {
           <Route path="/home" element={<Home/>}/>
           <Route exact path='/login' element={<Login setUser={setUser}/>}/>
           <Route exact path='/register' element={<Register/>}/>
-          {/* <Route exact path='/contacto' element={<Navigate to={<Contacto/>}/>}/>
-          <Route exact path='/nosotros' element={<Navigate to={<Nosotros/>}/>}/>
+          <Route path="/change" element={<ChangePassword/>}/>
+          {/* <Route exact path='/contacto' element={<Navigate to={<Contacto/>}/>}/> */}
+          <Route exact path='/nosotros' element={<Navigate to={<Sobrenosotros/>}/>}/>
           <Route exact path='/galeria' element={<Navigate to={<Galeria/>}/>}/>
-          <Route exact path='/productos' element={<Navigate to={<Prodcutos/>}/>}/>
+          {/* <Route exact path='/productos' element={<Navigate to={<Productos/>}/>}/> */}
           <Route exact path='/alquiler' element={<Navigate to='/login'/>}/>
 
           <Route path='*' element={<Navigate to='/'/>}/>

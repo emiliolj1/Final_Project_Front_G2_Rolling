@@ -22,10 +22,6 @@ const Footer = () => {
                 <Container fluid>
                   <Row>
                     <Col xs={12} sm={4}>
-
-                    
-            
-
                       <Nav className='flex-column text-center'>
                       <img
                        alt=""
