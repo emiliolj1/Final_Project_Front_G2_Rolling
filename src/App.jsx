@@ -9,7 +9,9 @@ import PublicRoutes from "./components/routers/PublicRoutes";
 import NavBar from './components/layout/NavBar'
 import Footer from './components/layout/Footer'
 import CardProductos from "./components/layout/Card";
-
+import CanchaDetails from "./components/pages/CanchaDetails"
+import Bookin from "./components/layout/Bookin"
+ 
 
 
 
@@ -41,23 +43,26 @@ function App() {
     checkIfUserLogged();
   }, []);
   
-  console.log(user);
+  // console.log(user);
   return (
     <>
-      {
+    <NavBar />
+    <CanchaDetails />
+    <Footer />
+        {/* {
         user.isLogged ?
         <BrowserRouter>
-          <NavBar user={user}/>
+          <NavBar user={user} setUser={setUser}/>
             <PrivateRoutes/>
           <Footer/>
         </BrowserRouter>
         :
         <BrowserRouter>
-          <NavBar/>
-            <PublicRoutes/>
+          <NavBar user={user} setUser={setUser}/>
+            <PublicRoutes setUser={setUser}/>
           <Footer/>
         </BrowserRouter>
-      }
+      } */}
     </>
   )
 }
