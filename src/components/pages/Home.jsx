@@ -10,17 +10,6 @@ const Home = () => {
   return (
     <>
       <Container fluid className="mt-5 pt-3 ">
-        <Row className="mx-auto container-fluid py-3 faceHome">
-          <Col xs={12} md={6}>
-            <Image src="https://picsum.photos/id/26/1200/800" fluid rounded/>
-          </Col>
-          <Col xs={12} md={6} className="text-center py-2 my-auto">
-            <h1 className="fw-bold">Sale Fulbo?</h1>
-            <h5 className="fw-light">Mini historia empresa que atrape comercialmente a las personas</h5>
-          </Col>
-        </Row>
-      </Container>
-      <Container fluid className="my-4">
         <Row className="mx-auto p-3 cont-carrousel">
           <Col xs={12} md={8} className="p-2">
             <Carousel>
@@ -40,6 +29,17 @@ const Home = () => {
             <Button className='btn-login1  my-3'>
               <h4>Alquila tu Cancha!</h4>
             </Button>
+          </Col>
+        </Row>
+      </Container>
+      <Container fluid className="my-4">
+        <Row className="mx-auto container-fluid py-3 faceHome">
+          <Col xs={12} md={6}>
+            <Image src="https://picsum.photos/id/26/1200/800" fluid rounded/>
+          </Col>
+          <Col xs={12} md={6} className="text-center py-2 my-auto">
+            <h1 className="fw-bold">Sale Fulbo?</h1>
+            <h5 className="fw-light">Mini historia empresa que atrape comercialmente a las personas</h5>
           </Col>
         </Row>
       </Container>

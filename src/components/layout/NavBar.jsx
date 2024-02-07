@@ -52,18 +52,18 @@ const Header = ({user, setUser}) => {
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="/alquiler">Alquila tu Cancha!</Nav.Link>
               <NavDropdown title="+Más" id="basic-nav-dropdown">
-                <NavDropdown.Item href="/nosotros">
+                <NavDropdown.Item href='/nosotros'>
                   Nosotros
                 </NavDropdown.Item>
-                <NavDropdown.Item href="/contacto">
+                <NavDropdown.Item href='/contacto'>
                   Contacto
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="/galeria">
+                <NavDropdown.Item href='/galeria'>
                   Galeria de Imagenes
                 </NavDropdown.Item>
               </NavDropdown>
-              <Nav.Link href="#">Productos</Nav.Link>
+              <Nav.Link href='/productos'>Productos</Nav.Link>
             </Nav>
             {
               user && userResult.isLogged ? 
