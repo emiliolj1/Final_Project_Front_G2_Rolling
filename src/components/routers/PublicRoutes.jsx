@@ -4,6 +4,8 @@ import Register from '../layout/Register'
 import Home from "../pages/Home"
 import ChangePassword from "../layout/ChangePassword"
 import Galeria from "../layout/Galeria"
+import Sobrenosotros from "../pages/Sobrenosotros"
+
 
 
 const PublicRoutes = ({setUser}) => {
@@ -15,10 +17,10 @@ const PublicRoutes = ({setUser}) => {
           <Route exact path='/login' element={<Login setUser={setUser}/>}/>
           <Route exact path='/register' element={<Register/>}/>
           <Route path="/change" element={<ChangePassword/>}/>
-          <Route exact path='/contacto' element={<Navigate to={<Contacto/>}/>}/>
-          <Route exact path='/nosotros' element={<Navigate to={<Nosotros/>}/>}/>
+          {/* <Route exact path='/contacto' element={<Navigate to={<Contacto/>}/>}/> */}
+          <Route exact path='/nosotros' element={<Navigate to={<Sobrenosotros/>}/>}/>
           <Route exact path='/galeria' element={<Navigate to={<Galeria/>}/>}/>
-          <Route exact path='/productos' element={<Navigate to={<Productos/>}/>}/>
+          {/* <Route exact path='/productos' element={<Navigate to={<Productos/>}/>}/> */}
           <Route exact path='/alquiler' element={<Navigate to='/login'/>}/>
 
           <Route path='*' element={<Navigate to='/'/>}/>
