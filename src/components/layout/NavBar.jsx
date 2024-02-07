@@ -16,7 +16,14 @@ const Header = ({user, setUser}) => {
     <>
       <Navbar expand="lg" className="navColor" data-bs-theme="dark" fixed='top'>
         <Container className=''>
-          <Navbar.Brand href="#home" className='fw-bold'>Sale Fulbo'?</Navbar.Brand>
+        <img
+              alt=""
+              src="img/logo_transparent.png"
+              width="100"
+              height="100"
+              className="col-xs14 d-inline-block align-top"
+            />
+          
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">

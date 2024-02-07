@@ -1,6 +1,7 @@
 import { Navigate, Routes, Route } from "react-router-dom"
 import Login from '../layout/Login'
 import Register from '../layout/Register'
+import Error404 from "../layout/Error404"
 
 const PublicRoutes = () => {
   return (
@@ -14,6 +15,7 @@ const PublicRoutes = () => {
           <Route exact path='/galeria' element={<Navigate to={<Galeria/>}/>}/>
           <Route exact path='/productos' element={<Navigate to={<Prodcutos/>}/>}/>
           <Route exact path='/alquiler' element={<Navigate to='/login'/>}/>
+          
 
           <Route path='*' element={<Navigate to='/'/>}/>
         </Routes>

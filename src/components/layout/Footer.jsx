@@ -22,9 +22,19 @@ const Footer = () => {
                 <Container fluid>
                   <Row>
                     <Col xs={12} sm={4}>
+
+                    
+            
+
                       <Nav className='flex-column text-center'>
-                        <Navbar.Brand className='fw-bold'>Sale fulbo'?</Navbar.Brand>
-                      <p className='text-light text-center copyRight'>Copyright © 2024 Sale Fulbo'?<div/> Rolling Team.</p>
+                      <img
+                       alt=""
+                       src="img/logo_transparent.png"
+                       width="20"
+                       height="200"
+                       className="col-12 col-xs d-flex align-items-center"
+                      />
+                      <p className='text-light text-center copyRight'>Copyright © 2024 Sale Fulbo'<div/> Rolling Team.</p>
                       </Nav>
                     </Col>
                     <Col xs={5} sm={2} className='my-auto'>
