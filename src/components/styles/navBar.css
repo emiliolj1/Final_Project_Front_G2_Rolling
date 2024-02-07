@@ -1,6 +1,7 @@
 #root{
   background-color: #252525;
   min-height: 100vh;
+  scrollbar-color: #252525;
 }
 
 .navColor{
