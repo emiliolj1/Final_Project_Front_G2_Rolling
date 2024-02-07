@@ -45,25 +45,25 @@ const Header = ({user, setUser}) => {
           <Nav.Item>
             
           </Nav.Item>
-          <Navbar.Brand href="#home" className='fw-bold'>Sale Fulbo'?</Navbar.Brand>
+          <Navbar.Brand href="/home" className='fw-bold'>Sale Fulbo'?</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="#">Home</Nav.Link>
-              <Nav.Link href="#">Alquila tu Cancha!</Nav.Link>
+              <Nav.Link href="/">Home</Nav.Link>
+              <Nav.Link href="/alquiler">Alquila tu Cancha!</Nav.Link>
               <NavDropdown title="+Más" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">
+                <NavDropdown.Item href='/aboutUs'>
                   Nosotros
                 </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
+                <NavDropdown.Item href='/contacto'>
                   Contacto
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">
+                <NavDropdown.Item href='/galeria'>
                   Galeria de Imagenes
                 </NavDropdown.Item>
               </NavDropdown>
-              <Nav.Link href="#">Productos</Nav.Link>
+              <Nav.Link href='/productos'>Productos</Nav.Link>
             </Nav>
             {
               user && userResult.isLogged ? 
@@ -83,7 +83,7 @@ const Header = ({user, setUser}) => {
                             user && userResult.userInfo.role === 'admin'
                             ? 
                             <>
-                                <Nav.Link >Administracion</Nav.Link>
+                                <Nav.Link href='/admin'>Administracion</Nav.Link>
                                 <hr/>
                                 <Nav.Link >Cerrar Sesion</Nav.Link>
                               </>
