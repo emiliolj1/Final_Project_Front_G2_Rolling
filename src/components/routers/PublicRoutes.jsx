@@ -15,7 +15,7 @@ const PublicRoutes = ({setUser}) => {
           <Route exact path='/nosotros' element={<Navigate to={<Nosotros/>}/>}/>
           <Route exact path='/galeria' element={<Navigate to={<Galeria/>}/>}/>
           <Route exact path='/productos' element={<Navigate to={<Prodcutos/>}/>}/>
-          <Route exact path='/alquiler' element={<Navigate to='/login'/>}/> */}
+          <Route exact path='/alquiler' element={<Navigate to='/login'/>}/>
 
           <Route path='*' element={<Navigate to='/'/>}/>
         </Routes>
