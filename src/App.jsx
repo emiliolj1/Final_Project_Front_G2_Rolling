@@ -41,20 +41,9 @@ function App() {
   
   return (
     <>
-      {
-        user.isLogged ?
-        <BrowserRouter>
-          <NavBar user={user} setUser={setUser}/>
-            <PrivateRoutes/>
-          <Footer/>
-        </BrowserRouter>
-        :
-        <BrowserRouter>
-          <NavBar user={user} setUser={setUser}/>
-            <PublicRoutes setUser={setUser}/>
-          <Footer/>
-        </BrowserRouter>
-      }
+      <NavBar/>
+        <Home/>
+      <Footer/>
     </>
   )
 }
