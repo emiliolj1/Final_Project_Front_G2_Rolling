@@ -11,13 +11,11 @@ const CardDetails = () => {
   const navigate = useNavigate()
 
   const getProduct = async () => {
-    const response = await fetch(`https://localHost:3000/product/${id}`)
+    const response = await fetch(`https://localHost:4000/products/${id}`)
     const data = await response.json()
-
     console.log(data);
     setProduct(data)
   }
-
   useEffect(() => {
     getProduct()
   }, [])

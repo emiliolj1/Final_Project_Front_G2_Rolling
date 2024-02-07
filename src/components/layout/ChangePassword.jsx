@@ -1,23 +1,15 @@
-import { useForm } from 'react-hook-form';
-import { Container, Form, Button, FormGroup} from 'react-bootstrap'
-import Modal from 'react-bootstrap/Modal';
-import { useState } from 'react';
-import '../styles/Register.css'
-import { Link } from 'react-router-dom';
+import React from 'react'
 
-const Register = () => {
+const ChangePassword = () => {
   const {register, handleSubmit, formState:{ errors }, reset} = useForm()
-  const [showLogged, setShowLogged] = useState(false);
-  const [showError, setShowError] = useState(false);
 
-  
-  const handleCloseLogged = () => {setShowLogged(false)};
-  const handleCloseError = () => {setShowError(false)}
+  const [show, setShow] = useState(false);
+  const handleClose = () => {setShow(false)};
 
   const onSubmit = async (data) => {
     const fullData = {...data, role: 'client'}
     console.log(fullData);
-    const response = await fetch('http://localhost:4000/users', {
+    const response = await fetch('http://localhost:4000/change', {
       method: 'POST',
       headers: {'Content-Type':'application/json'},
       credentials: 'include',
@@ -25,21 +17,17 @@ const Register = () => {
     })
     const responseData = await response.json();
     if(response.status === 200){
-      console.log(responseData);
-      setShowLogged(true);
+      setShow(true)
     }
-    if(response.status === 400){
-      setShowError(true);
-    }
-    
+    console.log(responseData);
   }
 
-  return(
+  return (
     <>
       <Container className='loginContainer'>
         <Container className='login-box'>
           <Form onSubmit={handleSubmit((data) => onSubmit(data))}>
-            <h1 className='text-light text-center'>Registrate!</h1>
+            <h1 className='text-light text-center'>¿Olvidaste tu contraseña?</h1>
             <FormGroup className='user-box mt-5 mb-3'>
               <Form.Label className='m-0'>Nombre</Form.Label>
               <Form.Control
@@ -70,7 +58,7 @@ const Register = () => {
             </FormGroup>
             <FormGroup className='user-box mb-5'>
               <Form.Label>
-                Contraseña
+                Nueva Contraseña
               </Form.Label>
               <Form.Control
                 type='password'
@@ -93,19 +81,16 @@ const Register = () => {
         </Container>
       </Container>
       <Modal
-        show={showLogged}
-        onHide={handleCloseLogged}
+        show={show}
+        onHide={handleClose}
         backdrop="static"
         keyboard={false}
-        aria-labelledby="registrado"
       >
         <Modal.Header closeButton>
-          <Modal.Title id="registrado">
-            Creaste el usuario Correctamente!
-            </Modal.Title>
+          <Modal.Title>Cambiaste la contraseña correctamente!</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          A continuacion logueate!
+          A continuacion logueate nuevamente!
         </Modal.Body>
         <Modal.Footer>
           <Button className='btn-login1' onClick={() => {window.location.href='/login'}}>
@@ -113,29 +98,8 @@ const Register = () => {
           </Button>
         </Modal.Footer>
       </Modal>
-      <Modal
-        show={showError}
-        onHide={handleCloseError}
-        backdrop="static"
-        keyboard={false}
-        aria-labelledby="Error"
-      >
-        <Modal.Header closeButton>
-          <Modal.Title id="Error">
-            Error al crear el usuario!
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          Comunicate con Soporte!
-        </Modal.Body>
-        <Modal.Footer>
-          <Button className='btn-login1' onClick={() => {window.location.href='/login'}}>
-            Contactanos
-          </Button>
-        </Modal.Footer>
-      </Modal>
     </>
   )
 }
 
-export default Register
+export default ChangePassword
