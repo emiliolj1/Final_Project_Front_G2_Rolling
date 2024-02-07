@@ -45,15 +45,15 @@ const Header = ({user, setUser}) => {
           <Nav.Item>
             
           </Nav.Item>
-          <Navbar.Brand href="#home" className='fw-bold'>Sale Fulbo'?</Navbar.Brand>
+          <Navbar.Brand href="/home" className='fw-bold'>Sale Fulbo'?</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="/alquiler">Alquila tu Cancha!</Nav.Link>
               <NavDropdown title="+Más" id="basic-nav-dropdown">
-                <NavDropdown.Item href='/nosotros'>
-                  Nosotros
+                <NavDropdown.Item>
+                  <a href='/aboutUs'>Nosotros</a>
                 </NavDropdown.Item>
                 <NavDropdown.Item href='/contacto'>
                   Contacto

@@ -27,10 +27,11 @@ const Footer = () => {
                        alt=""
                        src="img/logo_transparent.png"
                        width="20"
-                       height="200"
+                       height="120"
                        className="col-12 col-xs d-flex align-items-center"
                       />
-                      <p className='text-light text-center copyRight'>Copyright © 2024 Sale Fulbo'<div/> Rolling Team.</p>
+                      <p className='text-light text-center copyRight'>Copyright © 2024 Sale Fulbo'</p>
+                      <p className='text-light text-center copyRight'>Rolling Team.</p>
                       </Nav>
                     </Col>
                     <Col xs={5} sm={2} className='my-auto'>
@@ -46,7 +47,7 @@ const Footer = () => {
                         <Nav.Link href='/galeria' className='py-auto'>Galeria de Imagenes</Nav.Link>
                         <Nav.Link href='/productos' className='py-auto'>Productos</Nav.Link>
                         <Nav.Link href='/contacto' className='py-auto'>Contacto</Nav.Link>
-                        <Nav.Link href='/nosotros' className='py-auto'>Sobre Nosotros</Nav.Link>
+                        <Nav.Link href='/aboutUs' className='py-auto'>Sobre Nosotros</Nav.Link>
                       </Nav>
                     </Col>
                   </Row>
