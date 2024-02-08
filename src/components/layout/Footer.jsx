@@ -27,10 +27,11 @@ const Footer = () => {
                        alt=""
                        src="img/logo_transparent.png"
                        width="20"
-                       height="200"
+                       height="120"
                        className="col-12 col-xs d-flex align-items-center"
                       />
-                      <p className='text-light text-center copyRight'>Copyright © 2024 Sale Fulbo'<div/> Rolling Team.</p>
+                      <p className='text-light text-center copyRight'>Copyright © 2024 Sale Fulbo'</p>
+                      <p className='text-light text-center copyRight'>Rolling Team.</p>
                       </Nav>
                     </Col>
                     <Col xs={5} sm={2} className='my-auto'>
@@ -42,11 +43,11 @@ const Footer = () => {
                     </Col>
                     <Col xs={7} sm={6}>
                       <Nav className='flex-column text-center'>
-                        <Nav.Link className='py-auto fw-bold'>Alquila tu cancha!</Nav.Link>
-                        <Nav.Link className='py-auto'>Galeria de Imagenes</Nav.Link>
-                        <Nav.Link className='py-auto'>Productos</Nav.Link>
-                        <Nav.Link className='py-auto'>Contacto</Nav.Link>
-                        <Nav.Link className='py-auto'>Sobre Nosotros</Nav.Link>
+                        <Nav.Link href='/alquiler' className='py-auto fw-bold'>Alquila tu cancha!</Nav.Link>
+                        <Nav.Link href='/galeria' className='py-auto'>Galeria de Imagenes</Nav.Link>
+                        <Nav.Link href='/productos' className='py-auto'>Productos</Nav.Link>
+                        <Nav.Link href='/contacto' className='py-auto'>Contacto</Nav.Link>
+                        <Nav.Link href='/aboutUs' className='py-auto'>Sobre Nosotros</Nav.Link>
                       </Nav>
                     </Col>
                   </Row>
@@ -58,7 +59,7 @@ const Footer = () => {
                 <h4>Suscribite a nuestro newsletter!</h4>
                 <p className='mb-1'>Suscribete para informarte acerca de promociones y novedades!</p>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                  <Form.Label className='fw-bold'>    Correo Electronico</Form.Label>
+                  <Form.Label className='fw-bold'>Correo Electronico</Form.Label>
                   <Row >
                     <Col xs={8} sm={9} >
                       <Form.Control 
@@ -68,7 +69,7 @@ const Footer = () => {
                       />
                     </Col>
                     <Col xs={4} sm={3}>
-                      <Button className='fw-bold btn-login pt-0 px-2 fs-5' type='submit'><CheckSquare/></Button>
+                      <Button className='fw-bold btn-login1 pt-0 px-2 fs-5' type='submit'><CheckSquare/></Button>
                     </Col>
                   </Row>
                 </Form.Group>
