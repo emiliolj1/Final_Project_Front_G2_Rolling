@@ -45,8 +45,8 @@ function App() {
   
   return (
     <>
-    <Bookin />
-        {/* {
+
+        {
         user.isLogged ?
         <BrowserRouter>
           <NavBar user={user} setUser={setUser}/>
@@ -59,7 +59,7 @@ function App() {
             <PublicRoutes setUser={setUser}/>
           <Footer/>
         </BrowserRouter>
-      } */}
+      }
     </>
   )
 }
