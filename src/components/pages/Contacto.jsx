@@ -7,6 +7,25 @@ import Button from 'react-bootstrap/Button';
 const Contacto = () => {
   
   const {register, handleSubmit, reset, formState:{errors}} = useForm();
+
+  const onSubmit = async (data) => {
+    try {
+      const response = await fetch('http://localhost:4000/sendEmail', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+      });
+      const responseData = await response.json();
+
+      if(response.ok){
+        console.log(responseData.message);
+      } else {
+        console.log('Error al enviar el correo:', responseData.message);
+      }
+    } catch (error) {
+      console.log('Error al enviar el correo:', error);
+    }
+  }
   
   return (
     <>

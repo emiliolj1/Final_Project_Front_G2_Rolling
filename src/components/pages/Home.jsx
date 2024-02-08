@@ -9,7 +9,7 @@ import CardProductos from "../layout/Card";
 const Home = () => {
   return (
     <>
-      <Container fluid className="mt-5 pt-3 ">
+      <Container fluid className="my-4">
         <Row className="mx-auto p-3 cont-carrousel">
           <Col xs={12} md={8} className="p-2">
             <Carousel>
@@ -35,7 +35,7 @@ const Home = () => {
       <Container fluid className="my-4">
         <Row className="mx-auto container-fluid py-3 faceHome">
           <Col xs={12} md={6}>
-            <Image src="https://picsum.photos/id/26/1200/800" fluid rounded/>
+            <Image src="https://images.unsplash.com/photo-1494177310973-4841f7d5a882?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"   fluid rounded/>
           </Col>
           <Col xs={12} md={6} className="text-center py-2 my-auto">
             <h1 className="fw-bold">Sale Fulbo?</h1>
