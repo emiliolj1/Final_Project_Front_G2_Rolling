@@ -45,7 +45,7 @@ function App() {
   
   return (
     <>
-    <Canchacard />
+    <Bookin />
         {/* {
         user.isLogged ?
         <BrowserRouter>
