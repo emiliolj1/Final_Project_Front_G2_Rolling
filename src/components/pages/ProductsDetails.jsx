@@ -22,6 +22,12 @@ const CardDetails = () => {
 
   return(
     <>
+    <Container>
+      <Row>
+        <Col></Col>
+        <Col></Col>
+      </Row>
+    </Container>
     </>
   )
 }

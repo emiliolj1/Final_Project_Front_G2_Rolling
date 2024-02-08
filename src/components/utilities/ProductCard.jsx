@@ -1,13 +1,33 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
-function ProductCard({id, name, image, description}) {
+const ProductCard = () => {
 
-  const navigate = useNavigate
+  const [products, setProduct] = useState([])
 
-  const handleClick = () => {
-    navigate(`${id}`)
-  }
+  const getProduct = async () => {
+    const response = await fetch ("http://localHost:4000/admin/getCanchas",{
+        method:'GET',
+        headers:{'Content-type':'application/json'},
+        credentials:'include'
+    })
+    const responseData = await response.json();
+
+    const mappedProduct = responseData.map(product => ({
+      Title: product.Title,
+      description: product.description,
+      Url:product.Url
+    }))
+    setProduct(mappedProduct);
+    }
+    useEffect(() => {
+      getProduct();
+    }, []);
+    useEffect(() => {
+      console.log(products)
+    }, [products])
 
   return (
     <Card style={{ width: '18rem' }}>
