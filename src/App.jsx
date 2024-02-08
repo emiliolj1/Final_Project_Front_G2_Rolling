@@ -9,6 +9,9 @@ import PublicRoutes from "./components/routers/PublicRoutes";
 import NavBar from './components/layout/NavBar'
 import Footer from './components/layout/Footer'
 import Sobrenosotros from "./components/pages/Sobrenosotros";
+import Canchacard from "./components/utilities/Canchacard";
+import Bookin from "./components/layout/Bookin";
+import ProductCard from "./components/utilities/ProductCard";
 
 
 
@@ -42,9 +45,7 @@ function App() {
   
   return (
     <>
-    <NavBar />
-    <CanchaDetails />
-    <Footer />
+    <Canchacard />
         {/* {
         user.isLogged ?
         <BrowserRouter>

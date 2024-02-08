@@ -1,47 +1,56 @@
 import { useState } from 'react';
-import { Col, Row } from 'react-bootstrap';
+import { useEffect } from 'react';
+import { Col, Row, Container } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import Image from 'react-bootstrap/Image';
 
-const Canchacard = ({id, name, image, description}) => {
+
+const Canchacard = () => {
 
   const [canchas, setCancha] = useState([])
 
-//   const getUsers = async () => {
-//     const response = await fetch ("http://localHost:4000/admin/getCanchas",{
-//         method:'GET',
-//         headers:{'Content-type':'application/json'},
-//         credentials:'include'
-//     })
-//     const responseData = await response.json();
-//     console.log(responseData);
+  const getCancha = async () => {
+    const response = await fetch ("http://localHost:4000/admin/getCanchas",{
+        method:'GET',
+        headers:{'Content-type':'application/json'},
+        credentials:'include'
+    })
+    const responseData = await response.json();
 
-//     const mappedCanchas = responseData.map(cancha => ({
-//         id: cancha.id,
-//         Name: cancha.Name,
-//         Email: cancha.email,
-//         Rol: cancha.role
-//     }))
-//     console.log(mappedCanchas)
-//     setCancha(responseData); // Aquí asigna responseData directamente
-//     console.log(canchas);
-// }
-// useEffect(() => {
-//     getCanchas();
-// }, []);
+    const mappedCanchas = responseData.map(cancha => ({
+      Title: cancha.Title,
+      description: cancha.description,
+      Url: cancha.Url
+    }))
 
+    setCancha(mappedCanchas);
+    }
+    useEffect(() => {
+      getCancha();
+    }, []);
+    useEffect(() => {
+      console.log(canchas)
+    }, [canchas])
   return (
     <>
-    <Container className='pt-5 pb-5 mb-5'>
-      <Row  className='pt-5 pb-5 mb-5 mt-5'>
-        <Col className='border border-success rounded-4 box-shadow bg-success shadow-lg'>
-
-        </Col>
-        <Col>
-        
-        </Col>
-      </Row>
-    </Container>
+    {/* <div className='text-light text-center'>hola</div> */}
+    { 
+      canchas.map((cancha, index) => (
+      <Container className='pt-5 pb-5 ' key={index}>
+        <Row  className='pb-5 mt-0 g-0'>
+          <Col className='border border-success bg-success col-sm-6 rounded-start'>
+          <Image src={cancha.Url}  className='aling-items-center justify-content-center mt-4 pt-5 ps-3 mb-4 pb-4 ' fluid/>
+          </Col>
+          <Col className='border border-success box-shadow bg-success rounded-end col-sm-6'>
+          <h2 className='text-light text-center mt-5'>{cancha.Title}</h2>
+          <h5 className='text-light text-center ps-3'>{cancha.description}</h5>
+          </Col>
+        </Row>
+      </Container>
+      )
+      )
+    }
     </>
   );
 }
