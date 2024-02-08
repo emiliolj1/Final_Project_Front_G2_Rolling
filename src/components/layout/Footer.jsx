@@ -30,7 +30,7 @@ const Footer = () => {
                        height="120"
                        className="col-12 col-xs d-flex align-items-center"
                       />
-                      <p className='text-light text-center copyRight'>Copyright © 2024 Sale Fulbo'</p>
+                      <p className='text-light text-center copyRight mb-0'>Copyright © 2024 Sale Fulbo'</p>
                       <p className='text-light text-center copyRight'>Rolling Team.</p>
                       </Nav>
                     </Col>

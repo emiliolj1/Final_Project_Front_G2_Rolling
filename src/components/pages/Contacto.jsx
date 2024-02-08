@@ -7,13 +7,33 @@ import Button from 'react-bootstrap/Button';
 const Contacto = () => {
   
   const {register, handleSubmit, reset, formState:{errors}} = useForm();
+
+  const onSubmit = async (data) => {
+    try {
+      const response = await fetch('http://localhost:4000/sendEmail', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+      });
+      const responseData = await response.json();
+
+      if(response.ok){
+        console.log(responseData.message);
+      } else {
+        console.log('Error al enviar el correo:', responseData.message);
+      }
+    } catch (error) {
+      console.log('Error al enviar el correo:', error);
+    }
+  }
   
   return (
     <>
-      <Container className='py-5'>
+      <Container className='mt-4 py-5'>
+        <h1 className='text-light text-center'>Envianos tu consulta!</h1>
         <Form onSubmit={handleSubmit((data) => onSubmit(data))}>
-          <FormGroup className='mt-5 mb-3'>
-            <Form.Label className='m-0'>Nombre</Form.Label>
+          <FormGroup className='mt-2 mb-3'>
+            <Form.Label className='m-0 text-light'>Nombre</Form.Label>
             <Form.Control
               type='text'
               placeholder='Ingresa tu nombre...'
@@ -26,8 +46,8 @@ const Contacto = () => {
             />
             <Form.Control.Feedback type='invalid'>{errors.name?.message}</Form.Control.Feedback>
           </FormGroup>
-          <FormGroup className='mt-5 mb-3'>
-            <Form.Label className='m-0'>Email</Form.Label>
+          <FormGroup className='mb-3'>
+            <Form.Label className='m-0 text-light'>Email</Form.Label>
             <Form.Control
               type='email'
               placeholder='Ingresa tu email...'
@@ -40,9 +60,11 @@ const Contacto = () => {
             />
             <Form.Control.Feedback type='invalid'>{errors.email?.message}</Form.Control.Feedback>
           </FormGroup>
-          <FormGroup className='mt-5 mb-3'>
-            <Form.Label className='m-0'>Mensaje</Form.Label>
+          <FormGroup className='mb-3'>
+            <Form.Label className='m-0 text-light'>Mensaje</Form.Label>
             <Form.Control
+              as="textarea"
+              rows={4}
               type='text'
               placeholder='Ingresa tu mensaje...'
               {...register('message', {

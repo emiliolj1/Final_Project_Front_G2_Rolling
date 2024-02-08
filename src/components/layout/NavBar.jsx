@@ -73,24 +73,21 @@ const Header = ({user, setUser}) => {
                     </Button> 
                     <Offcanvas show={show} onHide={handleClose} placement='end' className='navColor'>
                       <Offcanvas.Header closeButton>
-                        <Offcanvas.Title>Hola!</Offcanvas.Title>
                       </Offcanvas.Header>
                       <Offcanvas.Body>
                         <Nav defaultActiveKey="/home" className="flex-column fs-6 fw-bold">
-                          <Nav.Link href="/home">Mi cuenta</Nav.Link>
-                          <Nav.Link href="/home">Mis Reservas</Nav.Link>
                           {
                             user && userResult.userInfo.role === 'admin'
                             ? 
                             <>
                                 <Nav.Link href='/admin'>Administracion</Nav.Link>
                                 <hr/>
-                                <Nav.Link >Cerrar Sesion</Nav.Link>
+                                <Button className='btn-login1' onClick={() => handleLogout}>Cerrar Sesion</Button>
                               </>
                             : 
                               <>
                                 <hr/>
-                                <Button onClick={() => handleLogout}>Cerrar Sesion</Button>
+                                <Button className='btn-login1' onClick={() => handleLogout}>Cerrar Sesion</Button>
                               </>
                           }
                         </Nav>
