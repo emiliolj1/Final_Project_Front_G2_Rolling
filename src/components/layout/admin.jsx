@@ -7,18 +7,18 @@ import Table from 'react-bootstrap/Table';
 const admin = () => {
     const { handleSubmit, register, reset } = useForm()
     const [CreateproductShow, setCShow] = useState(false);
-    const [deleteProductShow, setDShow] = useState(false);
+    // const [deleteProductShow, setDShow] = useState(false);
     const [CreateCanchaShow, setCCShow] = useState(false);
-    const [deleteCanchaShow, setDCShow] = useState(false);
+    // const [deleteCanchaShow, setDCShow] = useState(false);
     const [users, setUsers] = useState([]);
     const [products, setProducts] = useState([]);
     const [canchas, setCanchas] = useState([])
 
     const handleClose = () => {
         setCShow(false);
-        setDShow(false);
+       // setDShow(false);
         setCCShow(false);
-        setDCShow(false);
+       // setDCShow(false);
         reset();
     };
 
@@ -30,7 +30,7 @@ const admin = () => {
     // };
     
     const getUsers = async () => {
-        const response = await fetch (`https://localHost:4000/users`,{
+        const response = await fetch (`http://localHost:4000/users`,{
             method:'GET',
             headers:{'Content-type':'application/json'},
             credentials:'include'
@@ -45,7 +45,7 @@ const admin = () => {
 
     const getProducts = async () => {
         try {
-            const response = await fetch(`https://localHost:4000/products`,{
+            const response = await fetch(`http://localHost:4000/products`,{
                 method:'GET',
                 headers: { 'Content-type': 'application/json' },
                 credentials: 'include',
@@ -62,7 +62,7 @@ const admin = () => {
 
     const getCanchas = async () => {
         try {
-            const response = await fetch(`https://localHost:4000/canchas`,{
+            const response = await fetch(`http://localHost:4000/canchas`,{
                 method:'GET',
                 headers: { 'Content-type': 'application/json' },
                 credentials: 'include',
@@ -80,7 +80,7 @@ const admin = () => {
 
     const CreateProduct = async () => {
         try {
-            const response = await fetch(`https://localhost:4000/products`,{
+            const response = await fetch(`http://localhost:4000/products`,{
                 method:'POST',
                 headers:{'Content-type':'application/json'},
                 credentials:'include'
@@ -106,14 +106,14 @@ const admin = () => {
             getCanchas();
             handleClose();
         } catch (error) {
-            
+            console.log('error en realizar la accion (Crear cancha)', error);
         }
     }
 
 
     const ProductDelete = async () => {
         try {
-            const response = await fetch(`https://localhost:4000/products/${Id}`,{
+            const response = await fetch(`http://localhost:4000/products/${Id}`,{
                 method:'DELETE',
                 headers:{'Content-type':'application/json'},
                 credentials:'include'
@@ -121,15 +121,14 @@ const admin = () => {
             const responseData = await response.json();
             console.log(responseData);
             getProducts();
-            handleClose();
         } catch (error) {
-            
+            console.log('error en realizar la accion (borrar producto)',error);
         }
     }
 
     const CanchaDelete = async () => {
         try {
-            const response = await fetch(`https://localhost:4000/canchas/${Id}`,{
+            const response = await fetch(`http://localhost:4000/canchas/${Id}`,{
                 method:'DELETE',
                 headers:{'Content-type':'application/json'},
                 credentials:'include'
@@ -137,9 +136,23 @@ const admin = () => {
             const responseData = await response.json();
             console.log(responseData);
             getCanchas();
-            handleClose();
         } catch (error) {
-            
+            console.log('error en realizar la accion (borrar cancha)', error);
+        }
+    }
+
+    const DeleteUsers = async () => {
+        try {
+            const response =await fetch(`http://localhost:4000/users/${id}`,{
+                method:'DELETE',
+                headers:{'Content-type':'application/json'},
+                credentials:'include'
+            })
+            const responseData = await response.json()
+            console.log(responseData);
+            getUsers()
+        } catch (error) {
+            console.log('error en realizar la accion (borrar usuario)', error);
         }
     }
 
@@ -152,7 +165,8 @@ const admin = () => {
                     <th>Id</th>
                     <th>Usuarios</th>
                     <th>Email</th>
-                    <th>role</th>
+                    <th>rol</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -162,6 +176,10 @@ const admin = () => {
                         <td>{user.name}</td>
                         <td>{user.email}</td>
                         <td>{user.role}</td>
+                        <td>
+                            <Button onClick={() => DeleteUsers(user.id)}>Borrar usuario</Button>
+                            <Button onClick={() => InactivateUser(user.id)}>Inactivar usuario</Button>
+                        </td>
                     </tr>
                 ))}
             </tbody>
@@ -210,13 +228,13 @@ const admin = () => {
         <Button variant="primary" onClick={() => setCShow(true)}>
             Crear Producto
         </Button>
-        <Button variant="primary" onClick={() => setDShow(true)}>
+        {/* <Button variant="primary" onClick={() => setDShow(true)}>
             Borrar Producto
-        </Button>
-        {/* <Button variant="primary" onClick={() => setCCShow(true)}>
+        </Button> */}
+        <Button variant="primary" onClick={() => setCCShow(true)}>
             Crear cancha
         </Button>
-        <Button variant="primary" onClick={() => setDDShow(true)}>
+        {/* <Button variant="primary" onClick={() => setDDShow(true)}>
             Borrar cancha
         </Button> */}
 
@@ -237,7 +255,7 @@ const admin = () => {
                     isInvalid={!!errors.email}
                     // the method register allows you to register an input or select element and apply validations rules
                     // operator (...) allows an iterable to expand in places where 0+ arguments are expected. It is mostly used in the variable array where there is more than 1 value is expected. 
-                    //{...register('name', {required:'this field is required'})}
+                    {...register('name', {required:'this field is required'})}
                     />
                 <Form.Control.Feedback type='invalid'>{errors.name?.message}</Form.Control.Feedback>
                 </Form.Group>
@@ -251,7 +269,7 @@ const admin = () => {
                     isInvalid={!!errors.email}
                     // the method register allows you to register an input or select element and apply validations rules
                     // operator (...) allows an iterable to expand in places where 0+ arguments are expected. It is mostly used in the variable array where there is more than 1 value is expected. 
-                    //{...register('name', {required:'this field is required'})}
+                    {...register('name', {required:'this field is required'})}
                     />
                 <Form.Control.Feedback type='invalid'>{errors.name?.message}</Form.Control.Feedback>
                 </Form.Group>
@@ -265,7 +283,7 @@ const admin = () => {
                     isInvalid={!!errors.email}
                     // the method register allows you to register an input or select element and apply validations rules
                     // operator (...) allows an iterable to expand in places where 0+ arguments are expected. It is mostly used in the variable array where there is more than 1 value is expected. 
-                    //{...register('name', {required:'this field is required'})}
+                    {...register('name', {required:'this field is required'})}
                     />
                 <Form.Control.Feedback type='invalid'>{errors.name?.message}</Form.Control.Feedback>
                 </Form.Group>
@@ -335,7 +353,7 @@ const admin = () => {
                     isInvalid={!!errors.email}
                     // the method register allows you to register an input or select element and apply validations rules
                     // operator (...) allows an iterable to expand in places where 0+ arguments are expected. It is mostly used in the variable array where there is more than 1 value is expected. 
-                    // {...register('name', {required:'this field is required'})}
+                     {...register('name', {required:'this field is required'})}
                     />
                 <Form.Control.Feedback type='invalid'>{errors.name?.message}</Form.Control.Feedback>
                 </Form.Group>
@@ -349,7 +367,7 @@ const admin = () => {
                     isInvalid={!!errors.email}
                     // the method register allows you to register an input or select element and apply validations rules
                     // operator (...) allows an iterable to expand in places where 0+ arguments are expected. It is mostly used in the variable array where there is more than 1 value is expected. 
-                    // {...register('name', {required:'this field is required'})}
+                    {...register('name', {required:'this field is required'})}
                     />
                 <Form.Control.Feedback type='invalid'>{errors.name?.message}</Form.Control.Feedback>
                 </Form.Group>
@@ -363,7 +381,7 @@ const admin = () => {
                     isInvalid={!!errors.email}
                     // the method register allows you to register an input or select element and apply validations rules
                     // operator (...) allows an iterable to expand in places where 0+ arguments are expected. It is mostly used in the variable array where there is more than 1 value is expected. 
-                    // {...register('name', {required:'this field is required'})}
+                    {...register('name', {required:'this field is required'})}
                     />
                 <Form.Control.Feedback type='invalid'>{errors.name?.message}</Form.Control.Feedback>
                 </Form.Group>
