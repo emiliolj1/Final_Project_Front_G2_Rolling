@@ -8,15 +8,26 @@
   background-color: #0E955D;
 }
 
+.btn-login2{
+  background-color: #0B7149;
+  border: #0E955D;
+  color: #ABEFC9;
+}
+.btn-login2:hover{
+  background-color: #ABEFC9;
+  border: #0E955D;
+  color: #0B7149;
+}
+
 .btn-login1{
   background-color: #ABEFC9;
   border: #0E955D;
   color: #0B7149;
 }
 
-.btn-login1 :hover{
+.btn-login1:hover{
   background-color: #0B7149;
-  border: #0E955D;
+  border: 2px solid #0E955D;
   color: #ABEFC9;
 }
 

@@ -63,7 +63,6 @@ const Bookin = () => {
             />
             <Form.Control.Feedback type='invalid'>{errors.name?.message}</Form.Control.Feedback>
           </FormGroup>
-          
           <Button type='submit' className='mx-auto btn-login mb-3 border border-0'>Crear reserva</Button>
         </Form>
         </Col>

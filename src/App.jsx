@@ -38,7 +38,7 @@ function App() {
   
   return (
     <>
-        {
+      {
         user.isLogged ?
         <BrowserRouter>
           <NavBar user={user} setUser={setUser}/>

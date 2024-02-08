@@ -4,7 +4,6 @@ import Col from 'react-bootstrap/Col'
 import Image from 'react-bootstrap/Image';
 import Carousel from 'react-bootstrap/Carousel';
 import Button from 'react-bootstrap/Button'
-import CardProductos from "../layout/Card";
 
 const Home = () => {
   return (
@@ -26,7 +25,7 @@ const Home = () => {
           </Col>
           <Col xs={12} md={4} className="text-center my-auto">
             <h2>¿Queres alquilar una cancha como estas?</h2>
-            <Button className='btn-login1  my-3'>
+            <Button href='/alquiler' className='btn-login1  my-3'>
               <h4>Alquila tu Cancha!</h4>
             </Button>
           </Col>
@@ -38,12 +37,13 @@ const Home = () => {
             <Image src="https://images.unsplash.com/photo-1494177310973-4841f7d5a882?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"   fluid rounded/>
           </Col>
           <Col xs={12} md={6} className="text-center py-2 my-auto">
-            <h1 className="fw-bold">Sale Fulbo?</h1>
-            <h5 className="fw-light">Mini historia empresa que atrape comercialmente a las personas</h5>
+            <h1 className="fw-bold mb-4">Sale Fulbo?</h1>
+            <h5 className="fw-light">Tu destino para vivir la pasión del fútbol. Ofrecemos canchas de primera calidad para partidos emocionantes con amigos o competiciones serias. Nuestro ambiente acogedor y nuestras instalaciones modernas te garantizan una experiencia inigualable en cada visita.</h5>
+            <Button className="my-4 btn-login2" href="/canchas">Conoce nuestras canchas!</Button>
           </Col>
         </Row>
       </Container>
-      <Container fluid className="my-3">
+      {/* <Container fluid className="my-3">
         <div>
           <h4 className="text-light">Alguno de nuestros productos...</h4>
         </div>
@@ -55,7 +55,7 @@ const Home = () => {
           <CardProductos title={'titulo 5'} url={'https://picsum.photos/id/235/200'}/>
           <CardProductos title={'titulo 6'} url={'https://picsum.photos/id/234/200'}/>
         </Row>
-      </Container>
+      </Container> */}
     </>
   )
 }

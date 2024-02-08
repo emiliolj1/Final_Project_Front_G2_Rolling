@@ -1,14 +1,15 @@
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import Card from '../layout/Card'
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
 
 const ProductCard = () => {
 
   const [products, setProduct] = useState([])
 
   const getProduct = async () => {
-    const response = await fetch ("http://localHost:4000/admin/getCanchas",{
+    const response = await fetch ("http://localHost:4000/admin/getProducts",{
         method:'GET',
         headers:{'Content-type':'application/json'},
         credentials:'include'
@@ -30,16 +31,19 @@ const ProductCard = () => {
     }, [products])
 
   return (
-    <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src={image} />
-      <Card.Body>
-        <Card.Title>{name}</Card.Title>
-        <Card.Text>
-          {description}
-        </Card.Text>
-        <Button variant="primary" onClick={handleClick}>Go somewhere</Button>
-      </Card.Body>
-    </Card>
+    <>
+      <Container className='mt-5 py-4' fluid>
+        <h3 className='text-center text-light mb-5 mt-3'>Todos los productos podras adquirirlo de manera fisica en nuestras instalaciones :) </h3>
+        <Row>
+          {
+            products.map((product, index) => (
+              <Card key={index} title={product.Title}
+              url={product.Url}/>
+            ))
+          }
+        </Row>
+      </Container>
+    </>
   );
 }
 

@@ -7,6 +7,7 @@ import Contacto from "../pages/Contacto";
 import Bookin from '../layout/Bookin'
 import Productos from '../utilities/ProductCard'
 import Canchas from '../utilities/Canchacard'
+import ProductCard from "../utilities/ProductCard";
 
 const PrivateRoutes = ({user}) => {
 
