@@ -1,5 +1,5 @@
 import { Navigate, Routes, Route } from "react-router-dom";
-import Admin from '../layout/admin';
+import admin from '../layout/admin';
 import Galeria from '../pages/Galeria';
 import Home from "../pages/Home";
 import Nosotros from "../pages/Sobrenosotros";
@@ -24,13 +24,7 @@ const PrivateRoutes = ({user}) => {
         <Route exact path='/productos' element={<Productos/>}/>
         <Route exact path='/alquiler' element={<Bookin/>}/>
         <Route exact path='/canchas' element={<Canchas/>}/>
-        {
-          user && userResult.userInfo.role === 'admin'
-          ?
-          <Route exact path='/admin' element={<Admin/>}/>
-          :
-          <Route exact path='/admin' element={<Navigate to='/'/>}/>
-        }
+        <Route exact path='/admin' element={<admin/>}/>
         <Route path='*' element={<Navigate to='/'/>}/>
       </Routes>
     </>
