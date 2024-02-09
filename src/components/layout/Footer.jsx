@@ -9,6 +9,7 @@ import Navbar from 'react-bootstrap/Navbar'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import Button from 'react-bootstrap/Button'
+import { NavLink } from 'react-router-dom'
 
 
 const Footer = () => {
@@ -36,18 +37,18 @@ const Footer = () => {
                     </Col>
                     <Col xs={5} sm={2} className='my-auto'>
                       <Nav className='flex-column text-center'>
-                        <Nav.Link className='py-auto'><Instagram/> Instagram</Nav.Link>
-                        <Nav.Link className='py-auto'><Facebook/> Facebook</Nav.Link>
-                        <Nav.Link className='py-auto'><Twitter/> X (Twitter)</Nav.Link>
+                        <NavLink className='text-light text-decoration-none my-2 py-auto'><Instagram/> Instagram</NavLink>
+                        <NavLink className='text-light text-decoration-none my-2 py-auto'><Facebook/> Facebook</NavLink>
+                        <NavLink className='text-light text-decoration-none my-2 py-auto'><Twitter/> X (Twitter)</NavLink>
                       </Nav>
                     </Col>
                     <Col xs={7} sm={6}>
                       <Nav className='flex-column text-center'>
-                        <Nav.Link href='/alquiler' className='py-auto fw-bold'>Alquila tu cancha!</Nav.Link>
-                        <Nav.Link href='/galeria' className='py-auto'>Galeria de Imagenes</Nav.Link>
-                        <Nav.Link href='/productos' className='py-auto'>Productos</Nav.Link>
-                        <Nav.Link href='/contacto' className='py-auto'>Contacto</Nav.Link>
-                        <Nav.Link href='/aboutUs' className='py-auto'>Sobre Nosotros</Nav.Link>
+                        <NavLink to='/alquiler' className='text-light text-decoration-none my-1  py-auto fw-bold'>Alquila tu cancha!</NavLink>
+                        <NavLink to='/galeria' className='text-light text-decoration-none my-1 py-auto'>Galeria de Imagenes</NavLink>
+                        <NavLink to='/productos' className='text-light text-decoration-none my-1 py-auto'>Productos</NavLink>
+                        <NavLink to='/contacto' className='text-light text-decoration-none my-1 py-auto'>Contacto</NavLink>
+                        <NavLink to='/aboutUs' className='text-light text-decoration-none my-1 py-auto'>Sobre Nosotros</NavLink>
                       </Nav>
                     </Col>
                   </Row>
