@@ -4,7 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 import { useState, useEffect } from 'react';
 import Table from 'react-bootstrap/Table';
 import Form from 'react-bootstrap/Form'
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { Container, Image, Row } from 'react-bootstrap';
 
 const admin = () => {
     const [CreateproductShow, setCShow] = useState(false);
@@ -122,9 +122,8 @@ const admin = () => {
         getCanchas();
     }, []);
     useEffect(() => {
-        // Este código se ejecutará después de que `canchas` se haya actualizado
         console.log(canchas);
-      }, [canchas]);
+    }, [canchas]);
     
 
       const changeRole = async (userEmail) => {
@@ -226,18 +225,16 @@ const admin = () => {
     }
 
     return(
-        <>
-          <div className="container my-5">
-            <h2 direction="horizontal" >Bienvenido, administrador👋​</h2>
+        <Container className='mt-5 py-3'>
+          <div className="text-light text-center py-3">
+            <h2 direction="horizontal" >Bienvenido Administrador! 👋​</h2>
           </div> 
-
-          <div className="container-fluid">
-            <h4 className=" mx-3">Usuarios registrados</h4>
-            <div className="row justify-content-center my-5 mx-3">
-              <Table striped bordered hover responsive="sm">
+          <Container fluid>
+            <h4 className="fw-bold text-light mx-3 text-decoration-underline">Usuarios registrados</h4>
+            <Row className="row justify-content-center mt-5 mx-3">
+              <Table className='text-center' striped bordered hover responsive="sm">
                 <thead>
                   <tr>
-                    <th>ID</th>
                     <th>Nombre</th>
                     <th>Email</th>
                     <th>Rol</th>
@@ -248,23 +245,21 @@ const admin = () => {
                 <tbody>
                   {users.map((user) => (
                     <tr key={user._id}>
-                        <td>{user._id}</td>
-                        <td>{user.Name}</td>
+                        <td className='fw-bold'>{user.Name}</td>
                         <td>{user.email}</td>
                         <td>{user.role}</td>
-                        <td><Button onClick={() =>changeRole(user._id)}>Hacer Admin</Button></td>
-                        <td><Button onClick={() => deleteUser(user._id)}>Eliminar</Button></td>
+                        <td><Button className="btn-login1" onClick={() =>changeRole(user._id)}>Hacer Admin</Button></td>
+                        <td><Button className="btn-login1" onClick={() => deleteUser(user._id)}>Eliminar</Button></td>
                     </tr>
                   ))}
                 </tbody>
               </Table>
-            </div>
-            <h4 className="mx-3">Productos</h4>
-            <div className="row justify-content-center my-5 mx-3">
-              <Table>
+            </Row>
+            <h4 className="mt-5 fw-bold text-light mx-3 text-decoration-underline">Productos</h4>
+            <Row className="row justify-content-center mt-5 mx-3">
+              <Table striped bordered hover responsive="sm" className='text-center'>
                 <thead>
                   <tr>
-                    <th>ID</th>
                     <th>Nombre</th>
                     <th>URL</th>
                     <th>Descripción</th>
@@ -275,29 +270,27 @@ const admin = () => {
                 <tbody>
                   {products.map((product) => (
                     <tr key={product._id}>
-                        <td>{product._id}</td>
-                        <td>{product.Title}</td>
-                        <td>{product.Url}</td>
+                        <td className='fw-bold'>{product.Title}</td>
+                        <td><Image src={product.Url} style={{height: '6rem'}}/></td>
                         <td>{product.description}</td>
-                        <td>{product.price}</td>
-                        <td><Button onClick={() => ProductDelete(product._id)}>Borrar</Button></td>
+                        <td>${product.price}</td>
+                        <td><Button className="btn-login1" onClick={() => ProductDelete(product._id)}>Borrar</Button></td>
                     </tr>
                   ))}
                 </tbody>
                </Table>
-            </div>
-            <div className="container-fuid justify-content-center">
-              <Button variant="primary" onClick={() => setCShow(true)}>
+            </Row>
+            <Container className='mb-5'>
+              <Button className="btn-login1" onClick={() => setCShow(true)}>
               Crear Producto
               </Button>
-            </div>
-            <h4 className="mx-3">Canchas</h4>
-            <div className="row justify-content-center my-5 mx-3">  
-               <Table>
+            </Container>
+            <h4 className="fw-bold text-light mx-3 text-decoration-underline">Canchas</h4>
+            <Row className="justify-content-center my-5 mx-3">  
+               <Table striped bordered hover responsive="sm" className='text-center'>
                  <thead>
                    <tr>
-                     <th>ID</th>
-                     <th>title</th>
+                     <th>Nombre</th>
                      <th>Descripción</th>
                      <th>Reservas</th>
                      <th>Acciones</th>
@@ -306,24 +299,23 @@ const admin = () => {
                  <tbody>
                   {canchas.map((cancha) => (
                     <tr key={cancha._id}>
-                        <td>{cancha._id}</td>
-                        <td>{cancha.Title}</td>
+                        <td className='fw-bold'>{cancha.Title}</td>
                         <td>{cancha.description}</td>
                         <td>{cancha.Array}</td>
-                        <td><Button onClick={() => CanchaDelete(cancha.id)}>Borrar</Button></td>
+                        <td><Button className="btn-login1" onClick={() => CanchaDelete(cancha.id)}>Borrar</Button></td>
                     </tr>
                   ))}
                  </tbody>
               </Table>
-            </div>  
-        </div>
+            </Row>  
+        </Container>
         
 
-        <div className="container-fluid justify-content-center">
-           <Button variant="primary" href="/" classNam="btn-login">
+        <Container fluid className="text-center mb-5">
+           <Button href="/" className="fw-bold fs-4 btn-login1">
               Volver al Inicio
            </Button>
-        </div>
+        </Container>
 
         <Modal 
         show={CreateproductShow} 
@@ -463,7 +455,7 @@ const admin = () => {
                 </Button>
             </Modal.Footer>
         </Modal>
-        </>
+        </Container>
     )
 }
 
