@@ -5,7 +5,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { PersonCircle } from 'react-bootstrap-icons';
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 
 import { useState } from 'react';
 
@@ -43,14 +43,11 @@ const Header = ({user, setUser}) => {
     <>
       <Navbar expand="lg" className="navColor" data-bs-theme="dark" fixed='top'>
         <Container className=''>
-          <Nav.Item>
-            
-          </Nav.Item>
-          <Navbar.Brand href="/home" className='fw-bold'>Sale Fulbo'?</Navbar.Brand>
+          <Navbar.Brand className='fw-bold'><Link to='/home' className='text-light text-decoration-none'>Sale Fulbo'?</Link></Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <NavLink className='mt-2 me-3 text-light text-decoration-none' to="/">Home</NavLink>
+              <NavLink className='mt-2 me-3 text-light text-decoration-none' to="/home">Home</NavLink>
               <NavLink className='mt-2 me-3 text-light text-decoration-none' to='/alquiler'>Alquila tu Cancha!</NavLink>
               <NavDropdown className='me-3' title="+Más" id="basic-nav-dropdown">
                 <NavDropdown.Item>
@@ -96,9 +93,11 @@ const Header = ({user, setUser}) => {
                     </Offcanvas>
                   </>
               :
-              <Button href='/login' className='btn-login1'>
+              <Link to='/login'>
+                <Button className='btn-login1'>
                     Login
-              </Button>
+                </Button>
+              </Link>
             }
           </Navbar.Collapse>
         </Container>

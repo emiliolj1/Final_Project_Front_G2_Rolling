@@ -9,7 +9,7 @@ import Navbar from 'react-bootstrap/Navbar'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import Button from 'react-bootstrap/Button'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 
 
 const Footer = () => {
@@ -24,13 +24,15 @@ const Footer = () => {
                   <Row>
                     <Col xs={12} sm={4}>
                       <Nav className='flex-column text-center'>
-                      <img
-                       alt=""
-                       src="img/logo_transparent.png"
-                       width="20"
-                       height="120"
-                       className="col-12 col-xs d-flex align-items-center"
-                      />
+                      <Link to='/home'>
+                        <img
+                          alt=""
+                          src="img/logo_transparent.png"
+                          width="20"
+                          height="120"
+                          className="col-12 col-xs d-flex align-items-center"
+                        />
+                      </Link>
                       <p className='text-light text-center copyRight mb-0'>Copyright © 2024 Sale Fulbo'</p>
                       <p className='text-light text-center copyRight'>Rolling Team.</p>
                       </Nav>
