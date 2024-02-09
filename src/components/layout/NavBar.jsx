@@ -6,14 +6,19 @@ import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { PersonCircle } from 'react-bootstrap-icons';
 import { NavLink, Link } from 'react-router-dom'
-
 import { useState } from 'react';
+import Modal from 'react-bootstrap/Modal';
 
 
 const Header = ({user, setUser}) => {
 
   const userResult = user;
   console.log(userResult);
+
+  const [showModal, setShowModal] = useState(false);
+
+  const handleCloseModal = () => setShowModal(false);
+  const handleShowModal = () => setShowModal(true);
   
   const [show, setShow] = useState(false);
 
@@ -48,7 +53,7 @@ const Header = ({user, setUser}) => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <NavLink className='mt-2 me-3 text-light text-decoration-none' to="/home">Home</NavLink>
-              <NavLink className='mt-2 me-3 text-light text-decoration-none' to='/alquiler'>Alquila tu Cancha!</NavLink>
+              <NavLink className='mt-2 me-3 text-light text-decoration-none' onClick={handleShowModal}>Alquila tu Cancha!</NavLink>
               <NavDropdown className='me-3' title="+Más" id="basic-nav-dropdown">
                 <NavDropdown.Item>
                   <NavLink className='mt-2 text-light text-decoration-none' to='/aboutUs'>Nosotros</NavLink>
@@ -102,6 +107,26 @@ const Header = ({user, setUser}) => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
+      <Modal
+        show={showModal}
+        onHide={handleCloseModal}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>
+            Debes loguearte para alquilar!
+            </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          A continuacion logueate!
+        </Modal.Body>
+        <Modal.Footer>
+          <Link to='/login'>
+            <Button className='btn-login1' onClick={handleCloseModal}>
+              Login
+            </Button>
+          </Link>
+        </Modal.Footer>
+      </Modal>
     </>
   )
 }

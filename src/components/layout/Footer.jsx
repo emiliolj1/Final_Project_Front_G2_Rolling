@@ -1,6 +1,3 @@
-// Must include a button or a link that leads to another page detailing the repository used, GITHUB.
-// Must include a button or a link that leads to a page to report problems, etc.
-// It must be the color palette used in the trello.
 import { CheckSquare, Facebook, Instagram, Twitter } from 'react-bootstrap-icons'
 import Form from 'react-bootstrap/Form'
 import Container from 'react-bootstrap/Container'
@@ -10,9 +7,17 @@ import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import Button from 'react-bootstrap/Button'
 import { NavLink, Link } from 'react-router-dom'
+import { useState } from 'react';
+import Modal from 'react-bootstrap/Modal';
 
 
 const Footer = () => {
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
     <>
       <Navbar expand="lg" className="navColor" data-bs-theme='dark'>
@@ -46,7 +51,7 @@ const Footer = () => {
                     </Col>
                     <Col xs={7} sm={6}>
                       <Nav className='flex-column text-center'>
-                        <NavLink to='/alquiler' className='text-light text-decoration-none my-1  py-auto fw-bold'>Alquila tu cancha!</NavLink>
+                        <NavLink className='text-light text-decoration-none my-1  py-auto fw-bold' onClick={handleShow}>Alquila tu cancha!</NavLink>
                         <NavLink to='/galeria' className='text-light text-decoration-none my-1 py-auto'>Galeria de Imagenes</NavLink>
                         <NavLink to='/productos' className='text-light text-decoration-none my-1 py-auto'>Productos</NavLink>
                         <NavLink to='/contacto' className='text-light text-decoration-none my-1 py-auto'>Contacto</NavLink>
@@ -81,6 +86,26 @@ const Footer = () => {
           </Row>
         </Container>
       </Navbar>
+      <Modal
+        show={show}
+        onHide={handleClose}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>
+            Debes loguearte para alquilar!
+            </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          A continuacion logueate!
+        </Modal.Body>
+        <Modal.Footer>
+          <Link to='/login'>
+            <Button className='btn-login1' onClick={handleClose}>
+              Login
+            </Button>
+          </Link>
+        </Modal.Footer>
+      </Modal>
     </>
   )
 }

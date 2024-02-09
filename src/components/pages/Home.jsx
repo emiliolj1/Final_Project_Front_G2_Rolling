@@ -5,8 +5,16 @@ import Image from 'react-bootstrap/Image';
 import Carousel from 'react-bootstrap/Carousel';
 import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom'
+import { useState } from 'react';
+import Modal from 'react-bootstrap/Modal';
 
 const Home = () => {
+
+  const [showModal, setShowModal] = useState(false);
+
+  const handleCloseModal = () => setShowModal(false);
+  const handleShowModal = () => setShowModal(true);
+
   return (
     <>
       <Container fluid className="mt-5 py-4 ">
@@ -26,8 +34,8 @@ const Home = () => {
           </Col>
           <Col xs={12} md={4} className="text-center my-auto">
             <h2>¿Queres alquilar una cancha como estas?</h2>
-            <Link to='/alquiler'>
-              <Button className='btn-login1  my-3'>
+            <Link>
+              <Button onClick={handleShowModal} className='btn-login1  my-3'>
                 <h4>Alquila tu Cancha!</h4>
               </Button>
             </Link>
@@ -61,7 +69,27 @@ const Home = () => {
           <CardProductos title={'titulo 6'} url={'https://picsum.photos/id/234/200'}/>
         </Row>
       </Container> */}
-    </>
+      <Modal
+      show={showModal}
+      onHide={handleCloseModal}
+      >
+      <Modal.Header closeButton>
+        <Modal.Title>
+          Debes loguearte para alquilar!
+          </Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        A continuacion logueate!
+      </Modal.Body>
+      <Modal.Footer>
+        <Link to='/login'>
+          <Button className='btn-login1' onClick={handleCloseModal}>
+            Login
+          </Button>
+        </Link>
+      </Modal.Footer>
+    </Modal>
+  </>
   )
 }
 
