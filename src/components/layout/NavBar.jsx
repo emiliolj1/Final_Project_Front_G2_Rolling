@@ -5,6 +5,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { PersonCircle } from 'react-bootstrap-icons';
+import { NavLink } from 'react-router-dom'
 
 import { useState } from 'react';
 
@@ -49,21 +50,21 @@ const Header = ({user, setUser}) => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="/alquiler">Alquila tu Cancha!</Nav.Link>
-              <NavDropdown title="+Más" id="basic-nav-dropdown">
-                <NavDropdown.Item href='/aboutUs'>
-                  Nosotros
+              <NavLink className='mt-2 me-3 text-light text-decoration-none' to="/">Home</NavLink>
+              <NavLink className='mt-2 me-3 text-light text-decoration-none' to='/alquiler'>Alquila tu Cancha!</NavLink>
+              <NavDropdown className='me-3' title="+Más" id="basic-nav-dropdown">
+                <NavDropdown.Item>
+                  <NavLink className='mt-2 text-light text-decoration-none' to='/aboutUs'>Nosotros</NavLink>
                 </NavDropdown.Item>
-                <NavDropdown.Item href='/contacto'>
-                  Contacto
+                <NavDropdown.Item >
+                  <NavLink className='mt-2 text-light text-decoration-none' to='/contacto'>Contacto</NavLink>
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href='/galeria'>
-                  Galeria de Imagenes
+                <NavDropdown.Item>
+                  <NavLink className='mt-2 text-light text-decoration-none' to="/galeria">Galeria de Imagenes</NavLink>
                 </NavDropdown.Item>
               </NavDropdown>
-              <Nav.Link href='/productos'>Productos</Nav.Link>
+              <NavLink className='mt-2 text-light text-decoration-none' to='/productos'>Productos</NavLink>
             </Nav>
             {
               user && userResult.isLogged ? 
@@ -80,9 +81,9 @@ const Header = ({user, setUser}) => {
                             user && userResult.userInfo.role === 'admin'
                             ? 
                             <>
-                                <Nav.Link href='/admin'>Administracion</Nav.Link>
+                                <NavLink className='mt-2 text-light text-decoration-none' to='/admin'>Administracion</NavLink>
                                 <hr/>
-                                <Button className='btn-login1' onClick={() => handleLogout}>Cerrar Sesion</Button>
+                                <Button variant='danger' onClick={() => handleLogout}>Cerrar Sesion</Button>
                               </>
                             : 
                               <>
