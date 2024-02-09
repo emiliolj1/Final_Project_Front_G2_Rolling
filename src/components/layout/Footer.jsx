@@ -1,6 +1,3 @@
-// Must include a button or a link that leads to another page detailing the repository used, GITHUB.
-// Must include a button or a link that leads to a page to report problems, etc.
-// It must be the color palette used in the trello.
 import { CheckSquare, Facebook, Instagram, Twitter } from 'react-bootstrap-icons'
 import Form from 'react-bootstrap/Form'
 import Container from 'react-bootstrap/Container'
@@ -9,9 +6,18 @@ import Navbar from 'react-bootstrap/Navbar'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import Button from 'react-bootstrap/Button'
+import { NavLink, Link } from 'react-router-dom'
+import { useState } from 'react';
+import Modal from 'react-bootstrap/Modal';
 
 
 const Footer = () => {
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
     <>
       <Navbar expand="lg" className="navColor" data-bs-theme='dark'>
@@ -23,31 +29,33 @@ const Footer = () => {
                   <Row>
                     <Col xs={12} sm={4}>
                       <Nav className='flex-column text-center'>
-                      <img
-                       alt=""
-                       src="img/logo_transparent.png"
-                       width="20"
-                       height="120"
-                       className="col-12 col-xs d-flex align-items-center"
-                      />
+                      <Link to='/home'>
+                        <img
+                          alt=""
+                          src="img/logo_transparent.png"
+                          width="20"
+                          height="120"
+                          className="col-12 col-xs d-flex align-items-center"
+                        />
+                      </Link>
                       <p className='text-light text-center copyRight mb-0'>Copyright © 2024 Sale Fulbo'</p>
                       <p className='text-light text-center copyRight'>Rolling Team.</p>
                       </Nav>
                     </Col>
                     <Col xs={5} sm={2} className='my-auto'>
                       <Nav className='flex-column text-center'>
-                        <Nav.Link className='py-auto'><Instagram/> Instagram</Nav.Link>
-                        <Nav.Link className='py-auto'><Facebook/> Facebook</Nav.Link>
-                        <Nav.Link className='py-auto'><Twitter/> X (Twitter)</Nav.Link>
+                        <NavLink className='text-light text-decoration-none my-2 py-auto'><Instagram/> Instagram</NavLink>
+                        <NavLink className='text-light text-decoration-none my-2 py-auto'><Facebook/> Facebook</NavLink>
+                        <NavLink className='text-light text-decoration-none my-2 py-auto'><Twitter/> X (Twitter)</NavLink>
                       </Nav>
                     </Col>
                     <Col xs={7} sm={6}>
                       <Nav className='flex-column text-center'>
-                        <Nav.Link href='/alquiler' className='py-auto fw-bold'>Alquila tu cancha!</Nav.Link>
-                        <Nav.Link href='/galeria' className='py-auto'>Galeria de Imagenes</Nav.Link>
-                        <Nav.Link href='/productos' className='py-auto'>Productos</Nav.Link>
-                        <Nav.Link href='/contacto' className='py-auto'>Contacto</Nav.Link>
-                        <Nav.Link href='/aboutUs' className='py-auto'>Sobre Nosotros</Nav.Link>
+                        <NavLink className='text-light text-decoration-none my-1  py-auto fw-bold' onClick={handleShow}>Alquila tu cancha!</NavLink>
+                        <NavLink to='/galeria' className='text-light text-decoration-none my-1 py-auto'>Galeria de Imagenes</NavLink>
+                        <NavLink to='/productos' className='text-light text-decoration-none my-1 py-auto'>Productos</NavLink>
+                        <NavLink to='/contacto' className='text-light text-decoration-none my-1 py-auto'>Contacto</NavLink>
+                        <NavLink to='/aboutUs' className='text-light text-decoration-none my-1 py-auto'>Sobre Nosotros</NavLink>
                       </Nav>
                     </Col>
                   </Row>
@@ -78,6 +86,26 @@ const Footer = () => {
           </Row>
         </Container>
       </Navbar>
+      <Modal
+        show={show}
+        onHide={handleClose}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>
+            Debes loguearte para alquilar!
+            </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          A continuacion logueate!
+        </Modal.Body>
+        <Modal.Footer>
+          <Link to='/login'>
+            <Button className='btn-login1' onClick={handleClose}>
+              Login
+            </Button>
+          </Link>
+        </Modal.Footer>
+      </Modal>
     </>
   )
 }

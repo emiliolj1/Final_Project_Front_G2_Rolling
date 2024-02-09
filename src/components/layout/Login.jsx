@@ -42,7 +42,7 @@ function Login({setUser}) {
       <div className='login-box'>
         <Form onSubmit={handleSubmit((data) => onSubmit(data))}>
           <h1 className='text-light text-center'>Logueate</h1>
-          <FormGroup className='user-box mt-5 mb-3'>
+          <FormGroup className='user-box mt-5 mb-2'>
             <Form.Label className='m-0'>Email</Form.Label>
             <Form.Control
               type='email'
@@ -56,9 +56,8 @@ function Login({setUser}) {
             />
             <Form.Control.Feedback type='invalid'>{errors.email?.message}</Form.Control.Feedback>
           </FormGroup>
-          <p className='text-light my-2'>Olvidaste tu contraseña? <Link to='/change' className='green-text'>Cambiala!</Link></p>
-          <FormGroup className='user-box mb-5'>
-            <Form.Label>
+          <FormGroup className='user-box'>
+            <Form.Label className='m-0'>
               Contraseña
             </Form.Label>
             <Form.Control
@@ -74,7 +73,8 @@ function Login({setUser}) {
             />
             <Form.Control.Feedback type="invalid">{errors.password?.message}</Form.Control.Feedback>
           </FormGroup>
-          <Button type='submit' className='mx-auto btn-login'>
+          <p className='text-light'>Olvidaste tu contraseña? <Link to='/change' className='green-text'>Cambiala!</Link></p>
+          <Button type='submit' className='my-4 mx-auto btn-login'>
             Login
           </Button>
           <p className='text-center text-light my-2'>No tienes cuenta? <Link to='/register' className='green-text'>Registrate!</Link></p>
