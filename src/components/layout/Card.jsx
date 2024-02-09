@@ -11,7 +11,7 @@ const CardProductos = ({key, title, url}) => {
       <Card className='cardXD'>
         <Card.Body className='bg'>
           <Card.Img variant="top" src= {url}/>
-          <Card.Title>{title}</Card.Title>
+          <Card.Title className='mt-3'>{title}</Card.Title>
           {/* <Button className='btn-login1 mb-0 mt-auto'>Ver mas!</Button> */}
         </Card.Body>
         <div className='blob'/>
