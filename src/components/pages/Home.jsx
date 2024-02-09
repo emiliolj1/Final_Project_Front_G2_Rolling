@@ -4,6 +4,7 @@ import Col from 'react-bootstrap/Col'
 import Image from 'react-bootstrap/Image';
 import Carousel from 'react-bootstrap/Carousel';
 import Button from 'react-bootstrap/Button'
+import { Link } from 'react-router-dom'
 
 const Home = () => {
   return (
@@ -12,22 +13,24 @@ const Home = () => {
         <Row className="mx-auto p-3 cont-carrousel">
           <Col xs={12} md={8} className="p-2">
             <Carousel>
-              <Carousel.Item interval={2000}>
+              <Carousel.Item interval={5000}>
                 <Image src="https://images.unsplash.com/photo-1556056504-dc77ff4d11b0?q=80&w=1454&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" rounded fluid/>
               </Carousel.Item>
-              <Carousel.Item interval={2000}>
+              <Carousel.Item interval={5000}>
                 <Image src="https://images.unsplash.com/photo-1635400759226-a93fdb204ba1?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" rounded fluid/>
               </Carousel.Item>
-              <Carousel.Item interval={2000}>
+              <Carousel.Item interval={5000}>
                 <Image src="https://images.unsplash.com/photo-1521579971123-1192931a1452?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" rounded fluid/>
               </Carousel.Item>
             </Carousel>
           </Col>
           <Col xs={12} md={4} className="text-center my-auto">
             <h2>¿Queres alquilar una cancha como estas?</h2>
-            <Button href='/alquiler' className='btn-login1  my-3'>
-              <h4>Alquila tu Cancha!</h4>
-            </Button>
+            <Link to='/alquiler'>
+              <Button className='btn-login1  my-3'>
+                <h4>Alquila tu Cancha!</h4>
+              </Button>
+            </Link>
           </Col>
         </Row>
       </Container>
@@ -39,7 +42,9 @@ const Home = () => {
           <Col xs={12} md={6} className="text-center py-2 my-auto">
             <h1 className="fw-bold mb-4">Sale Fulbo?</h1>
             <h5 className="fw-light">Tu destino para vivir la pasión del fútbol. Ofrecemos canchas de primera calidad para partidos emocionantes con amigos o competiciones serias. Nuestro ambiente acogedor y nuestras instalaciones modernas te garantizan una experiencia inigualable en cada visita.</h5>
-            <Button className="my-4 btn-login2" href="/canchas">Conoce nuestras canchas!</Button>
+            <Link to='/canchas'>
+              <Button className="my-4 btn-login2">Conoce nuestras canchas!</Button>
+            </Link>
           </Col>
         </Row>
       </Container>
