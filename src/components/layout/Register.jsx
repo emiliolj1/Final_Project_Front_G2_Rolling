@@ -40,7 +40,7 @@ const Register = () => {
         <Container className='login-box'>
           <Form onSubmit={handleSubmit((data) => onSubmit(data))}>
             <h1 className='text-light text-center'>Registrate!</h1>
-            <FormGroup className='user-box mt-5 mb-3'>
+            <FormGroup className='user-box mt-5 mb-1'>
               <Form.Label className='m-0'>Nombre</Form.Label>
               <Form.Control
                 type='text'
@@ -54,7 +54,7 @@ const Register = () => {
               />
               <Form.Control.Feedback type='invalid'>{errors.Name?.message}</Form.Control.Feedback>
             </FormGroup>
-            <FormGroup className='user-box mb-3'>
+            <FormGroup className='user-box mb-1'>
               <Form.Label className='m-0'>Email</Form.Label>
               <Form.Control
                 type='email'
@@ -68,8 +68,8 @@ const Register = () => {
               />
               <Form.Control.Feedback type='invalid'>{errors.email?.message}</Form.Control.Feedback>
             </FormGroup>
-            <FormGroup className='user-box mb-5'>
-              <Form.Label>
+            <FormGroup className='user-box'>
+              <Form.Label className='m-0'>
                 Contraseña
               </Form.Label>
               <Form.Control
@@ -85,10 +85,10 @@ const Register = () => {
               />
               <Form.Control.Feedback type="invalid">{errors.password?.message}</Form.Control.Feedback>
             </FormGroup>
-            <Button type='submit' className='mx-auto btn-login'>
+            <Button type='submit' className='my-4 mx-auto btn-login'>
               Registrarse
             </Button>
-            <p className='text-center text-light my-2'>Ya tienes una cuenta? <Link to='/login' className='green-text'>Ingresa aqui!</Link></p>
+            <p className='text-center text-light'>Ya tienes una cuenta? <Link to='/login' className='green-text'>Ingresa aqui!</Link></p>
           </Form>
         </Container>
       </Container>

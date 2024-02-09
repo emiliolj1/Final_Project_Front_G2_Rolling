@@ -33,7 +33,7 @@ const ChangePassword = () => {
 
   return (
     <>
-      <Container className='loginContainer'>
+      <Container className='loginContainer mt-5'>
         <Container className='login-box'>
           <Form onSubmit={handleSubmit((data) => onSubmit(data))}>
             <h1 className='text-light text-center'>¿Olvidaste tu contraseña?</h1>
