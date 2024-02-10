@@ -11,8 +11,9 @@ import { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 
 
-const Footer = () => {
+const Footer = ({user, setUser}) => {
 
+  const userResult = user;
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -51,7 +52,12 @@ const Footer = () => {
                     </Col>
                     <Col xs={7} sm={6}>
                       <Nav className='flex-column text-center'>
-                        <NavLink className='text-light text-decoration-none my-1  py-auto fw-bold' onClick={handleShow}>Alquila tu cancha!</NavLink>
+                        {
+                          user && userResult.isLogged ?
+                          <NavLink to='/alquiler' className='text-light text-decoration-none my-1  py-auto fw-bold'>Alquila tu cancha!</NavLink>
+                          :
+                          <NavLink className='text-light text-decoration-none my-1  py-auto fw-bold' onClick={handleShow}>Alquila tu cancha!</NavLink>
+                        }
                         <NavLink to='/galeria' className='text-light text-decoration-none my-1 py-auto'>Galeria de Imagenes</NavLink>
                         <NavLink to='/productos' className='text-light text-decoration-none my-1 py-auto'>Productos</NavLink>
                         <NavLink to='/contacto' className='text-light text-decoration-none my-1 py-auto'>Contacto</NavLink>

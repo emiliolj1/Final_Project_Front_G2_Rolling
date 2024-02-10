@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import Table from 'react-bootstrap/Table';
 import Form from 'react-bootstrap/Form'
 import { Container, Image, Row } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const admin = () => {
     const [CreateproductShow, setCShow] = useState(false);
@@ -312,9 +313,11 @@ const admin = () => {
         
 
         <Container fluid className="text-center mb-5">
-           <Button href="/" className="fw-bold fs-4 btn-login1">
-              Volver al Inicio
-           </Button>
+           <Link to='/home'>
+            <Button className="fw-bold fs-4 btn-login1">
+                Volver al Inicio
+            </Button>
+           </Link>
         </Container>
 
         <Modal 
@@ -389,7 +392,6 @@ const admin = () => {
                 <Button variant="secondary" onClick={handleClose}>
                     Close
                 </Button>
-                
             </Modal.Footer>
         </Modal>
 
