@@ -71,7 +71,6 @@ const Header = ({user, setUser}) => {
                   <NavLink className='mt-2 text-light text-decoration-none' to="/galeria">Galeria de Imagenes</NavLink>
                 </NavDropdown.Item>
               </NavDropdown>
-              <NavLink className='mt-2 text-light text-decoration-none' to='/productos'>Productos</NavLink>
             </Nav>
             {
               user && userResult.isLogged ? 

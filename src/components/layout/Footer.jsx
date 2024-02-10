@@ -56,12 +56,11 @@ const Footer = ({user, setUser}) => {
                           user && userResult.isLogged ?
                           <NavLink to='/alquiler' className='text-light text-decoration-none my-1  py-auto fw-bold'>Alquila tu cancha!</NavLink>
                           :
-                          <NavLink className='text-light text-decoration-none my-1  py-auto fw-bold' onClick={handleShow}>Alquila tu cancha!</NavLink>
+                          <NavLink className='text-light text-decoration-none my-2 py-auto fw-bold' onClick={handleShow}>Alquila tu cancha!</NavLink>
                         }
-                        <NavLink to='/galeria' className='text-light text-decoration-none my-1 py-auto'>Galeria de Imagenes</NavLink>
-                        <NavLink to='/productos' className='text-light text-decoration-none my-1 py-auto'>Productos</NavLink>
-                        <NavLink to='/contacto' className='text-light text-decoration-none my-1 py-auto'>Contacto</NavLink>
-                        <NavLink to='/aboutUs' className='text-light text-decoration-none my-1 py-auto'>Sobre Nosotros</NavLink>
+                        <NavLink to='/galeria' className='text-light text-decoration-none my-2 py-auto'>Galeria de Imagenes</NavLink>
+                        <NavLink to='/contacto' className='text-light text-decoration-none my-2 py-auto'>Contacto</NavLink>
+                        <NavLink to='/aboutUs' className='text-light text-decoration-none my-2 py-auto'>Sobre Nosotros</NavLink>
                       </Nav>
                     </Col>
                   </Row>

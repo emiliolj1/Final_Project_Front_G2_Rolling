@@ -6,8 +6,7 @@ import ChangePassword from "../layout/ChangePassword"
 import Galeria from "../pages/Galeria"
 import Nosotros from "../pages/Sobrenosotros"
 import Contacto from "../pages/Contacto"
-import Productos from '../utilities/ProductCard'
-import Canchas from '../utilities/Canchacard'
+import Canchas from '../pages/Canchas'
 import ProductCard from "../utilities/ProductCard"
 
 
@@ -23,7 +22,6 @@ const PublicRoutes = ({setUser}) => {
           <Route path="/change" element={<ChangePassword/>}/>
           <Route exact path='/contacto' element={<Contacto/>}/>
           <Route exact path='/galeria' element={<Galeria/>}/>
-          <Route exact path='/productos' element={<Productos/>}/>
           <Route exact path='/alquiler' element={<Navigate to='/login'/>}/>
           <Route exact path='/canchas' element={<Canchas/>}/>
           <Route exact path='/productDetail' element={<ProductCard/>}/>
