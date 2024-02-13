@@ -2,6 +2,7 @@ import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row"
 import Col from 'react-bootstrap/Col'
 import Image from 'react-bootstrap/Image';
+import { Link } from 'react-router-dom'
 
 const Sobrenosotros = () => {
   return (
@@ -40,8 +41,8 @@ const Sobrenosotros = () => {
         <Col className="pe-2 text-center" xs={12} md={6}>
           <h2 className="mb-4">Nuestro equipo de trabajo!</h2>
           <p className="mb-4">Nuesto grupo de trabajo se compone de estudiantes que se dedican al desarrollo web!</p>
-          <p className="mb-4">Link del repositorio Front: <a className="green-text" href="https://github.com/emiliolj1/Final_Project_Back_G2_Rolling">Clickea aqui!</a></p>
-          <p >link del repositorio Back: <a className="green-text" href="https://github.com/emiliolj1/Final_Project_Back_G2_Rolling">Clickea aqui!</a></p>
+          <p className="mb-4">Link del repositorio Front: <Link className="green-text" to="https://github.com/emiliolj1/Final_Project_Back_G2_Rolling">Clickea aqui!</Link></p>
+          <p>Link del repositorio Back: <Link className="green-text" to="https://github.com/emiliolj1/Final_Project_Back_G2_Rolling">Clickea aqui!</Link></p>
         </Col>
         </Row>
       </Container>

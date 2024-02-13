@@ -5,14 +5,20 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { PersonCircle } from 'react-bootstrap-icons';
-
+import { NavLink, Link } from 'react-router-dom'
 import { useState } from 'react';
+import Modal from 'react-bootstrap/Modal';
 
 
 const Header = ({user, setUser}) => {
 
   const userResult = user;
-  console.log(userResult);
+  console.log(userResult)
+
+  const [showModal, setShowModal] = useState(false);
+
+  const handleCloseModal = () => setShowModal(false);
+  const handleShowModal = () => setShowModal(true);
   
   const [show, setShow] = useState(false);
 
@@ -42,28 +48,29 @@ const Header = ({user, setUser}) => {
     <>
       <Navbar expand="lg" className="navColor" data-bs-theme="dark" fixed='top'>
         <Container className=''>
-          <Nav.Item>
-            
-          </Nav.Item>
-          <Navbar.Brand href="/home" className='fw-bold'>Sale Fulbo'?</Navbar.Brand>
+          <Navbar.Brand className='fw-bold'><Link to='/home' className='text-light text-decoration-none'>Sale Fulbo'?</Link></Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="/alquiler">Alquila tu Cancha!</Nav.Link>
-              <NavDropdown title="+Más" id="basic-nav-dropdown">
-                <NavDropdown.Item href='/aboutUs'>
-                  Nosotros
+              <NavLink className='mt-2 me-3 text-light text-decoration-none' to="/home">Home</NavLink>
+              {
+                user && userResult.isLogged ?
+                <NavLink to='/alquiler' className='mt-2 me-3 text-light text-decoration-none'>Alquila tu Cancha!</NavLink>
+                :
+                <NavLink className='mt-2 me-3 text-light text-decoration-none' onClick={handleShowModal}>Alquila tu Cancha!</NavLink>
+              }
+              <NavDropdown className='me-3' title="+Más" id="basic-nav-dropdown">
+                <NavDropdown.Item>
+                  <NavLink className='mt-2 text-light text-decoration-none' to='/aboutUs'>Nosotros</NavLink>
                 </NavDropdown.Item>
-                <NavDropdown.Item href='/contacto'>
-                  Contacto
+                <NavDropdown.Item >
+                  <NavLink className='mt-2 text-light text-decoration-none' to='/contacto'>Contacto</NavLink>
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href='/galeria'>
-                  Galeria de Imagenes
+                <NavDropdown.Item>
+                  <NavLink className='mt-2 text-light text-decoration-none' to="/galeria">Galeria de Imagenes</NavLink>
                 </NavDropdown.Item>
               </NavDropdown>
-              <Nav.Link href='/productos'>Productos</Nav.Link>
             </Nav>
             {
               user && userResult.isLogged ? 
@@ -80,14 +87,16 @@ const Header = ({user, setUser}) => {
                             user && userResult.userInfo.role === 'admin'
                             ? 
                             <>
-                                <Nav.Link href='/admin'>Administracion</Nav.Link>
+                                <NavLink className='mt-2 text-light text-decoration-none' to='/admin'>Administracion</NavLink>
                                 <hr/>
-                                <Button className='btn-login1' onClick={() => handleLogout}>Cerrar Sesion</Button>
+                                <Button variant='danger' onClick={handleLogout}>Cerrar Sesion</Button>
                               </>
                             : 
                               <>
                                 <hr/>
-                                <Button className='btn-login1' onClick={() => handleLogout}>Cerrar Sesion</Button>
+                                <Button variant='danger' onClick={handleLogout}>
+                                  Cerrar Sesion
+                                </Button>
                               </>
                           }
                         </Nav>
@@ -95,13 +104,35 @@ const Header = ({user, setUser}) => {
                     </Offcanvas>
                   </>
               :
-              <Button href='/login' className='btn-login1'>
+              <Link to='/login'>
+                <Button className='btn-login1'>
                     Login
-              </Button>
+                </Button>
+              </Link>
             }
           </Navbar.Collapse>
         </Container>
       </Navbar>
+      <Modal
+        show={showModal}
+        onHide={handleCloseModal}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>
+            Debes loguearte para alquilar!
+            </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          A continuacion logueate!
+        </Modal.Body>
+        <Modal.Footer>
+          <Link to='/login'>
+            <Button className='btn-login1' onClick={handleCloseModal}>
+              Login
+            </Button>
+          </Link>
+        </Modal.Footer>
+      </Modal>
     </>
   )
 }
