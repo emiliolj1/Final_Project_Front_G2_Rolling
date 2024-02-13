@@ -8,6 +8,8 @@ import PrivateRoutes from './components/routers/PrivateRoutes'
 import PublicRoutes from "./components/routers/PublicRoutes";
 import NavBar from './components/layout/NavBar'
 import Footer from './components/layout/Footer'
+import Bookin from './components/layout/Bookin'
+import Admin from './components/layout/admin'
 
 
 function App() {
@@ -38,7 +40,8 @@ function App() {
   
   return (
     <>
-      {
+    <Admin /> 
+      {/* {
         user.isLogged ?
         <BrowserRouter>
           <NavBar user={user} setUser={setUser}/>
@@ -51,7 +54,7 @@ function App() {
             <PublicRoutes setUser={setUser}/>
           <Footer/>
         </BrowserRouter>
-      }
+      } */}
     </>
   )
 }
