@@ -10,7 +10,6 @@ import Canchas from '../pages/Canchas'
 
 const PrivateRoutes = ({user}) => {
 
-  const userResult = user;
 
   return (
     <>
