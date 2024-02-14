@@ -232,7 +232,7 @@ const admin = () => {
           </div> 
           <Container fluid>
             <h4 className="fw-bold text-light mx-3 text-decoration-underline">Usuarios registrados</h4>
-            <Row className="row justify-content-center mt-5 mx-3">
+            <Row className="justify-content-center mt-5 mx-3">
               <Table className='text-center' striped bordered hover responsive="sm">
                 <thead>
                   <tr>
@@ -257,7 +257,7 @@ const admin = () => {
               </Table>
             </Row>
             <h4 className="mt-5 fw-bold text-light mx-3 text-decoration-underline">Productos</h4>
-            <Row className="row justify-content-center mt-5 mx-3">
+            <Row className="justify-content-center mt-5 mx-3">
               <Table striped bordered hover responsive="sm" className='text-center'>
                 <thead>
                   <tr>
