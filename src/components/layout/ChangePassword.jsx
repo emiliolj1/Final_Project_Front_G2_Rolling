@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form';
 import { Container, Form, Button, FormGroup} from 'react-bootstrap'
 import Modal from 'react-bootstrap/Modal';
 import { useState } from 'react';
-import '../styles/Register.css'
+import '../styles/ChangePassword.css'
 import { Link } from 'react-router-dom';
 
 const ChangePassword = () => {
@@ -33,13 +33,15 @@ const ChangePassword = () => {
 
   return (
     <>
-      <Container className='loginContainer mt-5'>
-        <Container className='login-box'>
+      <Container className='changeContainer mt-5'>
+        <div className='cont-change'>
           <Form onSubmit={handleSubmit((data) => onSubmit(data))}>
-            <h1 className='text-light text-center'>¿Olvidaste tu contraseña?</h1>
-            <FormGroup className='user-box mt-5 mb-3'>
+            <h1 className='text-light text-center'>Cambia tu</h1>
+            <h1 className='text-light text-center'>contraseña!</h1>
+            <FormGroup className='label-change mt-5 mb-3'>
               <Form.Label className='m-0'>Nombre</Form.Label>
               <Form.Control
+                className='input-change'
                 type='text'
                 placeholder='Ingresa tu nombre...'
                 {...register('Name', {
@@ -51,9 +53,10 @@ const ChangePassword = () => {
               />
               <Form.Control.Feedback type='invalid'>{errors.Name?.message}</Form.Control.Feedback>
             </FormGroup>
-            <FormGroup className='user-box mb-3'>
+            <FormGroup className='label-change mb-3'>
               <Form.Label className='m-0'>Email</Form.Label>
               <Form.Control
+                className='input-change'
                 type='email'
                 placeholder='Ingresa tu email...'
                 {...register('email', {
@@ -65,11 +68,12 @@ const ChangePassword = () => {
               />
               <Form.Control.Feedback type='invalid'>{errors.email?.message}</Form.Control.Feedback>
             </FormGroup>
-            <FormGroup className='user-box mb-5'>
+            <FormGroup className='label-change mb-5'>
               <Form.Label>
                 Nueva Contraseña
               </Form.Label>
               <Form.Control
+                className='input-change'
                 type='password'
                 placeholder="Ingresa tu contraseña..."
                 {...register('newPassword', {
@@ -82,12 +86,12 @@ const ChangePassword = () => {
               />
               <Form.Control.Feedback type="invalid">{errors.password?.message}</Form.Control.Feedback>
             </FormGroup>
-            <Button type='submit' className='mx-auto btn-login'>
+            <Button type='submit' className='changeBtn mx-auto'>
               Cambiar
             </Button>
             <p className='text-center text-light my-2'>Ya tienes una cuenta? <Link to='/login' className='green-text'>Ingresa aqui!</Link></p>
           </Form>
-        </Container>
+        </div>
       </Container>
       <Modal
         show={showLogged}

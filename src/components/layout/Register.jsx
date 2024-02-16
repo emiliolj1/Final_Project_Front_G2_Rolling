@@ -36,13 +36,14 @@ const Register = () => {
 
   return(
     <>
-      <Container className='loginContainer'>
-        <Container className='login-box'>
+      <Container className='pt-5 registerContainer'>
+        <div className='cont-register'>
           <Form onSubmit={handleSubmit((data) => onSubmit(data))}>
             <h1 className='text-light text-center'>Registrate!</h1>
-            <FormGroup className='user-box mt-5 mb-1'>
+            <FormGroup className='label-register mt-5 mb-1'>
               <Form.Label className='m-0'>Nombre</Form.Label>
               <Form.Control
+                className='input-register'
                 type='text'
                 placeholder='Ingresa tu nombre...'
                 {...register('Name', {
@@ -54,9 +55,10 @@ const Register = () => {
               />
               <Form.Control.Feedback type='invalid'>{errors.Name?.message}</Form.Control.Feedback>
             </FormGroup>
-            <FormGroup className='user-box mb-1'>
+            <FormGroup className='label-register mb-1'>
               <Form.Label className='m-0'>Email</Form.Label>
               <Form.Control
+                className='input-register'
                 type='email'
                 placeholder='Ingresa tu email...'
                 {...register('email', {
@@ -68,11 +70,12 @@ const Register = () => {
               />
               <Form.Control.Feedback type='invalid'>{errors.email?.message}</Form.Control.Feedback>
             </FormGroup>
-            <FormGroup className='user-box'>
+            <FormGroup className='label-register'>
               <Form.Label className='m-0'>
                 Contraseña
               </Form.Label>
               <Form.Control
+                className='input-register'
                 type='password'
                 placeholder="Ingresa tu contraseña..."
                 {...register('password', {
@@ -85,12 +88,12 @@ const Register = () => {
               />
               <Form.Control.Feedback type="invalid">{errors.password?.message}</Form.Control.Feedback>
             </FormGroup>
-            <Button type='submit' className='my-4 mx-auto btn-login'>
+            <Button type='submit' className='registerBtn my-4 mx-auto'>
               Registrarse
             </Button>
             <p className='text-center text-light'>Ya tienes una cuenta? <Link to='/login' className='green-text'>Ingresa aqui!</Link></p>
           </Form>
-        </Container>
+        </div>
       </Container>
       <Modal
         show={showLogged}

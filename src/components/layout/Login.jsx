@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { Container, Form, Button, FormGroup} from 'react-bootstrap'
 import { jwtDecode } from "jwt-decode"
-import '../styles/login.css'
+import '../styles/Login.css'
 import { Link } from 'react-router-dom';
 
 
@@ -38,13 +38,14 @@ function Login({setUser}) {
 
 
   return (
-    <Container className='loginContainer'>
-      <div className='login-box'>
+    <Container className='loginContainer pt-5'>
+      <div className='cont-login'>
         <Form onSubmit={handleSubmit((data) => onSubmit(data))}>
           <h1 className='text-light text-center'>Logueate</h1>
-          <FormGroup className='user-box mt-5 mb-2'>
+          <FormGroup className='label-login mt-5 mb-2'>
             <Form.Label className='m-0'>Email</Form.Label>
             <Form.Control
+              className='input-login'
               type='email'
               placeholder='Ingresa tu email...'
               {...register('email', {
@@ -56,11 +57,12 @@ function Login({setUser}) {
             />
             <Form.Control.Feedback type='invalid'>{errors.email?.message}</Form.Control.Feedback>
           </FormGroup>
-          <FormGroup className='user-box'>
+          <FormGroup className='label-login'>
             <Form.Label className='m-0'>
               Contraseña
             </Form.Label>
             <Form.Control
+              className='input-login'
               type='password'
               placeholder="Ingresa tu contraseña..."
               {...register('password', {
@@ -73,8 +75,8 @@ function Login({setUser}) {
             />
             <Form.Control.Feedback type="invalid">{errors.password?.message}</Form.Control.Feedback>
           </FormGroup>
-          <p className='text-light'>Olvidaste tu contraseña? <Link to='/change' className='green-text'>Cambiala!</Link></p>
-          <Button type='submit' className='my-4 mx-auto btn-login'>
+          <p className='text-light fw-light fs-6'>Olvidaste tu contraseña? <Link to='/change' className='green-text'>Cambiala!</Link></p>
+          <Button type='submit' className='my-4 mx-auto loginBtn'>
             Login
           </Button>
           <p className='text-center text-light my-2'>No tienes cuenta? <Link to='/register' className='green-text'>Registrate!</Link></p>
