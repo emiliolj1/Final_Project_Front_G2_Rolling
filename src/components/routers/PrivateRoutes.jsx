@@ -10,6 +10,7 @@ import Canchas from '../pages/Canchas'
 
 const PrivateRoutes = ({user}) => {
 
+  const userResult = user;
 
   return (
     <>
@@ -21,7 +22,13 @@ const PrivateRoutes = ({user}) => {
         <Route exact path='/galeria' element={<Galeria/>}/>
         <Route exact path='/alquiler' element={<Bookin/>}/>
         <Route exact path='/canchas' element={<Canchas/>}/>
-        <Route exact path='/admin' element={<Admin/>}/>
+        {
+          user && userResult.userInfo.Role !== 'client'
+          ?
+            <Route exact path='/admin' element={<Admin/>}/>
+          :
+          <Route exact path='/admin' element={<Navigate to='/'/>}/>
+        }
         
         <Route path='*' element={<Navigate to='/'/>}/>
       </Routes>

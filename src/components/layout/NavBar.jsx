@@ -83,7 +83,7 @@ const Header = ({user, setUser}) => {
                       <Offcanvas.Body>
                         <Nav defaultActiveKey="/home" className="flex-column fs-6 fw-bold">
                           {
-                            user && userResult.userInfo.role !== 'client'
+                            user && userResult.userInfo.Role !== 'client'
                             ? 
                               <>
                                 <NavLink className='mt-2 text-light text-decoration-none' to='/admin'>Administracion</NavLink>
