@@ -34,8 +34,14 @@
   color: white;
 }
 
+.input-login:valid,
+.input-login:invalid{
+  background-color:transparent;
+  color: rgb(117, 115, 115);
+}
+
 .input-login::placeholder{
-  color: #beb9b9;
+  color: rgb(73, 73, 73);
 }
 
 .loginBtn{
