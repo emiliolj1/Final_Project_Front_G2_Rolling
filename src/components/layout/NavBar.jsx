@@ -33,7 +33,6 @@ const Header = ({user, setUser}) => {
     if(response.status === 200){
       const data = await response.json();
       console.log(data);
-      console.log('crack de las tinieblas');
       localStorage.clear();
       setUser({
         token: null, 
@@ -84,9 +83,9 @@ const Header = ({user, setUser}) => {
                       <Offcanvas.Body>
                         <Nav defaultActiveKey="/home" className="flex-column fs-6 fw-bold">
                           {
-                            user && userResult.userInfo.role === 'admin'
+                            user && userResult.userInfo.Role !== 'client'
                             ? 
-                            <>
+                              <>
                                 <NavLink className='mt-2 text-light text-decoration-none' to='/admin'>Administracion</NavLink>
                                 <hr/>
                                 <Button variant='danger' onClick={handleLogout}>Cerrar Sesion</Button>

@@ -47,7 +47,6 @@ const Canchacard = () => {
               </Col>
             </Row>
           </Container>
-          
         ))
       }
       </Container>
