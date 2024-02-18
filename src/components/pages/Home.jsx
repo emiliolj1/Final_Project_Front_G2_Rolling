@@ -77,7 +77,7 @@ const Home = () => {
             <h1 className="fw-bold mb-4">Sale Fulbo?</h1>
             <h5 className="fw-light">Tu destino para vivir la pasión del fútbol. Ofrecemos canchas de primera calidad para partidos emocionantes con amigos o competiciones serias. Nuestro ambiente acogedor y nuestras instalaciones modernas te garantizan una experiencia inigualable en cada visita.</h5>
             <Link to='/canchas'>
-              <Button className="my-4 btn-login2">Conoce nuestras canchas!</Button>
+              <Button className="my-4 btn-home">Conoce nuestras canchas!</Button>
             </Link>
           </Col>
         </Row>
