@@ -6,12 +6,13 @@ import Table from 'react-bootstrap/Table';
 import Form from 'react-bootstrap/Form'
 import { Container, Image, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import 'bootstrap-icons/font/bootstrap-icons.css'
+
 
 const admin = () => {
     const [CreateproductShow, setCShow] = useState(false);
-    const [deleteProductShow, setDShow] = useState(false);
     const [CreateCanchaShow, setCCShow] = useState(false);
-    const [deleteCanchaShow, setDCShow] = useState(false);
+    const [EditProductShow, setCCCShow] = useState(false);
     const [users, setUsers] = useState([]);
     const [products, setProducts] = useState([]);
     const [canchas, setCanchas] = useState([])
@@ -19,6 +20,7 @@ const admin = () => {
 
     const handleClose = () => {
         setCShow(false);
+        setCCCShow(false);
         setDShow(false);
         setCCShow(false);
         setDCShow(false);
@@ -143,11 +145,28 @@ const admin = () => {
           console.log('Error cambiando el rol del usuario', error);
         }
       };
+
+      const userDisable = async (userEmail) => {
+        try {
+          const response = await fetch(`http://localHost:4000/admin/`, {
+            method: 'POST',
+            headers: { 'Content-type': 'application/json' },
+            credentials: 'include',
+            body: JSON.stringify({ email: userEmail })
+          });
+          const responseData = await response.json();
+          console.log(responseData);
+          // Vuelve a cargar la lista de usuarios después de cambiar el rol
+          getUsers();
+        } catch (error) {
+          console.log('Error al inhabilitar el usuario', error);
+        }
+      };
      
 
       const deleteUser = async (_id) => {
         try {
-            const response = await fetch(`http://localhost:4000/users/${_id}`,{
+            const response = await fetch(`http://localhost:4000/admin/deleteUser/${_id}`,{
                 method:'DELETE',
                 credentials:'include'
             });
@@ -161,15 +180,37 @@ const admin = () => {
     }
 
 
-    const CreateProduct = async () => {
+    const CreateProduct = async (data) => {
         try {
-            const response = await fetch(`http://localhost:4000/products`,{
+            console.log(data)
+            const response = await fetch(`http://localhost:4000/admin/createProduct`,{
                 method:'POST',
                 headers:{'Content-type':'application/json'},
+                body: JSON.stringify(data),
                 credentials:'include'
             })
             const responseData = await response.json()
             console.log(responseData)
+            console.log(data)
+            getProducts();
+            handleClose();  
+        } catch (error) {
+            console.log('error creando el producto', error);
+        }
+    }
+
+    const EditProduct = async (data) => {
+        try {
+            console.log(data)
+            const response = await fetch(`http://localhost:4000/admin/EditProduct`,{
+                method:'PUT',
+                headers:{'Content-type':'application/json'},
+                body: JSON.stringify(data),
+                credentials:'include'
+            })
+            const responseData = await response.json()
+            console.log(responseData)
+            console.log(data)
             getProducts();
             handleClose();  
         } catch (error) {
@@ -227,8 +268,8 @@ const admin = () => {
 
     return(
         <Container className='mt-5 py-3'>
-          <div className="text-light text-center py-3">
-            <h2 direction="horizontal" >Bienvenido Administrador! 👋​</h2>
+          <div className="text-light text-center py-3 fs-6 text">
+            <h2 direction="horizontal" >Bienvenido Administrador!👋​</h2>
           </div> 
           <Container fluid>
             <h4 className="fw-bold text-light mx-3 text-decoration-underline">Usuarios registrados</h4>
@@ -239,18 +280,20 @@ const admin = () => {
                     <th>Nombre</th>
                     <th>Email</th>
                     <th>Rol</th>
-                    <th>Hacer Admin</th>
-                    <th>Eliminar</th>
+                    <th>Acciones</th>
                   </tr>
                 </thead>
                 <tbody>
                   {users.map((user) => (
                     <tr key={user._id}>
-                        <td className='fw-bold'>{user.Name}</td>
+                        <td className='fw-bold'>{user.name}</td>
                         <td>{user.email}</td>
                         <td>{user.role}</td>
-                        <td><Button className="btn-login1" onClick={() =>changeRole(user._id)}>Hacer Admin</Button></td>
-                        <td><Button className="btn-login1" onClick={() => deleteUser(user._id)}>Eliminar</Button></td>
+                        <td>
+                            <i className={`bi ${user.role === 'admin' ? 'bi-star-fill' : 'bi-star'} text-warning fs-4`} onClick={() =>changeRole(user._id)}></i>
+                            <i className={`bi ${user.role === 'admin' ? 'bi-person-slash' : 'bi-person-fill-slash'} text-danger fs-4 mx-3 px-3`} onClick={() =>(user._id)}></i>
+                            <i className="bi bi-trash3 fs-4 text-danger" onClick={() => deleteUser(user._id)}></i>
+                        </td>
                     </tr>
                   ))}
                 </tbody>
@@ -262,7 +305,7 @@ const admin = () => {
                 <thead>
                   <tr>
                     <th>Nombre</th>
-                    <th>URL</th>
+                    <th>Imagen</th>
                     <th>Descripción</th>
                     <th>Precio</th>
                     <th>Acciones</th>
@@ -272,10 +315,13 @@ const admin = () => {
                   {products.map((product) => (
                     <tr key={product._id}>
                         <td className='fw-bold'>{product.Title}</td>
-                        <td><Image src={product.Url} style={{height: '6rem'}}/></td>
-                        <td>{product.description}</td>
-                        <td>${product.price}</td>
-                        <td><Button className="btn-login1" onClick={() => ProductDelete(product._id)}>Borrar</Button></td>
+                        <td><Image src={product.Url} style={{height: '6rem'}} alt="Imagen no encontrada"/></td>
+                        <td>{product.Description}</td>
+                        <td>${product.Price}</td>
+                        <td>
+                            <i className="bi bi-pencil-square fs-4 text-secondary mr-3 pr-3" onClick={() => setCCCShow(true)}></i>
+                            <i className="bi bi-trash3 fs-4 text-danger ml-3 pl-3" onClick={() => ProductDelete(product._id)}></i>
+                        </td>
                     </tr>
                   ))}
                 </tbody>
@@ -301,9 +347,12 @@ const admin = () => {
                   {canchas.map((cancha) => (
                     <tr key={cancha._id}>
                         <td className='fw-bold'>{cancha.Title}</td>
-                        <td>{cancha.description}</td>
+                        <td>{cancha.Description}</td>
                         <td>{cancha.Array}</td>
-                        <td><Button className="btn-login1" onClick={() => CanchaDelete(cancha.id)}>Borrar</Button></td>
+                        <td>
+                            <i className="bi bi-pencil-square fs-4 text-secondary mr-3 pr-3"></i>
+                            <i className="bi bi-trash3 fs-4 text-danger" onClick={() => CanchaDelete(cancha.id)}></i>
+                        </td>
                     </tr>
                   ))}
                  </tbody>
@@ -337,7 +386,11 @@ const admin = () => {
                     isInvalid={!!errors.email}
                     // the method register allows you to register an input or select element and apply validations rules
                     // operator (...) allows an iterable to expand in places where 0+ arguments are expected. It is mostly used in the variable array where there is more than 1 value is expected. 
-                    {...register('Title', {required:'this field is required'})}
+                    {...register('Title', {
+                        required:'this field is required',
+                        minLength: {value: 5, message: 'Este campo no puede contener menos de 5 caracteres'},
+                        maxLength: {value: 25, message: 'Este campo no puede contener mas de 25 caracteres'}
+                    })}
                     />
                 <Form.Control.Feedback type='invalid'>{errors.name?.message}</Form.Control.Feedback>
                 </Form.Group>
@@ -351,7 +404,7 @@ const admin = () => {
                     isInvalid={!!errors.email}
                     // the method register allows you to register an input or select element and apply validations rules
                     // operator (...) allows an iterable to expand in places where 0+ arguments are expected. It is mostly used in the variable array where there is more than 1 value is expected. 
-                    {...register('description', {required:'this field is required'})}
+                    {...register('Description', {required:'this field is required'})}
                     />
                 <Form.Control.Feedback type='invalid'>{errors.name?.message}</Form.Control.Feedback>
                 </Form.Group>
@@ -365,7 +418,89 @@ const admin = () => {
                     isInvalid={!!errors.price}
                     // the method register allows you to register an input or select element and apply validations rules
                     // operator (...) allows an iterable to expand in places where 0+ arguments are expected. It is mostly used in the variable array where there is more than 1 value is expected. 
-                    {...register('price')}
+                    {...register('Price')}
+                    />
+                <Form.Control.Feedback type='invalid'>{errors.name?.message}</Form.Control.Feedback>
+                </Form.Group>
+
+                <Form.Group className='m-2'>
+                    <Form.Label>Imagen</Form.Label>
+                    <Form.Control
+                    className='ms-0 me-5 pe-5' 
+                    type='text'
+                    placeholder='Ingrese la url de la imagen...'
+                    isInvalid={!!errors.url}
+                    // the method register allows you to register an input or select element and apply validations rules
+                    // operator (...) allows an iterable to expand in places where 0+ arguments are expected. It is mostly used in the variable array where there is more than 1 value is expected. 
+                    {...register('Url', {required:'this field is required'})}
+                    />
+                <Form.Control.Feedback type='invalid'>{errors.name?.message}</Form.Control.Feedback>
+                </Form.Group>
+                <Button variant="primary" type="submit">
+                    Save Changes
+                </Button>
+                </Form>
+            </Modal.Body>
+            <Modal.Footer>
+                <Button variant="secondary" onClick={handleClose}>
+                    Close
+                </Button>
+            </Modal.Footer>
+        </Modal>
+
+
+
+        
+        <Modal 
+        show={EditProductShow} 
+        onHide={handleClose} 
+        animation={false}>
+        <Modal.Header closeButton>
+            <Modal.Title>Editar producto</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <Form onSubmit={handleSubmit((data) => EditProduct(data))}>
+                <Form.Group className='m-2'>
+                    <Form.Label>Nombre del producto</Form.Label>
+                    <Form.Control
+                    type='text'
+                    defaultValue={products.Title}
+                    isInvalid={!!errors.email}
+                    // the method register allows you to register an input or select element and apply validations rules
+                    // operator (...) allows an iterable to expand in places where 0+ arguments are expected. It is mostly used in the variable array where there is more than 1 value is expected. 
+                    {...register('Title', {
+                        required:'this field is required',
+                        minLength: {value: 5, message: 'Este campo no puede contener menos de 5 caracteres'},
+                        maxLength: {value: 25, message: 'Este campo no puede contener mas de 25 caracteres'}
+                    })}
+                    />
+                <Form.Control.Feedback type='invalid'>{errors.name?.message}</Form.Control.Feedback>
+                </Form.Group>
+
+                <Form.Group className='m-2'>
+                    <Form.Label>Description</Form.Label>
+                    <Form.Control
+                    as="textarea" 
+                    type='text'
+                    placeholder='ingrese una descripción'
+                    isInvalid={!!errors.email}
+                    // the method register allows you to register an input or select element and apply validations rules
+                    // operator (...) allows an iterable to expand in places where 0+ arguments are expected. It is mostly used in the variable array where there is more than 1 value is expected. 
+                    {...register('Description', {required:'this field is required'})}
+                    />
+                <Form.Control.Feedback type='invalid'>{errors.name?.message}</Form.Control.Feedback>
+                </Form.Group>
+
+                <Form.Group className='m-2'>
+                    <Form.Label>Precio</Form.Label>
+                    <Form.Control
+                    className='ms-0 me-5 pe-5' 
+                    type='number'
+                    placeholder='Ingrese el precio...'
+                    isInvalid={!!errors.price}
+                    // the method register allows you to register an input or select element and apply validations rules
+                    // operator (...) allows an iterable to expand in places where 0+ arguments are expected. It is mostly used in the variable array where there is more than 1 value is expected. 
+                    {...register('Price')}
                     />
                 <Form.Control.Feedback type='invalid'>{errors.name?.message}</Form.Control.Feedback>
                 </Form.Group>
