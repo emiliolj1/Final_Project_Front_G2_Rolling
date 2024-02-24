@@ -9,7 +9,8 @@ import { Link } from 'react-router-dom';
 import 'bootstrap-icons/font/bootstrap-icons.css'
 
 
-const admin = () => {
+const admin = ({user}) => {
+    const userResult = user;
     const [CreateproductShow, setCShow] = useState(false);
     const [CreateCanchaShow, setCCShow] = useState(false);
     const [EditProductShow, setCCCShow] = useState(false);
@@ -21,9 +22,7 @@ const admin = () => {
     const handleClose = () => {
         setCShow(false);
         setCCCShow(false);
-        setDShow(false);
         setCCShow(false);
-        setDCShow(false);
         reset();
     };
 
@@ -129,16 +128,17 @@ const admin = () => {
     }, [canchas]);
     
 
-      const changeRole = async (userEmail) => {
+      const changeRole = async ( _id ) => {
         try {
-          const response = await fetch(`http://localHost:4000/admin/changeRole`, {
+          const response = await fetch(`http://localHost:4000/admin/changeRole/${_id}`, {
             method: 'POST',
             headers: { 'Content-type': 'application/json' },
             credentials: 'include',
-            body: JSON.stringify({ email: userEmail })
+            body: JSON.stringify({ _id})
           });
           const responseData = await response.json();
           console.log(responseData);
+          console.log(user)
           // Vuelve a cargar la lista de usuarios después de cambiar el rol
           getUsers();
         } catch (error) {
@@ -148,11 +148,11 @@ const admin = () => {
 
       const userDisable = async (userEmail) => {
         try {
-          const response = await fetch(`http://localHost:4000/admin/`, {
+          const response = await fetch(`http://localHost:4000/admin/userActive`, {
             method: 'POST',
             headers: { 'Content-type': 'application/json' },
             credentials: 'include',
-            body: JSON.stringify({ email: userEmail })
+            body: JSON.stringify({ email: userEmail})
           });
           const responseData = await response.json();
           console.log(responseData);
@@ -269,7 +269,7 @@ const admin = () => {
     return(
         <Container className='mt-5 py-3'>
           <div className="text-light text-center py-3 fs-6 text">
-            <h2 direction="horizontal" >Bienvenido Administrador!👋​</h2>
+            <h2 direction="horizontal" >Bienvenido Administrador {userResult.userInfo.Name}!👋​</h2>
           </div> 
           <Container fluid>
             <h4 className="fw-bold text-light mx-3 text-decoration-underline">Usuarios registrados</h4>
@@ -280,7 +280,17 @@ const admin = () => {
                     <th>Nombre</th>
                     <th>Email</th>
                     <th>Rol</th>
-                    <th>Acciones</th>
+                    {
+                            user && userResult.userInfo.Role === 'Master' 
+                              ?
+                                 <>
+                                   <th>Acciones</th>
+                                 </>
+                              :
+                                 <>
+                                 </> 
+                        }
+                    
                   </tr>
                 </thead>
                 <tbody>
@@ -289,11 +299,23 @@ const admin = () => {
                         <td className='fw-bold'>{user.name}</td>
                         <td>{user.email}</td>
                         <td>{user.role}</td>
-                        <td>
-                            <i className={`bi ${user.role === 'admin' ? 'bi-star-fill' : 'bi-star'} text-warning fs-4`} onClick={() =>changeRole(user._id)}></i>
-                            <i className={`bi ${user.role === 'admin' ? 'bi-person-slash' : 'bi-person-fill-slash'} text-danger fs-4 mx-3 px-3`} onClick={() =>(user._id)}></i>
-                            <i className="bi bi-trash3 fs-4 text-danger" onClick={() => deleteUser(user._id)}></i>
-                        </td>
+
+                        {
+                            user && userResult.userInfo.Role === 'Master' 
+                              ?
+                                 <>
+                                   <td>
+                                      <i className={`bi ${user.role === 'admin' ? 'bi-star-fill' : 'bi-star'} text-warning fs-4`} onClick={() =>changeRole(user._id)}></i>
+                                      <i className={`bi ${user.isActive === true ? 'bi-person-slash' : 'bi-person-fill-slash'} text-danger fs-4 mx-3 px-3`} onClick={() => userDisable(user._id)}></i>
+                                      <i className="bi bi-trash3 fs-4 text-danger" onClick={() => deleteUser(user._id)}></i>
+                                   </td>
+                                 </>
+                              :
+                                 <>
+                                 </> 
+                        }
+                                    
+                          
                     </tr>
                   ))}
                 </tbody>
