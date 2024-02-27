@@ -2,9 +2,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 
-const CardProductos = ({key, title, url}) => {
-
-  localStorage.setItem("key", key)
+const CardProductos = ({title, url}) => {
 
   return (
     <Col className="py-2 d-flex justify-content-center" md={4} lg={4} xl={2}>

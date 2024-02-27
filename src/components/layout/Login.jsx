@@ -35,8 +35,6 @@ function Login({setUser}) {
     }
   }
 
-
-
   return (
     <Container className='loginContainer pt-5'>
       <div className='cont-login'>
