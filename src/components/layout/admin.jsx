@@ -241,7 +241,7 @@ const admin = ({user}) => {
             <h2 direction="horizontal" >Bienvenido Administrador {userResult.userInfo.Name}!👋​</h2>
         </div> 
         <Container fluid>
-          <h4 className="fw-bold text-light mx-3 text-decoration-underline">Usuarios registrados</h4>
+          <h4 className="fw-bold text-light mx-5   text-decoration-underline">Usuarios registrados</h4>
           <Row className="justify-content-center mt-5 mx-3">
             <Table className='text-center' striped bordered hover responsive="sm">
               <thead>
@@ -306,7 +306,7 @@ const admin = ({user}) => {
               </tbody>
             </Table>
           </Row>
-          <h4 className="mt-5 fw-bold text-light mx-3 text-decoration-underline">Productos</h4>
+          <h4 className="mt-5 fw-bold text-light mx-5 text-decoration-underline">Productos</h4>
           <Row className="justify-content-center mt-5 mx-3">
             <Table striped bordered hover responsive="sm" className='text-center'>
               <thead>
@@ -337,12 +337,12 @@ const admin = ({user}) => {
               </tbody>
             </Table>
           </Row>
-          <Container className='mb-5'>
+          <Container className='mx-4 mb-5'>
             <Button className="btn-login1" onClick={() => setCShow(true)}>
               Crear Producto
             </Button>
           </Container>
-          <h4 className="fw-bold text-light mx-3 text-decoration-underline">Canchas</h4>
+          <h4 className="fw-bold text-light mx-5 text-decoration-underline">Canchas</h4>
           <Row className="justify-content-center my-5 mx-3">  
             <Table striped bordered hover responsive="sm" className='text-center'>
               <thead>
