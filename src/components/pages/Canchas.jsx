@@ -18,7 +18,7 @@ const Canchacard = () => {
 
     const mappedCanchas = responseData.map(cancha => ({
       Title: cancha.Title,
-      description: cancha.description,
+      Description: cancha.Description,
       Url: cancha.Url
     }))
 
@@ -30,6 +30,7 @@ const Canchacard = () => {
     useEffect(() => {
       console.log(canchas)
     }, [canchas])
+
   return (
     <>
       <Container className='my-5 py-1' >
@@ -43,7 +44,7 @@ const Canchacard = () => {
               </Col>
               <Col sm={6} className='my-auto'> 
                 <h2 className='text-decoration-underline text-light text-center mt-5 fw-bold'>{cancha.Title}</h2>
-                <h5 className='fw-light text-light text-center p-5'>{cancha.description}</h5>
+                <h5 className='fw-light text-light text-center p-5'>{cancha.Description}</h5>
               </Col>
             </Row>
           </Container>

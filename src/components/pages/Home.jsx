@@ -33,7 +33,6 @@ const Home = () => {
       getProduct();
     }, []);
     useEffect(() => {
-      console.log(products)
     }, [products])
 
   const [showModal, setShowModal] = useState(false);

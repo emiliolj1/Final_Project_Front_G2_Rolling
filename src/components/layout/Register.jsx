@@ -46,14 +46,14 @@ const Register = () => {
                 className='input-register'
                 type='text'
                 placeholder='Ingresa tu nombre...'
-                {...register('Name', {
+                {...register('name', {
                   required: 'Este campo es Obligatorio',
                   minLength: {value: 5, message: 'Este campo no puede contener menos de 5 caracteres'},
                   maxLength: {value: 35, message: 'Este campo no puede contener mas de 35 caracteres'}
                 })}
-                isInvalid={!!errors.Name}
+                isInvalid={!!errors.name}
               />
-              <Form.Control.Feedback type='invalid'>{errors.Name?.message}</Form.Control.Feedback>
+              <Form.Control.Feedback type='invalid'>{errors.name?.message}</Form.Control.Feedback>
             </FormGroup>
             <FormGroup className='label-register mb-1'>
               <Form.Label className='m-0'>Email</Form.Label>

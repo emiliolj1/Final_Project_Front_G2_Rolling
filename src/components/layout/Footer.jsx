@@ -1,4 +1,4 @@
-import { CheckSquare, Facebook, Instagram, Twitter } from 'react-bootstrap-icons'
+import { CheckSquare, Facebook, Instagram} from 'react-bootstrap-icons'
 import Form from 'react-bootstrap/Form'
 import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
@@ -47,7 +47,7 @@ const Footer = ({user, setUser}) => {
                       <Nav className='flex-column text-center'>
                         <NavLink className='text-light text-decoration-none my-2 py-auto'><Instagram/> Instagram</NavLink>
                         <NavLink className='text-light text-decoration-none my-2 py-auto'><Facebook/> Facebook</NavLink>
-                        <NavLink className='text-light text-decoration-none my-2 py-auto'><Twitter/> X (Twitter)</NavLink>
+                        <NavLink className='text-light text-decoration-none my-2 py-auto'>Twitter</NavLink>
                       </Nav>
                     </Col>
                     <Col xs={7} sm={6}>
