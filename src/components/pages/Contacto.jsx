@@ -23,6 +23,7 @@ const Contacto = () => {
         console.log('Error al enviar el correo:', responseData.message);
       }
     } catch (error) {
+      reset();
       console.log('Error al enviar el correo:', error);
     }
   }

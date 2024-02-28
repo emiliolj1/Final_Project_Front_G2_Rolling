@@ -12,6 +12,14 @@ function Login({setUser}) {
   const handleCloseActive = () => setActive(false);
   const handleShowActive = () => setActive(true);
 
+  const [existeShow, setExiste] = useState(false);
+  const handleCloseExiste = () => setExiste(false);
+  const handleShowExiste = () => setExiste(true);
+
+  const [passwordShow, setPassword] = useState(false);
+  const handleClosePassword = () => setPassword(false);
+  const handleShowPassword = () => setPassword(true);
+
   const { register, handleSubmit, formState:{errors}} = useForm()
 
   const onSubmit = async (data) => {
@@ -23,7 +31,13 @@ function Login({setUser}) {
       body: JSON.stringify(data)
     })
 
+    if(response.status === 404){
+      handleShowExiste()
+      return
+    }
+
     if(response.status === 400){
+      handleShowPassword() //No funciona
       return
     }
 
@@ -98,23 +112,63 @@ function Login({setUser}) {
         onHide={() => setActive(false)}
         aria-labelledby="inactive"
       >
-      <Modal.Header>
-        <Modal.Title id="inactive">
-          Tu usuario se encuentra Inhabilitado!
-        </Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        Comunicate con soporte!
-      </Modal.Body>
-      <Modal.Footer>
-        <Button variant="danger" onClick={handleCloseActive}>
-          Cerrar
-        </Button>
-        <Link to='/home'>
-          <Button className='btn-login1' onClick={handleCloseActive}>
-            Soporte
+        <Modal.Header>
+          <Modal.Title id="inactive">
+            Tu usuario se encuentra Inhabilitado!
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          Comunicate con soporte!
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="danger" onClick={handleCloseActive}>
+            Cerrar
           </Button>
-        </Link>
+          <Link to='/contacto'>
+            <Button className='btn-login1' onClick={handleCloseActive}>
+              Soporte
+            </Button>
+          </Link>
+        </Modal.Footer>
+      </Modal>
+
+      <Modal
+        show={existeShow}
+        onHide={() => setExiste(false)}
+        aria-labelledby="noExiste"
+      >
+        <Modal.Header>
+          <Modal.Title id="noExiste">
+            El usuario ingresado no existe!
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          Verifica bien los datos e intenta nuevamente!
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="danger" onClick={handleCloseExiste}>
+            Cerrar
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+      <Modal
+        show={passwordShow}
+        onHide={() => setPassword(false)}
+        aria-labelledby="password"
+      >
+        <Modal.Header>
+          <Modal.Title id="password">
+            La contraseña ingresada no es correcta!
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          Verifica bien los datos e intenta nuevamente!
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="danger" onClick={handleClosePassword}>
+            Cerrar
+          </Button>
         </Modal.Footer>
       </Modal>
     </>
