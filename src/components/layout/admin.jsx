@@ -218,7 +218,6 @@ const admin = ({user}) => {
     }
 
     const CanchaDelete = async (id) => {
-      console.log(id);
         try {
             const response = await fetch(`http://localhost:4000/admin/deleteCancha`,{
                 method:'DELETE',
@@ -233,6 +232,24 @@ const admin = ({user}) => {
         } catch (error) {
           console.log('error catch')
         }
+    }
+
+    const BookinDelete = async (data) => {
+      console.log(data);
+      try {
+        const response = await fetch(`http://localhost:4000/deleteBookin`,{
+            method:'DELETE',
+            headers:{'Content-type':'application/json'},
+            credentials:'include',
+            body: JSON.stringify(data)
+        })
+        const responseData = await response.json();
+        console.log(responseData);
+        getCanchas();
+        handleClose();
+      } catch (error) {
+        console.log('error catch')
+      }
     }
 
     return(
@@ -344,23 +361,46 @@ const admin = ({user}) => {
           </Container>
           <h4 className="fw-bold text-light mx-5 text-decoration-underline">Canchas</h4>
           <Row className="justify-content-center my-5 mx-3">  
-            <Table striped bordered hover responsive="sm" className='text-center'>
+            <Table bordered responsive="sm">
               <thead>
                 <tr>
-                  <th>Nombre</th>
-                  <th>Descripción</th>
-                  <th>Reservas</th>
-                  <th>Acciones</th>
+                  <th className='text-center'>Canchas</th>
+                  <th className='text-center'>Acciones</th>
                 </tr>
               </thead>
               <tbody>
                 {
-                  canchas.map((cancha) => (
+                  canchas.map(cancha => (
                     <tr key={cancha.id}>
-                      <td className='align-middle fw-bold'>{cancha.Title}</td>
-                      <td className='align-middle'>{cancha.Description}</td>
-                      <td className='align-middle'>{cancha.array}</td>
-                      <td className='align-middle'>
+                      <td>
+                        <div>
+                          <h5 className='text-center'>{cancha.Title}</h5>
+                          <p>{cancha.Description}</p>
+                          <Table striped bordered responsive="sm" className='text-center'>
+                            <thead>
+                              <th>Nombre</th>
+                              <th>Fecha</th>
+                              <th>Acciones</th>
+                            </thead>
+                            <tbody>
+                              {
+                                cancha.Array.map(reserva => (
+                                  <tr>
+                                    <td className='fw-bold align-middle'>{reserva.name}</td>
+                                    <td className='align-middle'>{reserva.date}</td>
+                                    <td className='align-middle'>
+                                      <Button className='fs-4 text-danger transparent' onClick={() => BookinDelete({id: reserva._id, canchaName: cancha.Title})}>
+                                        <Trash/>
+                                      </Button>
+                                    </td>
+                                  </tr>
+                                ))
+                              }
+                            </tbody>
+                          </Table>
+                        </div>
+                      </td>
+                      <td className='text-center align-middle'>
                         <Button className='fs-4 text-danger transparent' onClick={() => CanchaDelete(cancha.id)}>
                           <Trash/>
                         </Button>

@@ -6,6 +6,7 @@ import Nosotros from "../pages/Sobrenosotros";
 import Contacto from "../pages/Contacto";
 import Bookin from '../layout/Bookin'
 import Canchas from '../pages/Canchas'
+import Reservas from "../pages/Reservas";
 
 
 const PrivateRoutes = ({user}) => {
@@ -20,8 +21,9 @@ const PrivateRoutes = ({user}) => {
         <Route exact path='/contacto' element={<Contacto/>}/>
         <Route exact path='/aboutUs' element={<Nosotros/>}/>
         <Route exact path='/galeria' element={<Galeria/>}/>
-        <Route exact path='/alquiler' element={<Bookin/>}/>
+        <Route exact path='/alquiler' element={<Bookin user={user}/>}/>
         <Route exact path='/canchas' element={<Canchas/>}/>
+        <Route exact path='/misReservas' element={<Reservas user={user}/>}/>
         {
           user && userResult.userInfo.Role !== 'client'
           ?

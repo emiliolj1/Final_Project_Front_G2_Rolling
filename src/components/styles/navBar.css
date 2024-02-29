@@ -4,6 +4,9 @@
   scrollbar-color: #252525;
 }
 
+.bgBookin{
+  background-color: #06442b;
+}
 .navColor{
   background-color: #0E955D;
 }
@@ -16,6 +19,18 @@
 .btn-login2:hover{
   background-color: #ABEFC9;
   border: #0E955D;
+  color: #0B7149;
+}
+
+.btnBookin{
+  background-color: #ABEFC9;
+  border: #0E955D;
+  color: #0B7149;
+}
+
+.btnBookin:hover{
+  background-color: #fcfcfc;
+  border: 2px solid #0E955D;
   color: #0B7149;
 }
 
