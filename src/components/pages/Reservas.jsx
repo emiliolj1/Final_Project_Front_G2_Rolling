@@ -55,7 +55,7 @@ const Reservas = ({user}) => {
   }
 
   return (
-    <Container fluid className='mt-4 py-5'>
+    <Container className='mt-4 py-5'>
       <div className='text-light fw-bolder text-center mb-3'><h2>Mis reservas!</h2></div>
       <Row className='bg-light'>
         <Table  bordered responsive="sm" className='text-center'>

@@ -1,10 +1,15 @@
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
-import { Container, Form, Button, FormGroup, Col, Row} from 'react-bootstrap';
+import { Container, Form, Button, FormGroup, Col, Row, Modal} from 'react-bootstrap';
+import { Link } from 'react-router-dom'
 
 const Bookin = ({user}) => {
-  const {register, handleSubmit, formState:{ errors }}  = useForm()
+  const {register, handleSubmit, formState:{ errors }, reset}  = useForm()
   const [fechaMinima, setFechaMinima] = useState(obtenerFechaActual());
+
+  const [reservaShow, setReserva] = useState(false);
+  const handleCloseReserva = () => setReserva(false);
+  const handleShowReserva = () => setReserva(true);
 
   const onSubmit = async(data) =>{
     const fullData = {...data, name: user.userInfo.Name}
@@ -17,6 +22,11 @@ const Bookin = ({user}) => {
         body: JSON.stringify(fullData)
       })
       const responseData = await response.json();
+
+      if(response.status === 200){
+        handleShowReserva()
+        reset()
+      }
       console.log(responseData);
       console.log(response);
     } catch (error) {
@@ -105,6 +115,31 @@ const Bookin = ({user}) => {
         </Col>
       </Row>
     </Container>
+
+    <Modal
+        show={reservaShow}
+        onHide={() => setReserva(false)}
+        aria-labelledby="inactive"
+      >
+        <Modal.Header>
+          <Modal.Title id="inactive">
+            Reserva creada con exito!
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          Crea otra o vuelve a la pantalla principal!
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="danger" onClick={handleCloseReserva}>
+            Crear otra!
+          </Button>
+          <Link to='/'>
+            <Button className='btn-login1' onClick={handleCloseReserva}>
+              Pagina Principal!
+            </Button>
+          </Link>
+        </Modal.Footer>
+      </Modal>
     </>
   )
 }
