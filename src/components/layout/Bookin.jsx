@@ -1,18 +1,21 @@
 import { useForm } from 'react-hook-form';
+import { useState } from 'react';
 import { Container, Form, Button, FormGroup, Col, Row} from 'react-bootstrap';
 
-const Bookin = () => {
+const Bookin = ({user}) => {
   const {register, handleSubmit, formState:{ errors }}  = useForm()
+  const [fechaMinima, setFechaMinima] = useState(obtenerFechaActual());
 
   const onSubmit = async(data) =>{
+    const fullData = {...data, name: user.userInfo.Name}
+    console.log(fullData);
     try {      
       const response = await fetch(`http://localhost:4000/reserva`,{
         method:'POST',
         headers:{'Content-type':'application/json'},
         credentials:'include',
-        body: JSON.stringify(data)
+        body: JSON.stringify(fullData)
       })
-      console.log(data)
       const responseData = await response.json();
       console.log(responseData);
       console.log(response);
@@ -20,11 +23,31 @@ const Bookin = () => {
       console.log(error);
     }
   }
+
+  function obtenerFechaActual() {
+    const hoy = new Date();
+    const año = hoy.getFullYear();
+    let mes = hoy.getMonth() + 1;
+    let dia = hoy.getDate();
+
+    // Agregar un cero al mes si es necesario para mantener el formato de dos dígitos
+    if (mes < 10) {
+      mes = `0${mes}`;
+    }
+
+    // Agregar un cero al día si es necesario para mantener el formato de dos dígitos
+    if (dia < 10) {
+      dia = `0${dia}`;
+    }
+
+    return `${año}-${mes}-${dia}`;
+  }
+
   return (
     <>
     <Container className='my-5'>
       <Row className='py-5'>
-        <Col className='border border-success rounded-4 box-shadow bg-success shadow-lg'>
+        <Col className='border border-success rounded-4 box-shadow bgBookin shadow-lg'>
           <Form className='px-5' onSubmit={handleSubmit((data) => onSubmit(data))}>
             <h1 className='my-4 text-light text-center text-decoration-underline'>¡Reserva tu cancha!</h1>
             <Form.Group>
@@ -43,7 +66,14 @@ const Bookin = () => {
               </Form.Label>
               <Form.Control 
                 type='date'
-                {...register('date')}
+                isInvalid={!!errors.date}
+                {...register('date', {
+                  required: 'Por favor, ingresa una fecha de reserva.',
+                  min: {
+                    value: fechaMinima,
+                    message: `La fecha mínima permitida es ${fechaMinima}.`
+                  }
+                })}
               />
               <Form.Control.Feedback type='invalid'>{errors.date?.message}</Form.Control.Feedback>
             </FormGroup>
@@ -53,26 +83,23 @@ const Bookin = () => {
               </Form.Label>
               <Form.Control 
                 type='time'
-                {...register('time')}
+                isInvalid={!!errors.time}
+                {...register('time', {
+                  required: 'Por favor, ingresa una hora de reserva.',
+                  min: {
+                    value: '08:00', // Hora mínima permitida
+                    message: 'La hora mínima permitida es 08:00.'
+                  },
+                  max: {
+                    value: '23:00', // Hora máxima permitida
+                    message: 'La hora máxima permitida es 23:00.'
+                  }
+                })}
               />
-            </FormGroup> 
-            <FormGroup>
-              <Form.Label className='mt-3 text-light'>
-                <h4>Nombre:</h4>
-              </Form.Label>
-              <Form.Control 
-                className='mt-1'
-                type='text'
-                placeholder='Ingrese su nombre...'
-                {...register('name', {required: ' ',
-                minLength: {value: 5, message: 'Este campo no puede contener menos de 5 caracteres'},
-                maxLength: {value: 25, message: 'Este campo no puede contener mas de 25 caracteres'}})}
-                isInvalid={!!errors.name}
-              />
-              <Form.Control.Feedback type='invalid'>{errors.name?.message}</Form.Control.Feedback>
+              <Form.Control.Feedback type='invalid'>{errors.time?.message}</Form.Control.Feedback>
             </FormGroup>
             <Container className='text-center'>
-              <Button type='submit' className='fs-5 fw-bold btn-login1 my-4'>Crear reserva</Button>
+              <Button type='submit' className='fs-5 fw-bold btnBookin my-4'>Crear reserva</Button>
             </Container>
           </Form>
         </Col>

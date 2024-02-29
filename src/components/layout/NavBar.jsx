@@ -86,12 +86,14 @@ const Header = ({user, setUser}) => {
                             user && userResult.userInfo.Role !== 'client'
                             ? 
                               <>
+                                <NavLink className='mt-2 text-light text-decoration-none' to='/misReservas'>Mis Reservas</NavLink>
                                 <NavLink className='mt-2 text-light text-decoration-none' to='/admin'>Administracion</NavLink>
                                 <hr/>
                                 <Button variant='danger' onClick={handleLogout}>Cerrar Sesion</Button>
                               </>
                             : 
                               <>
+                                <NavLink className='mt-2 text-light text-decoration-none' to='/misReservas'>Mis Reservas</NavLink>
                                 <hr/>
                                 <Button variant='danger' onClick={handleLogout}>
                                   Cerrar Sesion
