@@ -16,7 +16,6 @@ const Contacto = () => {
   const handleShowEmail = () => setEmail(true);
 
   const onSubmit = async (data) => {
-    console.log(data);
     console.log("El mensaje se envio correctamente!")
     handleShowEmail()
     reset();
