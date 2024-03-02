@@ -9,11 +9,9 @@ import { NavLink, Link } from 'react-router-dom'
 import { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 
-
 const Header = ({user, setUser}) => {
 
   const userResult = user;
-  console.log(userResult)
 
   const [showModal, setShowModal] = useState(false);
 
@@ -28,11 +26,10 @@ const Header = ({user, setUser}) => {
   const handleLogout = async () => {
     const response = await fetch('http://localhost:4000/logout')
     if(response.status === 400){
-      console.log('esta mal la funcion loco');
+      console.log('Hubo un error en el procesamiento de la peticion');
     }
     if(response.status === 200){
       const data = await response.json();
-      console.log(data);
       localStorage.clear();
       setUser({
         token: null, 

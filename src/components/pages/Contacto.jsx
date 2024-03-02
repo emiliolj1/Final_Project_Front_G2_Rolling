@@ -1,31 +1,24 @@
 import { useForm } from 'react-hook-form';
+import { useState } from 'react';
 import Container from 'react-bootstrap/Container'
 import FormGroup from 'react-bootstrap/FormGroup'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal'
+import { Link } from 'react-router-dom';
 
 const Contacto = () => {
   
-  const {register, handleSubmit, reset, formState:{errors}} = useForm();
+  const {register, handleSubmit, reset, formState:{ errors }} = useForm();
+
+  const [emailShow, setEmail] = useState(false);
+  const handleCloseEmail = () => setEmail(false);
+  const handleShowEmail = () => setEmail(true);
 
   const onSubmit = async (data) => {
-    try {
-      const response = await fetch('http://localhost:4000/sendEmail', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json'},
-        body: JSON.stringify(data)
-      });
-      const responseData = await response.json();
-
-      if(response.ok){
-        console.log(responseData.message);
-      } else {
-        console.log('Error al enviar el correo:', responseData.message);
-      }
-    } catch (error) {
-      reset();
-      console.log('Error al enviar el correo:', error);
-    }
+    console.log("El mensaje se envio correctamente!")
+    handleShowEmail()
+    reset();
   }
   
   return (
@@ -83,6 +76,31 @@ const Contacto = () => {
           </Form>
         </Container>
       </Container>
+
+      <Modal
+        show={emailShow}
+        onHide={() => setEmail(false)}
+        aria-labelledby="inactive"
+      >
+        <Modal.Header>
+          <Modal.Title id="inactive">
+            Mensaje enviado con exito!
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          Este mensaje sera respondido a la brevedad!
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="danger" onClick={handleCloseEmail}>
+            Mandar otro!
+          </Button>
+          <Link to='/home'>
+            <Button className='btn-login1' onClick={handleCloseEmail}>
+              Pagina Principal!
+            </Button>
+          </Link>
+        </Modal.Footer>
+      </Modal>
     </>
   )
 }

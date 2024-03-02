@@ -31,7 +31,6 @@ function App() {
     }
   };
   
-
   useEffect(() => {
     checkIfUserLogged();
   }, []);

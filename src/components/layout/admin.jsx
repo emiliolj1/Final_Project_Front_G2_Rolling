@@ -18,7 +18,6 @@ const admin = ({user}) => {
     const [users, setUsers] = useState([]);
     const [products, setProducts] = useState([]);
     const [canchas, setCanchas] = useState([])
-    const [bookin, setBookin] = useState([])
     const {register, handleSubmit, formState:{ errors }, reset} = useForm()
 
     const handleClose = () => {
@@ -93,13 +92,6 @@ const admin = ({user}) => {
             Description: cancha.Description,
             Array: cancha.Array
           }))
-          // const bookins = mappedCanchas.Array.map(bookin => ({
-          //   id: bookin._id,
-          //   name: bookin.name,
-          //   date: bookin.date 
-          // })) 
-          // console.log(bookins);
-          // setBookin(bookin)
           setCanchas(mappedCanchas)
         } catch (error) {
           console.log('error en el pedido de los canchas', error);
