@@ -23,7 +23,6 @@ function Login({setUser}) {
   const { register, handleSubmit, formState:{errors}} = useForm()
 
   const onSubmit = async (data) => {
-    console.log(data);
     const response = await fetch('http://localhost:4000/login',{
       method:'POST',
       headers:{'Content-type':'application/json'},
@@ -55,7 +54,6 @@ function Login({setUser}) {
         userInfo: decoded,
         isLogged: true
       })
-      console.log(decoded);
     }
   }
 
