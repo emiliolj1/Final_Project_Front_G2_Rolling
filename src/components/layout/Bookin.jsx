@@ -13,7 +13,6 @@ const Bookin = ({user}) => {
 
   const onSubmit = async(data) =>{
     const fullData = {...data, name: user.userInfo.Name}
-    console.log(fullData);
     try {      
       const response = await fetch(`http://localhost:4000/reserva`,{
         method:'POST',
@@ -27,8 +26,6 @@ const Bookin = ({user}) => {
         handleShowReserva()
         reset()
       }
-      console.log(responseData);
-      console.log(response);
     } catch (error) {
       console.log(error);
     }

@@ -60,9 +60,11 @@ const Reservas = ({user}) => {
       <Row className='bg-light'>
         <Table  bordered responsive="sm" className='text-center'>
           <thead>
-            <th className='align-middle'>Cancha</th>
-            <th className='align-middle'>Fecha</th>
-            <th className='align-middle'>Acciones</th>
+            <tr>
+              <th className='align-middle'>Cancha</th>
+              <th className='align-middle'>Fecha</th>
+              <th className='align-middle'>Acciones</th>
+            </tr>
           </thead>
           <tbody>
             {
@@ -71,7 +73,7 @@ const Reservas = ({user}) => {
                   {
                     cancha.Array.filter( reserva => ( reserva.name === user.userInfo.Name)).map( reserva => (
                       <>
-                        <tr key={cancha.id}>
+                        <tr>
                           <td className='fw-bolder align-middle'>{cancha.Title}</td>
                           <td className='align-middle'>{reserva.date}</td>
                           <td className='align-middle'>

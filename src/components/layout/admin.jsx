@@ -273,7 +273,7 @@ const admin = ({user}) => {
               <tbody>
                 {
                   users.map((user) => (
-                    <tr key={user.id}>
+                    <tr>
                       <td className='align-middle fw-bold'>{user.Name}</td>
                       <td className='align-middle'>{user.Email}</td>
                       <td className='align-middle'>{user.Rol}</td>
@@ -330,7 +330,7 @@ const admin = ({user}) => {
               <tbody>
                 {
                   products.map((product) => (
-                    <tr key={product.id}>
+                    <tr>
                       <td className='align-middle fw-bold'>{product.Title}</td>
                       <td><Image src={product.Url} style={{height: '6rem'}} alt={product.Title}/></td>
                       <td className='align-middle'>{product.Description}</td>
@@ -363,16 +363,19 @@ const admin = ({user}) => {
               <tbody>
                 {
                   canchas.map(cancha => (
-                    <tr key={cancha.id}>
+                    <tr>
                       <td>
                         <div>
-                          <h5 className='text-center'>{cancha.Title}</h5>
-                          <p>{cancha.Description}</p>
+                          <h5 className='text-center py-3 fst-italic'>{cancha.Title}</h5>
+                          <p className='px-4 pb-3'>{cancha.Description}</p>
+                          <h5 className='text-center pb-3 text-decoration-underline'>Reservas</h5>
                           <Table striped bordered responsive="sm" className='text-center'>
                             <thead>
-                              <th>Nombre</th>
-                              <th>Fecha</th>
-                              <th>Acciones</th>
+                              <tr>
+                                <th>Nombre</th>
+                                <th>Fecha</th>
+                                <th>Acciones</th>
+                              </tr>
                             </thead>
                             <tbody>
                               {
@@ -503,57 +506,57 @@ const admin = ({user}) => {
           </Modal.Header>
           <Modal.Body>
             <Form onSubmit={handleSubmit((data) => CreateCancha(data))}>
-            <Form.Group className='m-2'>
-              <Form.Label>Nombre de la Cancha</Form.Label>
-              <Form.Control
-                className='ms-0 me-5 pe-5' 
-                type='text'
-                placeholder='Ingrese un título...'
-                isInvalid={!!errors.title}
-                // the method register allows you to register an input or select element and apply validations rules
-                // operator (...) allows an iterable to expand in places where 0+ arguments are expected. It is mostly used in the variable array where there is more than 1 value is expected. 
-                // {...register('name', {required:'this field is required'})}
-              />
-              <Form.Control.Feedback type='invalid'>{errors.title?.message}</Form.Control.Feedback>
-            </Form.Group>
+              <Form.Group className='m-2'>
+                <Form.Label>Nombre de la Cancha</Form.Label>
+                <Form.Control
+                  className='ms-0 me-5 pe-5' 
+                  type='text'
+                  placeholder='Ingrese un título...'
+                  isInvalid={!!errors.title}
+                  // the method register allows you to register an input or select element and apply validations rules
+                  // operator (...) allows an iterable to expand in places where 0+ arguments are expected. It is mostly used in the variable array where there is more than 1 value is expected. 
+                  // {...register('name', {required:'this field is required'})}
+                />
+                <Form.Control.Feedback type='invalid'>{errors.title?.message}</Form.Control.Feedback>
+              </Form.Group>
 
-            <Form.Group className='m-2'>
-              <Form.Label>Descripción</Form.Label>
-              <Form.Control
-                className='ms-0 me-5 pe-5' 
-                type='text'
-                placeholder='Ingrese una descripción...'
-                isInvalid={!!errors.description}
-                // the method register allows you to register an input or select element and apply validations rules
-                // operator (...) allows an iterable to expand in places where 0+ arguments are expected. It is mostly used in the variable array where there is more than 1 value is expected. 
-                // {...register('name', {required:'this field is required'})}
-              />
-              <Form.Control.Feedback type='invalid'>{errors.description?.message}</Form.Control.Feedback>
-            </Form.Group>
+              <Form.Group className='m-2'>
+                <Form.Label>Descripción</Form.Label>
+                <Form.Control
+                  className='ms-0 me-5 pe-5' 
+                  type='text'
+                  placeholder='Ingrese una descripción...'
+                  isInvalid={!!errors.description}
+                  // the method register allows you to register an input or select element and apply validations rules
+                  // operator (...) allows an iterable to expand in places where 0+ arguments are expected. It is mostly used in the variable array where there is more than 1 value is expected. 
+                  // {...register('name', {required:'this field is required'})}
+                />
+                <Form.Control.Feedback type='invalid'>{errors.description?.message}</Form.Control.Feedback>
+              </Form.Group>
 
-            <Form.Group className='m-2'>
-              <Form.Label></Form.Label>
-              <Form.Control
-                className='ms-0 me-5 pe-5' 
-                type='text'
-                placeholder='Enter your name...'
-                isInvalid={!!errors.name}
-                // the method register allows you to register an input or select element and apply validations rules
-                // operator (...) allows an iterable to expand in places where 0+ arguments are expected. It is mostly used in the variable array where there is more than 1 value is expected. 
-                // {...register('name', {required:'this field is required'})}
-              />
-              <Form.Control.Feedback type='invalid'>{errors.name?.message}</Form.Control.Feedback>
-            </Form.Group>
-          </Form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="danger" onClick={handleClose}>
-            Close
-          </Button>
-          <Button className='btn-login1'>
-            Save Changes
-          </Button>
-        </Modal.Footer>
+              <Form.Group className='m-2'>
+                <Form.Label></Form.Label>
+                <Form.Control
+                  className='ms-0 me-5 pe-5' 
+                  type='text'
+                  placeholder='Enter your name...'
+                  isInvalid={!!errors.name}
+                  // the method register allows you to register an input or select element and apply validations rules
+                  // operator (...) allows an iterable to expand in places where 0+ arguments are expected. It is mostly used in the variable array where there is more than 1 value is expected. 
+                  // {...register('name', {required:'this field is required'})}
+                />
+                <Form.Control.Feedback type='invalid'>{errors.name?.message}</Form.Control.Feedback>
+              </Form.Group>
+            </Form>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="danger" onClick={handleClose}>
+              Close
+            </Button>
+            <Button className='btn-login1'>
+              Save Changes
+            </Button>
+          </Modal.Footer>
         </Modal>
       </Container>
     )
