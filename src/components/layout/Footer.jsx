@@ -6,10 +6,11 @@ import Navbar from 'react-bootstrap/Navbar'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import Button from 'react-bootstrap/Button'
+import Image from 'react-bootstrap/Image'
 import { NavLink, Link } from 'react-router-dom'
 import { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
-import Error404 from '../pages/Error404'
+
 
 
 const Footer = ({user, setUser}) => {
@@ -32,12 +33,11 @@ const Footer = ({user, setUser}) => {
                     <Col xs={12} sm={4}>
                       <Nav className='flex-column text-center'>
                       <Link to='/home'>
-                        <img
+                        <Image
+                          src='img/newLogo.png'
                           alt="logo sale fulbo'!"
-                          src="https://www.pinterest.es/pin/680536193723035714/"
-                          width="20"
                           height="120"
-                          className="col-12 col-xs d-flex align-items-center"
+                          className="mb-3 col-12 col-xs d-flex align-items-center"
                         />
                       </Link>
                       <p className='text-light text-center copyRight mb-0'>Copyright © 2024 Sale Fulbo'</p>
