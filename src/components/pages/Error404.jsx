@@ -1,18 +1,15 @@
-import Image from 'react-bootstrap/Image';
+import Container from "react-bootstrap/Container"
+import { Link } from 'react-router-dom'
+
 
 const Error404 = () => {
   return (
     <>
-
-<div>
-    
-
-    <img src="img/depositphotos_491256822-stock-illustration-internet-network-warning-404-error.jpg" class="img-fluid mx-8 " width="1500" height="500"/>
-
-    </div>
-    
-    
-    
+      <Container className="error">
+        <h1 className=" mb-5 text-light text-decoration-underline fw-bold errorTitle">Error 404</h1>
+        <h5 className="text-light">Lo sentimos, pero no se pudo encontrar la página que solicitó.</h5>
+        <Link className="green-text" to='7home'>Vuelve a la pagina principal!</Link>
+      </Container>
     </>
   )
 }

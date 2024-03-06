@@ -9,6 +9,7 @@ import Button from 'react-bootstrap/Button'
 import { NavLink, Link } from 'react-router-dom'
 import { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
+import Error404 from '../pages/Error404'
 
 
 const Footer = ({user, setUser}) => {
@@ -32,8 +33,8 @@ const Footer = ({user, setUser}) => {
                       <Nav className='flex-column text-center'>
                       <Link to='/home'>
                         <img
-                          alt=""
-                          src="img/logo_transparent.png"
+                          alt="logo sale fulbo'!"
+                          src="https://www.pinterest.es/pin/680536193723035714/"
                           width="20"
                           height="120"
                           className="col-12 col-xs d-flex align-items-center"
@@ -45,9 +46,9 @@ const Footer = ({user, setUser}) => {
                     </Col>
                     <Col xs={5} sm={2} className='my-auto'>
                       <Nav className='flex-column text-center'>
-                        <NavLink className='text-light text-decoration-none my-2 py-auto'><Instagram/> Instagram</NavLink>
-                        <NavLink className='text-light text-decoration-none my-2 py-auto'><Facebook/> Facebook</NavLink>
-                        <NavLink className='text-light text-decoration-none my-2 py-auto'>Twitter</NavLink>
+                        <NavLink to='/error' className='text-light text-decoration-none my-2 py-auto'><Instagram/> Instagram</NavLink>
+                        <NavLink to='/error' className='text-light text-decoration-none my-2 py-auto'><Facebook/> Facebook</NavLink>
+                        <NavLink to='/error' className='text-light text-decoration-none my-2 py-auto'>Twitter</NavLink>
                       </Nav>
                     </Col>
                     <Col xs={7} sm={6}>

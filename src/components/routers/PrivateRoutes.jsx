@@ -7,6 +7,7 @@ import Contacto from "../pages/Contacto";
 import Bookin from '../layout/Bookin'
 import Canchas from '../pages/Canchas'
 import Reservas from "../pages/Reservas";
+import Error404 from "../pages/Error404";
 
 
 const PrivateRoutes = ({user}) => {
@@ -23,6 +24,7 @@ const PrivateRoutes = ({user}) => {
         <Route exact path='/galeria' element={<Galeria/>}/>
         <Route exact path='/alquiler' element={<Bookin user={user}/>}/>
         <Route exact path='/canchas' element={<Canchas/>}/>
+        <Route exact path='/error' element ={<Error404/>}/>
         <Route exact path='/misReservas' element={<Reservas user={user}/>}/>
         {
           user && userResult.userInfo.Role !== 'client'
