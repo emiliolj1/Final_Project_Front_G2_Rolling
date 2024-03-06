@@ -1,5 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import './components/styles/navbar.css';
+import './components/styles/navBar.css';
 import './components/styles/card.css';
 import { useState, useEffect} from "react";
 import { BrowserRouter } from "react-router-dom";
