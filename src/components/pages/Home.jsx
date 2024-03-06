@@ -10,12 +10,13 @@ import Modal from 'react-bootstrap/Modal';
 import { Link } from 'react-router-dom'
 import Card from '../layout/Card'
 
-const Home = () => {
+const Home = ({user}) => {
 
   const [products, setProduct] = useState([])
+  const userResult = user
 
   const getProduct = async () => {
-    const response = await fetch ("http://localHost:4000/admin/getProducts",{
+    const response = await fetch ("https://backend-68i-salefulbo.onrender.com/admin/getProducts",{
         method:'GET',
         headers:{'Content-type':'application/json'},
         credentials:'include'
@@ -59,11 +60,21 @@ const Home = () => {
           </Col>
           <Col xs={12} md={4} className="text-center my-auto">
             <h2>¿Queres alquilar una cancha como estas?</h2>
-            <Link>
-              <Button onClick={handleShowModal} className='btn-login1  my-3'>
-                <h4>Alquila tu Cancha!</h4>
-              </Button>
-            </Link>
+            {
+              user && userResult.isLogged
+              ?
+              <Link to='/alquiler'>
+                <Button className='btn-login1  my-3'>
+                  <h4>Alquila tu Cancha!</h4>
+                </Button>
+              </Link>
+              :
+              <Link>
+                <Button onClick={handleShowModal} className='btn-login1  my-3'>
+                  <h4>Alquila tu Cancha!</h4>
+                </Button>
+              </Link>
+            }
           </Col>
         </Row>
       </Container>

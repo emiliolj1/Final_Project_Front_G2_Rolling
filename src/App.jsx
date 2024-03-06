@@ -47,7 +47,7 @@ function App() {
         :
         <BrowserRouter>
           <NavBar user={user} setUser={setUser}/>
-            <PublicRoutes setUser={setUser}/>
+            <PublicRoutes user={user} setUser={setUser}/>
           <Footer user={user} setUser={setUser}/>
         </BrowserRouter>
       }

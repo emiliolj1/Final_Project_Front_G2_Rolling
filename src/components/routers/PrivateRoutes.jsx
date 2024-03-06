@@ -17,7 +17,7 @@ const PrivateRoutes = ({user}) => {
     <>
       <Routes>
         <Route path='/' element={<Navigate to={'/home'}/>}/>
-        <Route path="/home" element={<Home/>}/>
+        <Route path="/home" element={<Home user={user}/>}/>
         <Route exact path='/contacto' element={<Contacto/>}/>
         <Route exact path='/aboutUs' element={<Nosotros/>}/>
         <Route exact path='/galeria' element={<Galeria/>}/>

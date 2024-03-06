@@ -15,7 +15,7 @@ const ChangePassword = () => {
   const handleCloseError = () => {setShowError(false)}
 
   const onSubmit = async (data) => {
-    const response = await fetch('http://localhost:4000/change', {
+    const response = await fetch('https://backend-68i-salefulbo.onrender.com/change', {
       method: 'PATCH',
       headers: {'Content-Type':'application/json'},
       body: JSON.stringify(data)
