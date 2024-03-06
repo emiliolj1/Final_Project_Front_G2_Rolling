@@ -8,16 +8,8 @@ This project was created for educational purposes to learn programming languages
 This is an app created with node.js and vite, if you want to run the project on your own, follow the following steps, you will also need Api Keys to replace the existing ones within the project to be able to run it with your own server.
 
 ```bash
-npm install
+npm i
 npm run dev
-npm i react-bootstrap bootstrap react-router-dom react-hook-form
-```
-## Citation
-
-```bash
-# Src/components/styles/style.login
-
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 ```
 
 ## Tools used
@@ -27,7 +19,7 @@ The tools used to create this page were:
 - [React-Router-dom](https://reactrouter.com/en/main)
 - [React-Hook-Form](https://react-hook-form.com/)
 - [jsonwebtoken](https://jwt.io/)
-- [bcrypt]()
+- [bcrypt](https://www.npmjs.com/package/bcrypt)
 
 >[!TIP]
 >If you click on the name of the tools it will take you to its documentation, as always we recommend reading it.
