@@ -9,7 +9,7 @@ const Canchacard = () => {
   const [canchas, setCancha] = useState([])
 
   const getCancha = async () => {
-    const response = await fetch ("http://localHost:4000/admin/getCanchas",{
+    const response = await fetch ("https://backend-68i-salefulbo.onrender.com/admin/getCanchas",{
         method:'GET',
         headers:{'Content-type':'application/json'},
         credentials:'include'

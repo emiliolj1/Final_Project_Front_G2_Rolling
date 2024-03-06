@@ -8,12 +8,12 @@ import Nosotros from "../pages/Sobrenosotros"
 import Contacto from "../pages/Contacto"
 import Canchas from '../pages/Canchas'
 
-const PublicRoutes = ({setUser}) => {
+const PublicRoutes = ({user, setUser}) => {
   return (
     <>
         <Routes>
           <Route path='/' element={<Navigate to={'/home'}/>}/>
-          <Route path="/home" element={<Home/>}/>
+          <Route path="/home" element={<Home user={user}/>}/>
           <Route exact path='/aboutUs' element={<Nosotros/>}/>
           <Route exact path='/login' element={<Login setUser={setUser}/>}/>
           <Route exact path='/register' element={<Register/>}/>

@@ -29,7 +29,7 @@ const admin = ({user}) => {
 
     //Traer Users
     const getUsers = async () => {
-        const response = await fetch (`http://localHost:4000/admin/getUsers`,{
+        const response = await fetch (`https://backend-68i-salefulbo.onrender.com/admin/getUsers`,{
             method:'GET',
             headers:{'Content-type':'application/json'},
             credentials:'include'
@@ -52,7 +52,7 @@ const admin = ({user}) => {
     //Traer Productos
     const getProducts = async () => {
         try {
-          const response = await fetch(`http://localHost:4000/admin/getProducts`,{
+          const response = await fetch(`https://backend-68i-salefulbo.onrender.com/admin/getProducts`,{
             method:'GET',
             headers: { 'Content-type': 'application/json' },
             credentials: 'include',
@@ -78,7 +78,7 @@ const admin = ({user}) => {
     //Traer Canchas
     const getCanchas = async () => {
         try {
-          const response = await fetch(`http://localHost:4000/admin/getCanchas`,{
+          const response = await fetch(`https://backend-68i-salefulbo.onrender.com/admin/getCanchas`,{
             method:'GET',
             headers: { 'Content-type': 'application/json' },
             credentials: 'include',
@@ -106,7 +106,7 @@ const admin = ({user}) => {
     const changeRole = async (id) => {
         console.log(id);
         try {
-          const response = await fetch(`http://localHost:4000/admin/changeRole`, {
+          const response = await fetch(`https://backend-68i-salefulbo.onrender.com/admin/changeRole`, {
             method: 'PATCH',
             headers: { 'Content-type': 'application/json' },
             credentials: 'include',
@@ -123,7 +123,7 @@ const admin = ({user}) => {
 
     const userDisable = async (id) => {
         try {
-          const response = await fetch(`http://localHost:4000/admin/userActive`, {
+          const response = await fetch(`https://backend-68i-salefulbo.onrender.com/admin/userActive`, {
             method: 'PATCH',
             headers: { 'Content-type': 'application/json' },
             credentials: 'include',
@@ -140,7 +140,7 @@ const admin = ({user}) => {
      
     const deleteUser = async (id) => {
         try {
-            const response = await fetch(`http://localhost:4000/admin/deleteUser`,{
+            const response = await fetch(`https://backend-68i-salefulbo.onrender.com/admin/deleteUser`,{
                 method:'DELETE',
                 headers: {
                   'Content-Type': 'application/json',
@@ -160,15 +160,13 @@ const admin = ({user}) => {
     const CreateProduct = async (data) => {
         try {
             console.log(data)
-            const response = await fetch(`http://localhost:4000/admin/createProduct`,{
+            const response = await fetch(`https://backend-68i-salefulbo.onrender.com/admin/createProduct`,{
                 method:'POST',
                 headers:{'Content-type':'application/json'},
                 body: JSON.stringify(data),
                 credentials:'include'
             })
             const responseData = await response.json()
-            console.log(responseData)
-            console.log(data)
             getProducts();
             handleClose();  
         } catch (error) {
@@ -194,7 +192,7 @@ const admin = ({user}) => {
 
     const ProductDelete = async (id) => {
         try {
-            const response = await fetch(`http://localhost:4000/admin/deleteProduct`,{
+            const response = await fetch(`https://backend-68i-salefulbo.onrender.com/admin/deleteProduct`,{
                 method:'DELETE',
                 headers: { 'Content-type': 'application/json' },
                 credentials:'include',
@@ -211,7 +209,7 @@ const admin = ({user}) => {
 
     const CanchaDelete = async (id) => {
         try {
-            const response = await fetch(`http://localhost:4000/admin/deleteCancha`,{
+            const response = await fetch(`https://backend-68i-salefulbo.onrender.com/admin/deleteCancha`,{
                 method:'DELETE',
                 headers:{'Content-type':'application/json'},
                 credentials:'include',
@@ -227,9 +225,8 @@ const admin = ({user}) => {
     }
 
     const BookinDelete = async (data) => {
-      console.log(data);
       try {
-        const response = await fetch(`http://localhost:4000/deleteBookin`,{
+        const response = await fetch(`https://backend-68i-salefulbo.onrender.com/deleteBookin`,{
             method:'DELETE',
             headers:{'Content-type':'application/json'},
             credentials:'include',

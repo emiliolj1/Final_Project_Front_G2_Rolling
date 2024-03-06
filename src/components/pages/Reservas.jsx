@@ -11,7 +11,7 @@ const Reservas = ({user}) => {
 
   const getCanchas = async () => {
     try {
-      const response = await fetch(`http://localHost:4000/admin/getCanchas`,{
+      const response = await fetch(`https://backend-68i-salefulbo.onrender.com/admin/getCanchas`,{
         method:'GET',
         headers: { 'Content-type': 'application/json' },
         credentials: 'include',
@@ -39,7 +39,7 @@ const Reservas = ({user}) => {
   const BookinDelete = async (data) => {
     console.log(data);
     try {
-      const response = await fetch(`http://localhost:4000/deleteBookin`,{
+      const response = await fetch(`https://backend-68i-salefulbo.onrender.com/deleteBookin`,{
           method:'DELETE',
           headers:{'Content-type':'application/json'},
           credentials:'include',
