@@ -34,7 +34,7 @@ const Footer = ({user, setUser}) => {
                       <Nav className='flex-column text-center'>
                       <Link to='/home'>
                         <Image
-                          src='img/newLogo.png'
+                          src='https://i.imgur.com/3XsTeJc.png'
                           alt="logo sale fulbo'!"
                           height="120"
                           className="mb-3 col-12 col-xs d-flex align-items-center"
