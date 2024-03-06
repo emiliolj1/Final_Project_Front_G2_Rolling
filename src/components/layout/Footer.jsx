@@ -1,4 +1,4 @@
-import { CheckSquare, Facebook, Instagram} from 'react-bootstrap-icons'
+import { CheckSquare, Facebook, Instagram, TwitterX} from 'react-bootstrap-icons'
 import Form from 'react-bootstrap/Form'
 import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
@@ -48,10 +48,10 @@ const Footer = ({user, setUser}) => {
                       <Nav className='flex-column text-center'>
                         <NavLink to='/error' className='text-light text-decoration-none my-2 py-auto'><Instagram/> Instagram</NavLink>
                         <NavLink to='/error' className='text-light text-decoration-none my-2 py-auto'><Facebook/> Facebook</NavLink>
-                        <NavLink to='/error' className='text-light text-decoration-none my-2 py-auto'>Twitter</NavLink>
+                        <NavLink to='/error' className='text-light text-decoration-none my-2 py-auto'><TwitterX className='me-1'/> Twitter</NavLink>
                       </Nav>
                     </Col>
-                    <Col xs={7} sm={6}>
+                    <Col xs={7} sm={6} className='my-auto'>
                       <Nav className='flex-column text-center'>
                         {
                           user && userResult.isLogged ?
@@ -68,7 +68,7 @@ const Footer = ({user, setUser}) => {
                 </Container>
               </Nav>
             </Col>
-            <Col xxl={4} xl={4} lg={4}>
+            <Col xxl={4} xl={4} lg={4} className='my-auto'>
               <Form className='text-light'>
                 <h4>Suscribite a nuestro newsletter!</h4>
                 <p className='mb-1'>Suscribete para informarte acerca de promociones y novedades!</p>
