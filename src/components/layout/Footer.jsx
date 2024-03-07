@@ -146,10 +146,13 @@ const Footer = ({user, setUser}) => {
         </Modal.Body>
         <Modal.Footer>
           <Link to='/'>
-            <Button variant='danger' onClick={handleCloseSub}>
-              Cerrar!
+            <Button variant='success' onClick={handleCloseSub}>
+              Volver a la pagina principal!
             </Button>
           </Link>
+          <Button variant='danger' onClick={handleCloseSub}>
+              Cerrar!
+          </Button>
         </Modal.Footer>
       </Modal>
     </>
