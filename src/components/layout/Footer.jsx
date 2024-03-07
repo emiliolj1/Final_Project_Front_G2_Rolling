@@ -10,16 +10,28 @@ import Image from 'react-bootstrap/Image'
 import { NavLink, Link } from 'react-router-dom'
 import { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
+import { useForm } from 'react-hook-form';
 
 
 
 const Footer = ({user, setUser}) => {
 
-  const userResult = user;
-  const [show, setShow] = useState(false);
+  const {register, handleSubmit, formState:{ errors }, reset} = useForm()
 
+  const userResult = user;
+
+  const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const [sub, setSub] = useState(false);
+  const handleCloseSub = () => setSub(false);
+  const handleShowSub = () => setSub(true);
+
+  const onSubmit = (data) => {
+    handleShowSub()
+    reset()
+  }
 
   return (
     <>
@@ -69,24 +81,31 @@ const Footer = ({user, setUser}) => {
               </Nav>
             </Col>
             <Col xxl={4} xl={4} lg={4} className='my-auto'>
-              <Form className='text-light'>
+              <Form className='text-light' onSubmit={handleSubmit((data) => onSubmit(data))}>
                 <h4>Suscribite a nuestro newsletter!</h4>
                 <p className='mb-1'>Suscribete para informarte acerca de promociones y novedades!</p>
-                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                  <Form.Label className='fw-bold'>Correo Electronico</Form.Label>
-                  <Row >
-                    <Col xs={8} sm={9} >
-                      <Form.Control 
-                        type="email" 
-                        placeholder="nombre@ejemplo.com"
-                        required
-                      />
-                    </Col>
-                    <Col xs={4} sm={3}>
-                      <Button className='fw-bold btn-login1 pt-0 px-2 fs-5' type='submit'><CheckSquare/></Button>
-                    </Col>
-                  </Row>
-                </Form.Group>
+                <Row >
+                  <Col xs={8} sm={9} >
+                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                      <Form.Label className='fw-bold'>Correo Electronico</Form.Label>
+                          <Form.Control 
+                            type="email" 
+                            placeholder="nombre@ejemplo.com"
+                            required
+                            {...register('email', {
+                              required: 'Este campo es Obligatorio',
+                              minLength: {value: 5, message: 'Este campo no puede contener menos de 5 caracteres'}
+                            })
+                            }
+                            isInvalid={!!errors.email}
+                          />
+                      <Form.Control.Feedback type="invalid">{errors.email?.message}</Form.Control.Feedback>
+                    </Form.Group>
+                  </Col>
+                  <Col xs={4} sm={3} className='pt-2'>
+                    <Button className='mt-4 fw-bold btn-login1 pt-0 px-2 fs-5' type='submit'><CheckSquare/></Button>
+                  </Col>
+                </Row>
               </Form>
             </Col>
           </Row>
@@ -108,6 +127,26 @@ const Footer = ({user, setUser}) => {
           <Link to='/login'>
             <Button className='btn-login1' onClick={handleClose}>
               Login
+            </Button>
+          </Link>
+        </Modal.Footer>
+      </Modal>
+      <Modal
+        show={sub}
+        onHide={handleCloseSub}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>
+            Te acabas de suscribir al Newsletter
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          Vas a recibir novedades y ofertas de nuestra pagina!
+        </Modal.Body>
+        <Modal.Footer>
+          <Link to='/'>
+            <Button variant='danger' onClick={handleCloseSub}>
+              Cerrar!
             </Button>
           </Link>
         </Modal.Footer>

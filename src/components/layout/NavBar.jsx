@@ -56,15 +56,15 @@ const Header = ({user, setUser}) => {
                 <NavLink className='mt-2 me-3 text-light text-decoration-none' onClick={handleShowModal}>Alquila tu Cancha!</NavLink>
               }
               <NavDropdown className='me-3' title="+Más" id="basic-nav-dropdown">
-                <NavDropdown.Item>
-                  <NavLink className='mt-2 text-light text-decoration-none' to='/aboutUs'>Nosotros</NavLink>
+                <NavDropdown.Item className='navItem'>
+                  <NavLink className='mt-2 text-light text-decoration-none linkin' to='/aboutUs'>Nosotros</NavLink>
                 </NavDropdown.Item>
-                <NavDropdown.Item >
-                  <NavLink className='mt-2 text-light text-decoration-none' to='/contacto'>Contacto</NavLink>
+                <NavDropdown.Item className='navItem'>
+                  <NavLink className='mt-2 text-light text-decoration-none linkin' to='/contacto'>Contacto</NavLink>
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item>
-                  <NavLink className='mt-2 text-light text-decoration-none' to="/galeria">Galeria de Imagenes</NavLink>
+                <NavDropdown.Item className='navItem'>
+                  <NavLink className='mt-2 text-light text-decoration-none linkin' to="/galeria">Galeria de Imagenes</NavLink>
                 </NavDropdown.Item>
               </NavDropdown>
             </Nav>

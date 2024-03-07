@@ -7,6 +7,7 @@
 .bgBookin{
   background-color: #06442b;
 }
+
 .navColor{
   background-color: #0E955D;
 }
@@ -20,6 +21,11 @@
   background-color: #ABEFC9;
   border: #0E955D;
   color: #0B7149;
+}
+.btn-login2:active{
+  background-color: #0B7149;
+  border: #0E955D;
+  color: #ABEFC9;
 }
 
 .btnBookin{
@@ -44,6 +50,12 @@
   background-color: #0B7149;
   border: 2px solid #0E955D;
   color: #ABEFC9;
+}
+
+.btn-login1:active{
+  background-color: #ABEFC9;
+  border: #0E955D;
+  color: #0B7149;
 }
 
 .btn-home{
@@ -98,4 +110,8 @@
 }
 .errorTitle{
   font-size: 8rem;
+}
+
+.navItem:active {
+  background-color:#252525;
 }
