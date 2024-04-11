@@ -16,7 +16,6 @@ const Contacto = () => {
         body: JSON.stringify(data)
       });
       const responseData = await response.json();
-
       if(response.ok){
         console.log(responseData.message);
       } else {
@@ -72,6 +71,7 @@ const Contacto = () => {
                 {...register('message', {
                   required: 'Este campo es Obligatorio',
                   minLength: {value: 5, message: 'Este campo no puede contener menos de 5 caracteres'},
+                  maxLength: {value: 120, message: 'Este campo no puede contener mas de 25 caracteres'}
                 })}
                 isInvalid={!!errors.message}
               />
