@@ -16,7 +16,8 @@ const Register = () => {
 
   const onSubmit = async (data) => {
     const fullData = {...data, role: 'client'}
-    const response = await fetch('http://localhost:4000/users', {
+    console.log(fullData);
+    const response = await fetch('https://backend-68i-salefulbo.onrender.com/users', {
       method: 'POST',
       headers: {'Content-Type':'application/json'},
       credentials: 'include',
@@ -24,7 +25,6 @@ const Register = () => {
     })
     const responseData = await response.json();
     if(response.status === 200){
-      console.log(responseData);
       setShowLogged(true);
     }
     if(response.status === 400){

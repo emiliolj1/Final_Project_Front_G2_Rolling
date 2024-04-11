@@ -18,7 +18,6 @@ const admin = ({user}) => {
     const [users, setUsers] = useState([]);
     const [products, setProducts] = useState([]);
     const [canchas, setCanchas] = useState([])
-    const [bookin, setBookin] = useState([])
     const {register, handleSubmit, formState:{ errors }, reset} = useForm()
 
     const handleClose = () => {
@@ -30,7 +29,7 @@ const admin = ({user}) => {
 
     //Traer Users
     const getUsers = async () => {
-        const response = await fetch (`http://localHost:4000/admin/getUsers`,{
+        const response = await fetch (`https://backend-68i-salefulbo.onrender.com/admin/getUsers`,{
             method:'GET',
             headers:{'Content-type':'application/json'},
             credentials:'include'
@@ -53,7 +52,7 @@ const admin = ({user}) => {
     //Traer Productos
     const getProducts = async () => {
         try {
-          const response = await fetch(`http://localHost:4000/admin/getProducts`,{
+          const response = await fetch(`https://backend-68i-salefulbo.onrender.com/admin/getProducts`,{
             method:'GET',
             headers: { 'Content-type': 'application/json' },
             credentials: 'include',
@@ -79,7 +78,7 @@ const admin = ({user}) => {
     //Traer Canchas
     const getCanchas = async () => {
         try {
-          const response = await fetch(`http://localHost:4000/admin/getCanchas`,{
+          const response = await fetch(`https://backend-68i-salefulbo.onrender.com/admin/getCanchas`,{
             method:'GET',
             headers: { 'Content-type': 'application/json' },
             credentials: 'include',
@@ -93,13 +92,6 @@ const admin = ({user}) => {
             Description: cancha.Description,
             Array: cancha.Array
           }))
-          // const bookins = mappedCanchas.Array.map(bookin => ({
-          //   id: bookin._id,
-          //   name: bookin.name,
-          //   date: bookin.date 
-          // })) 
-          // console.log(bookins);
-          // setBookin(bookin)
           setCanchas(mappedCanchas)
         } catch (error) {
           console.log('error en el pedido de los canchas', error);
@@ -114,7 +106,7 @@ const admin = ({user}) => {
     const changeRole = async (id) => {
         console.log(id);
         try {
-          const response = await fetch(`http://localHost:4000/admin/changeRole`, {
+          const response = await fetch(`https://backend-68i-salefulbo.onrender.com/admin/changeRole`, {
             method: 'PATCH',
             headers: { 'Content-type': 'application/json' },
             credentials: 'include',
@@ -131,7 +123,7 @@ const admin = ({user}) => {
 
     const userDisable = async (id) => {
         try {
-          const response = await fetch(`http://localHost:4000/admin/userActive`, {
+          const response = await fetch(`https://backend-68i-salefulbo.onrender.com/admin/userActive`, {
             method: 'PATCH',
             headers: { 'Content-type': 'application/json' },
             credentials: 'include',
@@ -148,7 +140,7 @@ const admin = ({user}) => {
      
     const deleteUser = async (id) => {
         try {
-            const response = await fetch(`http://localhost:4000/admin/deleteUser`,{
+            const response = await fetch(`https://backend-68i-salefulbo.onrender.com/admin/deleteUser`,{
                 method:'DELETE',
                 headers: {
                   'Content-Type': 'application/json',
@@ -168,15 +160,13 @@ const admin = ({user}) => {
     const CreateProduct = async (data) => {
         try {
             console.log(data)
-            const response = await fetch(`http://localhost:4000/admin/createProduct`,{
+            const response = await fetch(`https://backend-68i-salefulbo.onrender.com/admin/createProduct`,{
                 method:'POST',
                 headers:{'Content-type':'application/json'},
                 body: JSON.stringify(data),
                 credentials:'include'
             })
             const responseData = await response.json()
-            console.log(responseData)
-            console.log(data)
             getProducts();
             handleClose();  
         } catch (error) {
@@ -202,7 +192,7 @@ const admin = ({user}) => {
 
     const ProductDelete = async (id) => {
         try {
-            const response = await fetch(`http://localhost:4000/admin/deleteProduct`,{
+            const response = await fetch(`https://backend-68i-salefulbo.onrender.com/admin/deleteProduct`,{
                 method:'DELETE',
                 headers: { 'Content-type': 'application/json' },
                 credentials:'include',
@@ -219,7 +209,7 @@ const admin = ({user}) => {
 
     const CanchaDelete = async (id) => {
         try {
-            const response = await fetch(`http://localhost:4000/admin/deleteCancha`,{
+            const response = await fetch(`https://backend-68i-salefulbo.onrender.com/admin/deleteCancha`,{
                 method:'DELETE',
                 headers:{'Content-type':'application/json'},
                 credentials:'include',
@@ -235,9 +225,8 @@ const admin = ({user}) => {
     }
 
     const BookinDelete = async (data) => {
-      console.log(data);
       try {
-        const response = await fetch(`http://localhost:4000/deleteBookin`,{
+        const response = await fetch(`https://backend-68i-salefulbo.onrender.com/deleteBookin`,{
             method:'DELETE',
             headers:{'Content-type':'application/json'},
             credentials:'include',
@@ -281,7 +270,7 @@ const admin = ({user}) => {
               <tbody>
                 {
                   users.map((user) => (
-                    <tr key={user.id}>
+                    <tr>
                       <td className='align-middle fw-bold'>{user.Name}</td>
                       <td className='align-middle'>{user.Email}</td>
                       <td className='align-middle'>{user.Rol}</td>
@@ -338,7 +327,7 @@ const admin = ({user}) => {
               <tbody>
                 {
                   products.map((product) => (
-                    <tr key={product.id}>
+                    <tr>
                       <td className='align-middle fw-bold'>{product.Title}</td>
                       <td><Image src={product.Url} style={{height: '6rem'}} alt={product.Title}/></td>
                       <td className='align-middle'>{product.Description}</td>
@@ -371,16 +360,19 @@ const admin = ({user}) => {
               <tbody>
                 {
                   canchas.map(cancha => (
-                    <tr key={cancha.id}>
+                    <tr>
                       <td>
                         <div>
-                          <h5 className='text-center'>{cancha.Title}</h5>
-                          <p>{cancha.Description}</p>
+                          <h5 className='text-center py-3 fst-italic'>{cancha.Title}</h5>
+                          <p className='px-4 pb-3'>{cancha.Description}</p>
+                          <h5 className='text-center pb-3 text-decoration-underline'>Reservas</h5>
                           <Table striped bordered responsive="sm" className='text-center'>
                             <thead>
-                              <th>Nombre</th>
-                              <th>Fecha</th>
-                              <th>Acciones</th>
+                              <tr>
+                                <th>Nombre</th>
+                                <th>Fecha</th>
+                                <th>Acciones</th>
+                              </tr>
                             </thead>
                             <tbody>
                               {
@@ -511,57 +503,57 @@ const admin = ({user}) => {
           </Modal.Header>
           <Modal.Body>
             <Form onSubmit={handleSubmit((data) => CreateCancha(data))}>
-            <Form.Group className='m-2'>
-              <Form.Label>Nombre de la Cancha</Form.Label>
-              <Form.Control
-                className='ms-0 me-5 pe-5' 
-                type='text'
-                placeholder='Ingrese un título...'
-                isInvalid={!!errors.title}
-                // the method register allows you to register an input or select element and apply validations rules
-                // operator (...) allows an iterable to expand in places where 0+ arguments are expected. It is mostly used in the variable array where there is more than 1 value is expected. 
-                // {...register('name', {required:'this field is required'})}
-              />
-              <Form.Control.Feedback type='invalid'>{errors.title?.message}</Form.Control.Feedback>
-            </Form.Group>
+              <Form.Group className='m-2'>
+                <Form.Label>Nombre de la Cancha</Form.Label>
+                <Form.Control
+                  className='ms-0 me-5 pe-5' 
+                  type='text'
+                  placeholder='Ingrese un título...'
+                  isInvalid={!!errors.title}
+                  // the method register allows you to register an input or select element and apply validations rules
+                  // operator (...) allows an iterable to expand in places where 0+ arguments are expected. It is mostly used in the variable array where there is more than 1 value is expected. 
+                  // {...register('name', {required:'this field is required'})}
+                />
+                <Form.Control.Feedback type='invalid'>{errors.title?.message}</Form.Control.Feedback>
+              </Form.Group>
 
-            <Form.Group className='m-2'>
-              <Form.Label>Descripción</Form.Label>
-              <Form.Control
-                className='ms-0 me-5 pe-5' 
-                type='text'
-                placeholder='Ingrese una descripción...'
-                isInvalid={!!errors.description}
-                // the method register allows you to register an input or select element and apply validations rules
-                // operator (...) allows an iterable to expand in places where 0+ arguments are expected. It is mostly used in the variable array where there is more than 1 value is expected. 
-                // {...register('name', {required:'this field is required'})}
-              />
-              <Form.Control.Feedback type='invalid'>{errors.description?.message}</Form.Control.Feedback>
-            </Form.Group>
+              <Form.Group className='m-2'>
+                <Form.Label>Descripción</Form.Label>
+                <Form.Control
+                  className='ms-0 me-5 pe-5' 
+                  type='text'
+                  placeholder='Ingrese una descripción...'
+                  isInvalid={!!errors.description}
+                  // the method register allows you to register an input or select element and apply validations rules
+                  // operator (...) allows an iterable to expand in places where 0+ arguments are expected. It is mostly used in the variable array where there is more than 1 value is expected. 
+                  // {...register('name', {required:'this field is required'})}
+                />
+                <Form.Control.Feedback type='invalid'>{errors.description?.message}</Form.Control.Feedback>
+              </Form.Group>
 
-            <Form.Group className='m-2'>
-              <Form.Label></Form.Label>
-              <Form.Control
-                className='ms-0 me-5 pe-5' 
-                type='text'
-                placeholder='Enter your name...'
-                isInvalid={!!errors.name}
-                // the method register allows you to register an input or select element and apply validations rules
-                // operator (...) allows an iterable to expand in places where 0+ arguments are expected. It is mostly used in the variable array where there is more than 1 value is expected. 
-                // {...register('name', {required:'this field is required'})}
-              />
-              <Form.Control.Feedback type='invalid'>{errors.name?.message}</Form.Control.Feedback>
-            </Form.Group>
-          </Form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="danger" onClick={handleClose}>
-            Close
-          </Button>
-          <Button className='btn-login1'>
-            Save Changes
-          </Button>
-        </Modal.Footer>
+              <Form.Group className='m-2'>
+                <Form.Label></Form.Label>
+                <Form.Control
+                  className='ms-0 me-5 pe-5' 
+                  type='text'
+                  placeholder='Enter your name...'
+                  isInvalid={!!errors.name}
+                  // the method register allows you to register an input or select element and apply validations rules
+                  // operator (...) allows an iterable to expand in places where 0+ arguments are expected. It is mostly used in the variable array where there is more than 1 value is expected. 
+                  // {...register('name', {required:'this field is required'})}
+                />
+                <Form.Control.Feedback type='invalid'>{errors.name?.message}</Form.Control.Feedback>
+              </Form.Group>
+            </Form>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="danger" onClick={handleClose}>
+              Close
+            </Button>
+            <Button className='btn-login1'>
+              Save Changes
+            </Button>
+          </Modal.Footer>
         </Modal>
       </Container>
     )

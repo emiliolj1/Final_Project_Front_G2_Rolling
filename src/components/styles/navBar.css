@@ -7,6 +7,7 @@
 .bgBookin{
   background-color: #06442b;
 }
+
 .navColor{
   background-color: #0E955D;
 }
@@ -20,6 +21,11 @@
   background-color: #ABEFC9;
   border: #0E955D;
   color: #0B7149;
+}
+.btn-login2:active{
+  background-color: #0B7149;
+  border: #0E955D;
+  color: #ABEFC9;
 }
 
 .btnBookin{
@@ -44,6 +50,12 @@
   background-color: #0B7149;
   border: 2px solid #0E955D;
   color: #ABEFC9;
+}
+
+.btn-login1:active{
+  background-color: #ABEFC9;
+  border: #0E955D;
+  color: #0B7149;
 }
 
 .btn-home{
@@ -87,4 +99,38 @@
 .transparent:focus-visible{
   background-color: rgba(0, 0, 0, 0);
   border: 0;
+}
+
+.error{
+  min-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.errorTitle{
+  font-size: 8rem;
+}
+
+.navItem:active {
+  background-color:#252525;
+}
+
+.court{
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 575px) {
+  .court {
+    max-width: 90%;
+    height: auto;
+  }
+}
+
+@media (max-width: 371px) {
+  .court {
+    max-width: 80%;
+    height: auto;
+  }
 }

@@ -15,7 +15,7 @@ const ChangePassword = () => {
   const handleCloseError = () => {setShowError(false)}
 
   const onSubmit = async (data) => {
-    const response = await fetch('http://localhost:4000/change', {
+    const response = await fetch('https://backend-68i-salefulbo.onrender.com/change', {
       method: 'PATCH',
       headers: {'Content-Type':'application/json'},
       body: JSON.stringify(data)
@@ -109,9 +109,11 @@ const ChangePassword = () => {
           A continuacion logueate!
         </Modal.Body>
         <Modal.Footer>
-          <Button className='btn-login1' onClick={() => {window.location.href='/login'}}>
-            Login
-          </Button>
+          <Link to='/login'>
+            <Button className='btn-login1'>
+              Login
+            </Button>
+          </Link>
         </Modal.Footer>
       </Modal>
       <Modal
@@ -130,9 +132,11 @@ const ChangePassword = () => {
           Comunicate con Soporte!
         </Modal.Body>
         <Modal.Footer>
-          <Button className='btn-login1' onClick={() => {window.location.href='/contacto'}}>
-            Contactanos
-          </Button>
+          <Link to='/contacto'>
+            <Button className='btn-login1'>
+              Contactanos
+            </Button>
+          </Link>
         </Modal.Footer>
       </Modal>
     </>

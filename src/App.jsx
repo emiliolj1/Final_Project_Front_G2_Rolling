@@ -1,5 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import './components/styles/navbar.css';
+import './components/styles/navBar.css';
 import './components/styles/card.css';
 import { useState, useEffect} from "react";
 import { BrowserRouter } from "react-router-dom";
@@ -31,7 +31,6 @@ function App() {
     }
   };
   
-
   useEffect(() => {
     checkIfUserLogged();
   }, []);
@@ -48,7 +47,7 @@ function App() {
         :
         <BrowserRouter>
           <NavBar user={user} setUser={setUser}/>
-            <PublicRoutes setUser={setUser}/>
+            <PublicRoutes user={user} setUser={setUser}/>
           <Footer user={user} setUser={setUser}/>
         </BrowserRouter>
       }

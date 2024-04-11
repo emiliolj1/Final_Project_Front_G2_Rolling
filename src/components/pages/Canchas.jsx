@@ -9,7 +9,7 @@ const Canchacard = () => {
   const [canchas, setCancha] = useState([])
 
   const getCancha = async () => {
-    const response = await fetch ("http://localHost:4000/admin/getCanchas",{
+    const response = await fetch ("https://backend-68i-salefulbo.onrender.com/admin/getCanchas",{
         method:'GET',
         headers:{'Content-type':'application/json'},
         credentials:'include'
@@ -39,8 +39,8 @@ const Canchacard = () => {
         canchas.map((cancha, index) => (
           <Container className='rounded border border-success bg-success mb-5 g-0' key={index}>
             <Row>
-              <Col sm={6} className='my-auto'>
-                <Image src={cancha.Url}  className='my-4 mx-4' rounded fluid/>
+              <Col xs={12} sm={6} className='my-auto'>
+                <Image src={cancha.Url}  className='court my-4 mx-4' rounded/>
               </Col>
               <Col sm={6} className='my-auto'> 
                 <h2 className='text-decoration-underline text-light text-center mt-5 fw-bold'>{cancha.Title}</h2>

@@ -23,7 +23,7 @@ function Login({setUser}) {
   const { register, handleSubmit, formState:{errors}} = useForm()
 
   const onSubmit = async (data) => {
-    const response = await fetch('http://localhost:4000/login',{
+    const response = await fetch('https://backend-68i-salefulbo.onrender.com/login',{
       method:'POST',
       headers:{'Content-type':'application/json'},
       credentials:'include',
@@ -54,7 +54,6 @@ function Login({setUser}) {
         userInfo: decoded,
         isLogged: true
       })
-      console.log(decoded);
     }
   }
 

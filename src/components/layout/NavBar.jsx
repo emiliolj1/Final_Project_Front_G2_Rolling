@@ -9,11 +9,9 @@ import { NavLink, Link } from 'react-router-dom'
 import { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 
-
 const Header = ({user, setUser}) => {
 
   const userResult = user;
-  console.log(userResult)
 
   const [showModal, setShowModal] = useState(false);
 
@@ -26,13 +24,12 @@ const Header = ({user, setUser}) => {
   const handleShow = () => setShow(true);
 
   const handleLogout = async () => {
-    const response = await fetch('http://localhost:4000/logout')
+    const response = await fetch('https://backend-68i-salefulbo.onrender.com/logout')
     if(response.status === 400){
-      console.log('esta mal la funcion loco');
+      console.log('Hubo un error en el procesamiento de la peticion');
     }
     if(response.status === 200){
       const data = await response.json();
-      console.log(data);
       localStorage.clear();
       setUser({
         token: null, 
@@ -59,15 +56,15 @@ const Header = ({user, setUser}) => {
                 <NavLink className='mt-2 me-3 text-light text-decoration-none' onClick={handleShowModal}>Alquila tu Cancha!</NavLink>
               }
               <NavDropdown className='me-3' title="+Más" id="basic-nav-dropdown">
-                <NavDropdown.Item>
-                  <NavLink className='mt-2 text-light text-decoration-none' to='/aboutUs'>Nosotros</NavLink>
+                <NavDropdown.Item className='navItem'>
+                  <NavLink className='mt-2 text-light text-decoration-none linkin' to='/aboutUs'>Nosotros</NavLink>
                 </NavDropdown.Item>
-                <NavDropdown.Item >
-                  <NavLink className='mt-2 text-light text-decoration-none' to='/contacto'>Contacto</NavLink>
+                <NavDropdown.Item className='navItem'>
+                  <NavLink className='mt-2 text-light text-decoration-none linkin' to='/contacto'>Contacto</NavLink>
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item>
-                  <NavLink className='mt-2 text-light text-decoration-none' to="/galeria">Galeria de Imagenes</NavLink>
+                <NavDropdown.Item className='navItem'>
+                  <NavLink className='mt-2 text-light text-decoration-none linkin' to="/galeria">Galeria de Imagenes</NavLink>
                 </NavDropdown.Item>
               </NavDropdown>
             </Nav>

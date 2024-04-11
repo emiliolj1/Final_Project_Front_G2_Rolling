@@ -19,7 +19,7 @@ const Sobrenosotros = () => {
         </Row>
         <Row className="mx-auto p-3 cont-carrousel">
           <Col xs={12} md={8} className="p-2">
-            <Image src="img/f5.jpg" rounded fluid/>   
+            <Image alt="Imagen de nuestro predio" src="https://images.pexels.com/photos/13907455/pexels-photo-13907455.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" rounded fluid/>   
           </Col>
           <Col xs={12} md={4} className="text-center my-auto">
             <h2 className="link-success p-3 fw-bolder">Sale Fulbo?</h2>
