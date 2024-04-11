@@ -16,7 +16,6 @@ const Register = () => {
 
   const onSubmit = async (data) => {
     const fullData = {...data, role: 'client'}
-    console.log(fullData);
     const response = await fetch('https://backend-68i-salefulbo.onrender.com/users', {
       method: 'POST',
       headers: {'Content-Type':'application/json'},
