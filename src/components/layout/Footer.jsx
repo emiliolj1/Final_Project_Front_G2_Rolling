@@ -124,7 +124,7 @@ const Footer = ({user, setUser}) => {
         </Modal.Body>
         <Modal.Footer>
           <Link to='/login'>
-            <Button className='btn-login1' onsClick={handleClose}>
+            <Button className='btn-login1' onClick={handleClose}>
               Login
             </Button>
           </Link>
