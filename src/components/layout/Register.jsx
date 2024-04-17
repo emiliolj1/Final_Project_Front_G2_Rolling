@@ -16,7 +16,6 @@ const Register = () => {
 
   const onSubmit = async (data) => {
     const fullData = {...data, role: 'client'}
-    console.log(fullData);
     const response = await fetch('https://backend-68i-salefulbo.onrender.com/users', {
       method: 'POST',
       headers: {'Content-Type':'application/json'},
@@ -30,7 +29,11 @@ const Register = () => {
     if(response.status === 400){
       setShowError(true);
     }
-    
+    const isValidName = /^[a-zA-Z\s]+$/.test(data.name);
+    if (!isValidName) {
+      setShowError(true);
+      return;
+    }
   }
 
   return(
@@ -50,7 +53,7 @@ const Register = () => {
                   minLength: {value: 5, message: 'Este campo no puede contener menos de 5 caracteres'},
                   maxLength: {value: 35, message: 'Este campo no puede contener mas de 35 caracteres'}
                 })}
-                isInvalid={!!errors.name}
+                isInvalid={!!errors.name || showError}
               />
               <Form.Control.Feedback type='invalid'>{errors.name?.message}</Form.Control.Feedback>
             </FormGroup>

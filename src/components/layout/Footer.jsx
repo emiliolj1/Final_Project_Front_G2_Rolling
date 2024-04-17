@@ -12,15 +12,13 @@ import { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import { useForm } from 'react-hook-form';
 
-
-
 const Footer = ({user, setUser}) => {
-
   const {register, handleSubmit, formState:{ errors }, reset} = useForm()
 
   const userResult = user;
 
   const [show, setShow] = useState(false);
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -59,9 +57,9 @@ const Footer = ({user, setUser}) => {
                     </Col>
                     <Col xs={5} sm={2} className='my-auto'>
                       <Nav className='flex-column text-center'>
-                        <NavLink to='/error' className='text-light text-decoration-none my-2 py-auto'><Instagram/> Instagram</NavLink>
-                        <NavLink to='/error' className='text-light text-decoration-none my-2 py-auto'><Facebook/> Facebook</NavLink>
-                        <NavLink to='/error' className='text-light text-decoration-none my-2 py-auto'><TwitterX className='me-1'/> Twitter</NavLink>
+                        <Link className='text-light text-decoration-none my-2 py-auto' to='/error'><Instagram/> Instagram</Link>
+                        <Link className='text-light text-decoration-none my-2 py-auto' to='/error'><Facebook/> Facebook</Link>
+                        <Link className='text-light text-decoration-none my-2 py-auto' to='/error'><TwitterX className='me-1'/>Twitter</Link>
                       </Nav>
                     </Col>
                     <Col xs={7} sm={6} className='my-auto'>

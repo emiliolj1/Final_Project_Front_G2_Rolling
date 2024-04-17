@@ -16,7 +16,7 @@ const Contacto = () => {
   const handleShowEmail = () => setEmail(true);
 
   const onSubmit = async (data) => {
-    console.log("El mensaje se envio correctamente!")
+
     handleShowEmail()
     reset();
   }
@@ -65,6 +65,7 @@ const Contacto = () => {
                 {...register('message', {
                   required: 'Este campo es Obligatorio',
                   minLength: {value: 5, message: 'Este campo no puede contener menos de 5 caracteres'},
+                  maxLength: {value: 120, message: 'Este campo no puede contener mas de 120 caracteres'}
                 })}
                 isInvalid={!!errors.message}
               />
