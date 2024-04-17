@@ -111,6 +111,26 @@ const Footer = ({user, setUser}) => {
         </Container>
       </Navbar>
       <Modal
+        show={show}
+        onHide={handleClose}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>
+            Debes loguearte para alquilar!
+            </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          A continuacion logueate!
+        </Modal.Body>
+        <Modal.Footer>
+          <Link to='/login'>
+            <Button className='btn-login1' onsClick={handleClose}>
+              Login
+            </Button>
+          </Link>
+        </Modal.Footer>
+      </Modal>
+      <Modal
         show={sub}
         onHide={handleCloseSub}
       >
